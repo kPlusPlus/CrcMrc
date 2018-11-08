@@ -28,14 +28,15 @@ namespace CrcMrc
         public Form1()
         {
             InitializeComponent();
-            //PopulateLB(); //TODO: makni ovo
-            //InitInfo(); //TODO: ovo prepravi u finalnoj verziji
+            //PopulateLB();     //TODO: makni ovo
+            InitInfo();       //TODO: ovo prepravi u finalnoj verziji
         }
 
         #region *****  F U N C T I O NS  *****
 
         private void InitInfo()
         {
+            /*
             System.Device.Location.GeoCoordinateWatcher watcher = new System.Device.Location.GeoCoordinateWatcher();
             // Create the watcher.
             Watcher = new GeoCoordinateWatcher();
@@ -47,11 +48,13 @@ namespace CrcMrc
             sCompName = Environment.MachineName;
             sLogUser = Environment.UserName;
             sIP = GetLocalIPAddress();
-
+            */
             // watcher.Position.Location.IsUnknown
             //MessageBox.Show(" location: " + watcher.Position.Location.Longitude);
             //MessageBox.Show("coputer " + Environment.MachineName);
             //MessageBox.Show("user" + Environment.UserName);
+
+            Updater.Interval = Convert.ToInt16( Properties.Settings.Default["TickTime"] );
 
         }
 

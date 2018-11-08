@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txtTerminal = new System.Windows.Forms.TextBox();
             this.lvProcess = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -121,6 +122,7 @@
             this.Controls.Add(this.ThreadList);
             this.Controls.Add(this.lvProcess);
             this.Controls.Add(this.txtTerminal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Crc Mrc";
             this.Load += new System.EventHandler(this.Form1_Load);
