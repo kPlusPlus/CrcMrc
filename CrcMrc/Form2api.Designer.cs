@@ -1,6 +1,6 @@
-namespace CpuUsageAPI
+﻿namespace CrcMrc
 {
-    partial class Example
+    partial class Form2api
     {
         /// <summary>
         /// Required designer variable.
@@ -29,18 +29,22 @@ namespace CpuUsageAPI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.UsageTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.ProcessView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.UsageTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // UsageTimer
+            // panel1
             // 
-            this.UsageTimer.Enabled = true;
-            this.UsageTimer.Interval = 1000;
-            this.UsageTimer.Tick += new System.EventHandler(this.UsageTimer_Tick);
+            this.panel1.Controls.Add(this.ProcessView);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(712, 355);
+            this.panel1.TabIndex = 0;
             // 
             // ProcessView
             // 
@@ -52,9 +56,9 @@ namespace CpuUsageAPI
             this.ProcessView.FullRowSelect = true;
             this.ProcessView.Location = new System.Drawing.Point(0, 0);
             this.ProcessView.Name = "ProcessView";
-            this.ProcessView.Size = new System.Drawing.Size(843, 632);
+            this.ProcessView.Size = new System.Drawing.Size(712, 355);
             this.ProcessView.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.ProcessView.TabIndex = 0;
+            this.ProcessView.TabIndex = 1;
             this.ProcessView.UseCompatibleStateImageBehavior = false;
             this.ProcessView.View = System.Windows.Forms.View.Details;
             // 
@@ -75,26 +79,32 @@ namespace CpuUsageAPI
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader3.Width = 104;
             // 
-            // Example
+            // UsageTimer
+            // 
+            this.UsageTimer.Enabled = true;
+            this.UsageTimer.Interval = 1000;
+            this.UsageTimer.Tick += new System.EventHandler(this.UsageTimer_Tick);
+            // 
+            // Form2api
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 632);
-            this.Controls.Add(this.ProcessView);
-            this.DoubleBuffered = true;
-            this.Name = "Example";
-            this.Text = "Cpu usage the API way";
+            this.ClientSize = new System.Drawing.Size(912, 649);
+            this.Controls.Add(this.panel1);
+            this.Name = "Form2api";
+            this.Text = "Form2api";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Timer UsageTimer;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ListView ProcessView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Timer UsageTimer;
     }
 }
-

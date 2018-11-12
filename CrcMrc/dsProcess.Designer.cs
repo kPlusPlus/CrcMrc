@@ -289,6 +289,8 @@ namespace CrcMrc {
             
             private global::System.Data.DataColumn columnIP;
             
+            private global::System.Data.DataColumn columnCPUUse;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ProcessDataTable() {
@@ -364,6 +366,14 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CPUUseColumn {
+                get {
+                    return this.columnCPUUse;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -399,14 +409,15 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProcessRow AddProcessRow(int ID, string ProcesName, System.DateTime ProcTime, string CompName, string IP) {
+            public ProcessRow AddProcessRow(int ID, string ProcesName, System.DateTime ProcTime, string CompName, string IP, string CPUUse) {
                 ProcessRow rowProcessRow = ((ProcessRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
                         ProcesName,
                         ProcTime,
                         CompName,
-                        IP};
+                        IP,
+                        CPUUse};
                 rowProcessRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProcessRow);
                 return rowProcessRow;
@@ -434,6 +445,7 @@ namespace CrcMrc {
                 this.columnProcTime = base.Columns["ProcTime"];
                 this.columnCompName = base.Columns["CompName"];
                 this.columnIP = base.Columns["IP"];
+                this.columnCPUUse = base.Columns["CPUUse"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -449,6 +461,8 @@ namespace CrcMrc {
                 base.Columns.Add(this.columnCompName);
                 this.columnIP = new global::System.Data.DataColumn("IP", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIP);
+                this.columnCPUUse = new global::System.Data.DataColumn("CPUUse", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCPUUse);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
                 this.columnID.Unique = true;
@@ -674,6 +688,22 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CPUUse {
+                get {
+                    try {
+                        return ((string)(this[this.tableProcess.CPUUseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CPUUse\' in table \'Process\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProcess.CPUUseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tableProcess.IDColumn);
             }
@@ -730,6 +760,18 @@ namespace CrcMrc {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetIPNull() {
                 this[this.tableProcess.IPColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCPUUseNull() {
+                return this.IsNull(this.tableProcess.CPUUseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCPUUseNull() {
+                this[this.tableProcess.CPUUseColumn] = global::System.Convert.DBNull;
             }
         }
         
