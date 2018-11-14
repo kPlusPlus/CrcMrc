@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -101,6 +102,18 @@ namespace CrcMrc
             while (Index < ProcessDataList.Count)
             {
                 ProcessData TempProcess = (ProcessData)ProcessDataList[Index];
+                // **************************************************************
+                //TODO: zapiši u dataset i na kraju u xml
+                dsProcess.ProcessRow row;
+                row.CompName = GetCompname();
+                row.IP = GetIPAddress();
+                row.ProcesName = TempProcess.Name;
+                row.CPUUse = TempProcess.CpuUsage;
+                row.ProcTime = (System.DateTime)DateTime.Now; 
+                
+
+                // **************************************************************
+
 
                 if (IDList.Contains(TempProcess.ID))
                     Index++;
@@ -149,5 +162,33 @@ namespace CrcMrc
             if (NewProcess.ID == 0)
                 IdleProcessItem = NewProcessItem;
         }
+
+        private string GetCompname()
+        {
+            //string ComputerName1 = Dns.GetHostName();//Server Name
+            //string ComputerName2 = Environment.MachineName;//Server Name  
+
+            return Environment.MachineName + "|" + Dns.GetHostName();
+        }
+                
+        public string GetIPAddress()
+        {
+            IPHostEntry Host = default(IPHostEntry);
+            string Hostname = null;
+            string sIPAddress = null;
+            Hostname = System.Environment.MachineName;
+            Host = Dns.GetHostEntry(Hostname);
+            foreach (IPAddress IP in Host.AddressList)
+            {
+                if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    //IPAddress = Convert.ToString(IP);
+                    sIPAddress = Convert.ToString(IP);
+                }
+            }
+            return sIPAddress;
+        }
+
+
     }
 }
