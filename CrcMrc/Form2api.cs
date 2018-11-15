@@ -120,8 +120,6 @@ namespace CrcMrc
             while (Index < ProcessDataList.Count)
             {
                 ProcessData TempProcess = (ProcessData)ProcessDataList[Index];
-                // **************************************************************
-                //TODO: zapiši u dataset i na kraju u xml
                 dsProcess.ProcessRow row;
                 row = pdt.NewProcessRow();
                 row.CompName = GetCompname();
@@ -130,8 +128,6 @@ namespace CrcMrc
                 row.CPUUse = TempProcess.CpuUsage;
                 row.ProcTime = dt;
                 pdt.AddProcessRow(row);
-                // **************************************************************
-
 
                 if (IDList.Contains(TempProcess.ID))
                     Index++;
@@ -183,9 +179,6 @@ namespace CrcMrc
 
         private string GetCompname()
         {
-            //string ComputerName1 = Dns.GetHostName();//Server Name
-            //string ComputerName2 = Environment.MachineName;//Server Name  
-
             return Environment.MachineName + "|" + Dns.GetHostName();
         }
                 
