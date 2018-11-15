@@ -20,11 +20,27 @@ namespace CrcMrc
         ArrayList ProcessDataList = new ArrayList();
         ArrayList IDList = new ArrayList();
         ListViewItem IdleProcessItem;
+        common comm;
 
 
         public Form2api()
         {
             InitializeComponent();
+            comm = new common();
+            InitVal();
+
+        }
+
+        dsProcess.ProcessDataTable pdt;
+
+        private void InitVal()
+        {
+            pdt = new dsProcess.ProcessDataTable();
+        }
+
+        private void SaveXml()
+        {
+            pdt.WriteXml("temp.xml");
         }
 
         private void GetUsage()
@@ -99,19 +115,21 @@ namespace CrcMrc
 
             Index = 0;
 
+            DateTime dt = (System.DateTime)DateTime.Now;
+
             while (Index < ProcessDataList.Count)
             {
                 ProcessData TempProcess = (ProcessData)ProcessDataList[Index];
                 // **************************************************************
                 //TODO: zapiši u dataset i na kraju u xml
                 dsProcess.ProcessRow row;
+                row = pdt.NewProcessRow();
                 row.CompName = GetCompname();
                 row.IP = GetIPAddress();
                 row.ProcesName = TempProcess.Name;
                 row.CPUUse = TempProcess.CpuUsage;
-                row.ProcTime = (System.DateTime)DateTime.Now; 
-                
-
+                row.ProcTime = dt;
+                pdt.AddProcessRow(row);
                 // **************************************************************
 
 
@@ -189,6 +207,9 @@ namespace CrcMrc
             return sIPAddress;
         }
 
-
+        private void btnWriteXml_Click(object sender, EventArgs e)
+        {
+            SaveXml();
+        }
     }
 }

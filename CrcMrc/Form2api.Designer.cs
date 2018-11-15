@@ -35,6 +35,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UsageTimer = new System.Windows.Forms.Timer(this.components);
+            this.btnWriteXml = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,11 +86,22 @@
             this.UsageTimer.Interval = 1000;
             this.UsageTimer.Tick += new System.EventHandler(this.UsageTimer_Tick);
             // 
+            // btnWriteXml
+            // 
+            this.btnWriteXml.Location = new System.Drawing.Point(731, 13);
+            this.btnWriteXml.Name = "btnWriteXml";
+            this.btnWriteXml.Size = new System.Drawing.Size(169, 30);
+            this.btnWriteXml.TabIndex = 1;
+            this.btnWriteXml.Text = "Spremi";
+            this.btnWriteXml.UseVisualStyleBackColor = true;
+            this.btnWriteXml.Click += new System.EventHandler(this.btnWriteXml_Click);
+            // 
             // Form2api
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 649);
+            this.Controls.Add(this.btnWriteXml);
             this.Controls.Add(this.panel1);
             this.Name = "Form2api";
             this.Text = "Form2api";
@@ -106,5 +118,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Timer UsageTimer;
+        private System.Windows.Forms.Button btnWriteXml;
     }
 }

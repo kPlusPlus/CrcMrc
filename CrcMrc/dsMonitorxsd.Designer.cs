@@ -20,17 +20,17 @@ namespace CrcMrc {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dsProcess")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dsMonitorxsd")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class dsProcess : global::System.Data.DataSet {
+    public partial class dsMonitorxsd : global::System.Data.DataSet {
         
-        private ProcessDataTable tableProcess;
+        private MonitorDataTable tableMonitor;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public dsProcess() {
+        public dsMonitorxsd() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace CrcMrc {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected dsProcess(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected dsMonitorxsd(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace CrcMrc {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Process"] != null)) {
-                    base.Tables.Add(new ProcessDataTable(ds.Tables["Process"]));
+                if ((ds.Tables["Monitor"] != null)) {
+                    base.Tables.Add(new MonitorDataTable(ds.Tables["Monitor"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace CrcMrc {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ProcessDataTable Process {
+        public MonitorDataTable Monitor {
             get {
-                return this.tableProcess;
+                return this.tableMonitor;
             }
         }
         
@@ -127,7 +127,7 @@ namespace CrcMrc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            dsProcess cln = ((dsProcess)(base.Clone()));
+            dsMonitorxsd cln = ((dsMonitorxsd)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace CrcMrc {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Process"] != null)) {
-                    base.Tables.Add(new ProcessDataTable(ds.Tables["Process"]));
+                if ((ds.Tables["Monitor"] != null)) {
+                    base.Tables.Add(new MonitorDataTable(ds.Tables["Monitor"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace CrcMrc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableProcess = ((ProcessDataTable)(base.Tables["Process"]));
+            this.tableMonitor = ((MonitorDataTable)(base.Tables["Monitor"]));
             if ((initTable == true)) {
-                if ((this.tableProcess != null)) {
-                    this.tableProcess.InitVars();
+                if ((this.tableMonitor != null)) {
+                    this.tableMonitor.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace CrcMrc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "dsProcess";
+            this.DataSetName = "dsMonitorxsd";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/dsProcess.xsd";
+            this.Namespace = "http://tempuri.org/dsMonitorxsd.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableProcess = new ProcessDataTable();
-            base.Tables.Add(this.tableProcess);
+            this.tableMonitor = new MonitorDataTable();
+            base.Tables.Add(this.tableMonitor);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeProcess() {
+        private bool ShouldSerializeMonitor() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace CrcMrc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            dsProcess ds = new dsProcess();
+            dsMonitorxsd ds = new dsMonitorxsd();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,31 +270,31 @@ namespace CrcMrc {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void ProcessRowChangeEventHandler(object sender, ProcessRowChangeEvent e);
+        public delegate void MonitorRowChangeEventHandler(object sender, MonitorRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ProcessDataTable : global::System.Data.TypedTableBase<ProcessRow> {
+        public partial class MonitorDataTable : global::System.Data.TypedTableBase<MonitorRow> {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnProcesName;
-            
-            private global::System.Data.DataColumn columnProcTime;
+            private global::System.Data.DataColumn columnMonitorName;
             
             private global::System.Data.DataColumn columnCompName;
             
-            private global::System.Data.DataColumn columnIP;
+            private global::System.Data.DataColumn columnIPAddress;
+            
+            private global::System.Data.DataColumn columnMonitorTime;
             
             private global::System.Data.DataColumn columnCPUUse;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProcessDataTable() {
-                this.TableName = "Process";
+            public MonitorDataTable() {
+                this.TableName = "Monitor";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -302,7 +302,7 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal ProcessDataTable(global::System.Data.DataTable table) {
+            internal MonitorDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -319,7 +319,7 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected ProcessDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected MonitorDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -334,17 +334,9 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ProcesNameColumn {
+            public global::System.Data.DataColumn MonitorNameColumn {
                 get {
-                    return this.columnProcesName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ProcTimeColumn {
-                get {
-                    return this.columnProcTime;
+                    return this.columnMonitorName;
                 }
             }
             
@@ -358,9 +350,17 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn IPColumn {
+            public global::System.Data.DataColumn IPAddressColumn {
                 get {
-                    return this.columnIP;
+                    return this.columnIPAddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MonitorTimeColumn {
+                get {
+                    return this.columnMonitorTime;
                 }
             }
             
@@ -383,50 +383,50 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProcessRow this[int index] {
+            public MonitorRow this[int index] {
                 get {
-                    return ((ProcessRow)(this.Rows[index]));
+                    return ((MonitorRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ProcessRowChangeEventHandler ProcessRowChanging;
+            public event MonitorRowChangeEventHandler MonitorRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ProcessRowChangeEventHandler ProcessRowChanged;
+            public event MonitorRowChangeEventHandler MonitorRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ProcessRowChangeEventHandler ProcessRowDeleting;
+            public event MonitorRowChangeEventHandler MonitorRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ProcessRowChangeEventHandler ProcessRowDeleted;
+            public event MonitorRowChangeEventHandler MonitorRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddProcessRow(ProcessRow row) {
+            public void AddMonitorRow(MonitorRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProcessRow AddProcessRow(string ProcesName, System.DateTime ProcTime, string CompName, string IP, string CPUUse) {
-                ProcessRow rowProcessRow = ((ProcessRow)(this.NewRow()));
+            public MonitorRow AddMonitorRow(string MonitorName, string CompName, string IPAddress, string MonitorTime, string CPUUse) {
+                MonitorRow rowMonitorRow = ((MonitorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        ProcesName,
-                        ProcTime,
+                        MonitorName,
                         CompName,
-                        IP,
+                        IPAddress,
+                        MonitorTime,
                         CPUUse};
-                rowProcessRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowProcessRow);
-                return rowProcessRow;
+                rowMonitorRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMonitorRow);
+                return rowMonitorRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ProcessDataTable cln = ((ProcessDataTable)(base.Clone()));
+                MonitorDataTable cln = ((MonitorDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -434,65 +434,64 @@ namespace CrcMrc {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ProcessDataTable();
+                return new MonitorDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
-                this.columnProcesName = base.Columns["ProcesName"];
-                this.columnProcTime = base.Columns["ProcTime"];
+                this.columnMonitorName = base.Columns["MonitorName"];
                 this.columnCompName = base.Columns["CompName"];
-                this.columnIP = base.Columns["IP"];
+                this.columnIPAddress = base.Columns["IPAddress"];
+                this.columnMonitorTime = base.Columns["MonitorTime"];
                 this.columnCPUUse = base.Columns["CPUUse"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnProcesName = new global::System.Data.DataColumn("ProcesName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProcesName);
-                this.columnProcTime = new global::System.Data.DataColumn("ProcTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProcTime);
+                this.columnMonitorName = new global::System.Data.DataColumn("MonitorName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMonitorName);
                 this.columnCompName = new global::System.Data.DataColumn("CompName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCompName);
-                this.columnIP = new global::System.Data.DataColumn("IP", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIP);
+                this.columnIPAddress = new global::System.Data.DataColumn("IPAddress", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIPAddress);
+                this.columnMonitorTime = new global::System.Data.DataColumn("MonitorTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMonitorTime);
                 this.columnCPUUse = new global::System.Data.DataColumn("CPUUse", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCPUUse);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, false));
                 this.columnID.AutoIncrement = true;
-                this.columnID.Unique = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProcessRow NewProcessRow() {
-                return ((ProcessRow)(this.NewRow()));
+            public MonitorRow NewMonitorRow() {
+                return ((MonitorRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ProcessRow(builder);
+                return new MonitorRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ProcessRow);
+                return typeof(MonitorRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ProcessRowChanged != null)) {
-                    this.ProcessRowChanged(this, new ProcessRowChangeEvent(((ProcessRow)(e.Row)), e.Action));
+                if ((this.MonitorRowChanged != null)) {
+                    this.MonitorRowChanged(this, new MonitorRowChangeEvent(((MonitorRow)(e.Row)), e.Action));
                 }
             }
             
@@ -500,8 +499,8 @@ namespace CrcMrc {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ProcessRowChanging != null)) {
-                    this.ProcessRowChanging(this, new ProcessRowChangeEvent(((ProcessRow)(e.Row)), e.Action));
+                if ((this.MonitorRowChanging != null)) {
+                    this.MonitorRowChanging(this, new MonitorRowChangeEvent(((MonitorRow)(e.Row)), e.Action));
                 }
             }
             
@@ -509,8 +508,8 @@ namespace CrcMrc {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ProcessRowDeleted != null)) {
-                    this.ProcessRowDeleted(this, new ProcessRowChangeEvent(((ProcessRow)(e.Row)), e.Action));
+                if ((this.MonitorRowDeleted != null)) {
+                    this.MonitorRowDeleted(this, new MonitorRowChangeEvent(((MonitorRow)(e.Row)), e.Action));
                 }
             }
             
@@ -518,14 +517,14 @@ namespace CrcMrc {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ProcessRowDeleting != null)) {
-                    this.ProcessRowDeleting(this, new ProcessRowChangeEvent(((ProcessRow)(e.Row)), e.Action));
+                if ((this.MonitorRowDeleting != null)) {
+                    this.MonitorRowDeleting(this, new MonitorRowChangeEvent(((MonitorRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveProcessRow(ProcessRow row) {
+            public void RemoveMonitorRow(MonitorRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -534,7 +533,7 @@ namespace CrcMrc {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                dsProcess ds = new dsProcess();
+                dsMonitorxsd ds = new dsMonitorxsd();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -552,7 +551,7 @@ namespace CrcMrc {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ProcessDataTable";
+                attribute2.FixedValue = "MonitorDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -596,62 +595,46 @@ namespace CrcMrc {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ProcessRow : global::System.Data.DataRow {
+        public partial class MonitorRow : global::System.Data.DataRow {
             
-            private ProcessDataTable tableProcess;
+            private MonitorDataTable tableMonitor;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal ProcessRow(global::System.Data.DataRowBuilder rb) : 
+            internal MonitorRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableProcess = ((ProcessDataTable)(this.Table));
+                this.tableMonitor = ((MonitorDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int ID {
+            public long ID {
                 get {
                     try {
-                        return ((int)(this[this.tableProcess.IDColumn]));
+                        return ((long)(this[this.tableMonitor.IDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'Process\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'Monitor\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableProcess.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string ProcesName {
-                get {
-                    try {
-                        return ((string)(this[this.tableProcess.ProcesNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ProcesName\' in table \'Process\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableProcess.ProcesNameColumn] = value;
+                    this[this.tableMonitor.IDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime ProcTime {
+            public string MonitorName {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableProcess.ProcTimeColumn]));
+                        return ((string)(this[this.tableMonitor.MonitorNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ProcTime\' in table \'Process\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'MonitorName\' in table \'Monitor\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableProcess.ProcTimeColumn] = value;
+                    this[this.tableMonitor.MonitorNameColumn] = value;
                 }
             }
             
@@ -660,30 +643,46 @@ namespace CrcMrc {
             public string CompName {
                 get {
                     try {
-                        return ((string)(this[this.tableProcess.CompNameColumn]));
+                        return ((string)(this[this.tableMonitor.CompNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CompName\' in table \'Process\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CompName\' in table \'Monitor\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableProcess.CompNameColumn] = value;
+                    this[this.tableMonitor.CompNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string IP {
+            public string IPAddress {
                 get {
                     try {
-                        return ((string)(this[this.tableProcess.IPColumn]));
+                        return ((string)(this[this.tableMonitor.IPAddressColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'IP\' in table \'Process\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'IPAddress\' in table \'Monitor\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableProcess.IPColumn] = value;
+                    this[this.tableMonitor.IPAddressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string MonitorTime {
+                get {
+                    try {
+                        return ((string)(this[this.tableMonitor.MonitorTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MonitorTime\' in table \'Monitor\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonitor.MonitorTimeColumn] = value;
                 }
             }
             
@@ -692,87 +691,87 @@ namespace CrcMrc {
             public string CPUUse {
                 get {
                     try {
-                        return ((string)(this[this.tableProcess.CPUUseColumn]));
+                        return ((string)(this[this.tableMonitor.CPUUseColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CPUUse\' in table \'Process\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CPUUse\' in table \'Monitor\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableProcess.CPUUseColumn] = value;
+                    this[this.tableMonitor.CPUUseColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsIDNull() {
-                return this.IsNull(this.tableProcess.IDColumn);
+                return this.IsNull(this.tableMonitor.IDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetIDNull() {
-                this[this.tableProcess.IDColumn] = global::System.Convert.DBNull;
+                this[this.tableMonitor.IDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsProcesNameNull() {
-                return this.IsNull(this.tableProcess.ProcesNameColumn);
+            public bool IsMonitorNameNull() {
+                return this.IsNull(this.tableMonitor.MonitorNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetProcesNameNull() {
-                this[this.tableProcess.ProcesNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsProcTimeNull() {
-                return this.IsNull(this.tableProcess.ProcTimeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetProcTimeNull() {
-                this[this.tableProcess.ProcTimeColumn] = global::System.Convert.DBNull;
+            public void SetMonitorNameNull() {
+                this[this.tableMonitor.MonitorNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCompNameNull() {
-                return this.IsNull(this.tableProcess.CompNameColumn);
+                return this.IsNull(this.tableMonitor.CompNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetCompNameNull() {
-                this[this.tableProcess.CompNameColumn] = global::System.Convert.DBNull;
+                this[this.tableMonitor.CompNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsIPNull() {
-                return this.IsNull(this.tableProcess.IPColumn);
+            public bool IsIPAddressNull() {
+                return this.IsNull(this.tableMonitor.IPAddressColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetIPNull() {
-                this[this.tableProcess.IPColumn] = global::System.Convert.DBNull;
+            public void SetIPAddressNull() {
+                this[this.tableMonitor.IPAddressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsMonitorTimeNull() {
+                return this.IsNull(this.tableMonitor.MonitorTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetMonitorTimeNull() {
+                this[this.tableMonitor.MonitorTimeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCPUUseNull() {
-                return this.IsNull(this.tableProcess.CPUUseColumn);
+                return this.IsNull(this.tableMonitor.CPUUseColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetCPUUseNull() {
-                this[this.tableProcess.CPUUseColumn] = global::System.Convert.DBNull;
+                this[this.tableMonitor.CPUUseColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -780,22 +779,22 @@ namespace CrcMrc {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class ProcessRowChangeEvent : global::System.EventArgs {
+        public class MonitorRowChangeEvent : global::System.EventArgs {
             
-            private ProcessRow eventRow;
+            private MonitorRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProcessRowChangeEvent(ProcessRow row, global::System.Data.DataRowAction action) {
+            public MonitorRowChangeEvent(MonitorRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProcessRow Row {
+            public MonitorRow Row {
                 get {
                     return this.eventRow;
                 }
