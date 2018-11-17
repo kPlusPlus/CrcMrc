@@ -6,20 +6,38 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CrcMrc
 {
+        
+
     public partial class Form2api : Form
     {
         const ProcessData PROCESS_DATA_NOT_FOUND = null;
         const ListViewItem PROCESS_ITEM_NOT_FOUND = null;
 
+        [DllImport("user32.dll")]
+        static extern IntPtr GetActiveWindow();
+
+        [DllImport("user32")]
+        private static extern UInt32 GetWindowThreadProcessId(Int32 hWnd , out Int32 lpdwProcessId);
+
+        private Int32 GetWindowProcessID_(Int32 hwnd)
+        {
+            Int32 pid = 1;
+            GetWindowThreadProcessId(hwnd, out pid);
+            return pid;
+        }
+
+
         ArrayList ProcessDataList = new ArrayList();
         ArrayList IDList = new ArrayList();
         ListViewItem IdleProcessItem;
+        dsProcess.ProcessDataTable pdt;
         common comm;
 
 
@@ -28,10 +46,7 @@ namespace CrcMrc
             InitializeComponent();
             comm = new common();
             InitVal();
-
-        }
-
-        dsProcess.ProcessDataTable pdt;
+        }        
 
         private void InitVal()
         {
@@ -127,7 +142,22 @@ namespace CrcMrc
                 row.ProcesName = TempProcess.Name;
                 row.CPUUse = TempProcess.CpuUsage;
                 row.ProcTime = dt;
+                row.ProcID = (Int32) TempProcess.ID;                
+
+                Int32 hwnd = 0;
+                hwnd = (Int32) GetActiveWindow();
+                Int32 actproc = 0;
+                actproc = GetWindowProcessID_(hwnd);
+                if(row.ProcID == actproc)
+                {
+                    Console.WriteLine((IntPtr)row.ProcID);
+                    Console.WriteLine(actproc);
+                }
+
+                Console.WriteLine("____________");
+                
                 pdt.AddProcessRow(row);
+                
 
                 if (IDList.Contains(TempProcess.ID))
                     Index++;
@@ -142,6 +172,7 @@ namespace CrcMrc
 
             ProcessView.ResumeLayout();
         }
+        
 
         private ProcessData ProcessExists(uint ID)
         {
@@ -204,5 +235,7 @@ namespace CrcMrc
         {
             SaveXml();
         }
+        
+
     }
 }

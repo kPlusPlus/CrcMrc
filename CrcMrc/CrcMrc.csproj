@@ -58,11 +58,6 @@
   <ItemGroup>
     <Compile Include="common.cs" />
     <Compile Include="DateTypes.cs" />
-    <Compile Include="dsMonitorxsd.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsMonitorxsd.xsd</DependentUpon>
-    </Compile>
     <Compile Include="dsProcess.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,17 +86,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
-    <None Include="dsMonitorxsd.xsc">
-      <DependentUpon>dsMonitorxsd.xsd</DependentUpon>
-    </None>
-    <None Include="dsMonitorxsd.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsMonitorxsd.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="dsMonitorxsd.xss">
-      <DependentUpon>dsMonitorxsd.xsd</DependentUpon>
-    </None>
     <None Include="dsProcess.xsc">
       <DependentUpon>dsProcess.xsd</DependentUpon>
     </None>
