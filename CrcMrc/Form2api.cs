@@ -39,6 +39,7 @@ namespace CrcMrc
 
         [DllImport("user32.dll")]
         static extern IntPtr GetForegroundWindow();
+        
 
 
         ArrayList ProcessDataList = new ArrayList();
@@ -152,7 +153,8 @@ namespace CrcMrc
                 row.ProcID = (Int32) TempProcess.ID;                              
 
                 Int32 hwnd = 0;
-                hwnd = (Int32) GetActiveWindow();
+                //hwnd = (Int32) GetActiveWindow();
+                hwnd = GetForegroundWindow().ToInt32();
                 string sProzori = String.Empty;
                 IntPtr[] prozori = GetProcessWindows((int)TempProcess.ID);
                 for (int j = 0; j < prozori.Length; j++)
