@@ -293,6 +293,10 @@ namespace CrcMrc {
             
             private global::System.Data.DataColumn columnProcID;
             
+            private global::System.Data.DataColumn columnhWindID;
+            
+            private global::System.Data.DataColumn columncurrWindID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ProcessDataTable() {
@@ -384,6 +388,22 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn hWindIDColumn {
+                get {
+                    return this.columnhWindID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn currWindIDColumn {
+                get {
+                    return this.columncurrWindID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -419,7 +439,7 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProcessRow AddProcessRow(string ProcesName, System.DateTime ProcTime, string CompName, string IP, string CPUUse, int ProcID) {
+            public ProcessRow AddProcessRow(string ProcesName, System.DateTime ProcTime, string CompName, string IP, string CPUUse, int ProcID, string hWindID, string currWindID) {
                 ProcessRow rowProcessRow = ((ProcessRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -428,7 +448,9 @@ namespace CrcMrc {
                         CompName,
                         IP,
                         CPUUse,
-                        ProcID};
+                        ProcID,
+                        hWindID,
+                        currWindID};
                 rowProcessRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProcessRow);
                 return rowProcessRow;
@@ -458,6 +480,8 @@ namespace CrcMrc {
                 this.columnIP = base.Columns["IP"];
                 this.columnCPUUse = base.Columns["CPUUse"];
                 this.columnProcID = base.Columns["ProcID"];
+                this.columnhWindID = base.Columns["hWindID"];
+                this.columncurrWindID = base.Columns["currWindID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -477,6 +501,10 @@ namespace CrcMrc {
                 base.Columns.Add(this.columnCPUUse);
                 this.columnProcID = new global::System.Data.DataColumn("ProcID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProcID);
+                this.columnhWindID = new global::System.Data.DataColumn("hWindID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnhWindID);
+                this.columncurrWindID = new global::System.Data.DataColumn("currWindID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncurrWindID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
                 this.columnID.AutoIncrement = true;
@@ -735,6 +763,38 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string hWindID {
+                get {
+                    try {
+                        return ((string)(this[this.tableProcess.hWindIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'hWindID\' in table \'Process\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProcess.hWindIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string currWindID {
+                get {
+                    try {
+                        return ((string)(this[this.tableProcess.currWindIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'currWindID\' in table \'Process\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProcess.currWindIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tableProcess.IDColumn);
             }
@@ -815,6 +875,30 @@ namespace CrcMrc {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetProcIDNull() {
                 this[this.tableProcess.ProcIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IshWindIDNull() {
+                return this.IsNull(this.tableProcess.hWindIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SethWindIDNull() {
+                this[this.tableProcess.hWindIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscurrWindIDNull() {
+                return this.IsNull(this.tableProcess.currWindIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcurrWindIDNull() {
+                this[this.tableProcess.currWindIDColumn] = global::System.Convert.DBNull;
             }
         }
         

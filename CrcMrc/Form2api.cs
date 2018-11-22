@@ -149,30 +149,19 @@ namespace CrcMrc
                 row.ProcesName = TempProcess.Name;
                 row.CPUUse = TempProcess.CpuUsage;
                 row.ProcTime = dt;
-                row.ProcID = (Int32) TempProcess.ID;                                
+                row.ProcID = (Int32) TempProcess.ID;                              
 
                 Int32 hwnd = 0;
                 hwnd = (Int32) GetActiveWindow();
-                Int32 actproc = 0;
-                actproc = GetWindowProcessID_(hwnd);
-                IntPtr handle;
-                handle = GetForegroundWindow();
-
-                if (row.ProcID == actproc)
-                {
-                    Console.WriteLine((IntPtr)row.ProcID);
-                    Console.WriteLine(actproc);
+                string sProzori = String.Empty;
+                IntPtr[] prozori = GetProcessWindows((int)TempProcess.ID);
+                for (int j = 0; j < prozori.Length; j++)
+                {                    
+                    sProzori += prozori[j].ToInt32().ToString() + "@";
                 }
-                else
-                {
-                    Console.WriteLine("*" + (IntPtr)row.ProcID);
-                    Console.WriteLine("*" + actproc + "*");
-                    Process localById = Process.GetProcessById(actproc);
-                    Console.WriteLine(localById.ProcessName);
-                }
+                row.hWindID = sProzori;
+                row.currWindID = hwnd.ToString();
 
-                Console.WriteLine("____________");
-                
                 pdt.AddProcessRow(row);
                 
 
@@ -234,7 +223,7 @@ namespace CrcMrc
             {
                 pLast = FindWindowEx(IntPtr.Zero, pLast, null, null);
                 int iProcess_;
-                GetWindowThreadProcessId(pLast, out iProcess_);
+                GetWindowThreadProcessId((int)pLast, out iProcess_);
                 if (iProcess_ == process) apRet[iCount++] = pLast;
             } while (pLast != IntPtr.Zero);
             System.Array.Resize(ref apRet, iCount);
