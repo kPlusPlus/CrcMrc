@@ -9,9 +9,7 @@ using System.Data;
 namespace CrcMrc
 {
     class common
-    {
-
-        
+    {        
 
 
         public void AddTo()

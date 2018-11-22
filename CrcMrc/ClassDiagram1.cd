@@ -1,39 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="CrcMrc.ProcessCpu">
-    <Position X="7.75" Y="0.75" Width="1.5" />
+  <Class Name="CrcMrc.common" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAYAAAAAACQwAAAYAAAAIAQAAAFAAAAAKAAAIoAI=</HashCode>
-      <FileName>ProcessCpu.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>common.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CrcMrc.ProcessInfo">
-    <Position X="6" Y="0.75" Width="1.5" />
+  <Class Name="CrcMrc.dsProcess" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAwAAAAAAAAAAAAAAAAAAAQ=</HashCode>
-      <FileName>ProcessCpu.cs</FileName>
+      <HashCode>AAAAAAAAAwgAAAJABgAAQAAAAAgCQBgBAAAAAAEABBA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Delegate Name="CrcMrc.NewProcessEvent">
+  <Class Name="CrcMrc.Form2api" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAEAAQAACBAAEgAAACQAACKI6AAACBAIAEKAQAAAY4=</HashCode>
+      <FileName>Form2api.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CrcMrc.ProcessCPU" Collapsed="true">
     <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAACAACAQAAICAAACAAAAAAAABAEgAAAAEAAAA=</HashCode>
       <FileName>ProcessCpu.cs</FileName>
     </TypeIdentifier>
-  </Delegate>
-  <Delegate Name="CrcMrc.ProcessCloseEvent">
-    <Position X="2.25" Y="1.5" Width="1.5" />
+  </Class>
+  <Class Name="CrcMrc.ProcessData">
+    <Position X="6.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>BAAAgAAAAAAAgAAAAAAAIAwAhAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>ProcessCpu.cs</FileName>
     </TypeIdentifier>
-  </Delegate>
-  <Delegate Name="CrcMrc.ProcessUpdateEvent">
+  </Class>
+  <Class Name="CrcMrc.Program" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CrcMrc.Properties.Resources" Collapsed="true">
     <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ProcessCpu.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
-  </Delegate>
+  </Class>
+  <Class Name="CrcMrc.Properties.Settings">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAIAAAgAABQAAAAAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="CrcMrc.SYSTEMTIME" Collapsed="true">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAJACAAAAAAAAAAAIAAAAAACIEAAAEAAAAAAA=</HashCode>
+      <FileName>DateTypes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CrcMrc.ProcessEntry32" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAARAAAAAAIwAAAAAAQABAGAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DateTypes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CrcMrc.ProcessTimes" Collapsed="true">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAIAAAAABAQAAAAAAABAAAAQAAAACAAgAIAAAg=</HashCode>
+      <FileName>DateTypes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -26,12 +27,18 @@ namespace CrcMrc
         [DllImport("user32")]
         private static extern UInt32 GetWindowThreadProcessId(Int32 hWnd , out Int32 lpdwProcessId);
 
+        [DllImport("user32.dll")]
+        public static extern IntPtr FindWindowEx(IntPtr parentWindow, IntPtr previousChildWindow, string windowClass, string windowTitle);
+
         private Int32 GetWindowProcessID_(Int32 hwnd)
         {
             Int32 pid = 1;
             GetWindowThreadProcessId(hwnd, out pid);
             return pid;
         }
+
+        [DllImport("user32.dll")]
+        static extern IntPtr GetForegroundWindow();
 
 
         ArrayList ProcessDataList = new ArrayList();
@@ -86,7 +93,7 @@ namespace CrcMrc
                 {
                     // we need a process handle to pass it to GetProcessTimes function
                     // the OpenProcess function will provide us the handle by the id
-                    ProcessHandle = ProcessCPU.OpenProcess(ProcessCPU.PROCESS_ALL_ACCESS, false, ProcessInfo.ID);
+                    ProcessHandle = ProcessCPU.OpenProcess(ProcessCPU.PROCESS_ALL_ACCESS, false, ProcessInfo.ID);                    
 
                     // here's what we are looking for, this gets the kernel and user time
                     ProcessCPU.GetProcessTimes(
@@ -142,16 +149,26 @@ namespace CrcMrc
                 row.ProcesName = TempProcess.Name;
                 row.CPUUse = TempProcess.CpuUsage;
                 row.ProcTime = dt;
-                row.ProcID = (Int32) TempProcess.ID;                
+                row.ProcID = (Int32) TempProcess.ID;                                
 
                 Int32 hwnd = 0;
                 hwnd = (Int32) GetActiveWindow();
                 Int32 actproc = 0;
                 actproc = GetWindowProcessID_(hwnd);
-                if(row.ProcID == actproc)
+                IntPtr handle;
+                handle = GetForegroundWindow();
+
+                if (row.ProcID == actproc)
                 {
                     Console.WriteLine((IntPtr)row.ProcID);
                     Console.WriteLine(actproc);
+                }
+                else
+                {
+                    Console.WriteLine("*" + (IntPtr)row.ProcID);
+                    Console.WriteLine("*" + actproc + "*");
+                    Process localById = Process.GetProcessById(actproc);
+                    Console.WriteLine(localById.ProcessName);
                 }
 
                 Console.WriteLine("____________");
@@ -206,6 +223,22 @@ namespace CrcMrc
 
             if (NewProcess.ID == 0)
                 IdleProcessItem = NewProcessItem;
+        }
+
+        private IntPtr[] GetProcessWindows(int process)
+        {
+            IntPtr[] apRet = (new IntPtr[256]);
+            int iCount = 0;
+            IntPtr pLast = IntPtr.Zero;
+            do
+            {
+                pLast = FindWindowEx(IntPtr.Zero, pLast, null, null);
+                int iProcess_;
+                GetWindowThreadProcessId(pLast, out iProcess_);
+                if (iProcess_ == process) apRet[iCount++] = pLast;
+            } while (pLast != IntPtr.Zero);
+            System.Array.Resize(ref apRet, iCount);
+            return apRet;
         }
 
         private string GetCompname()
