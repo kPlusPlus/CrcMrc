@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace CrcMrc
 {
         
@@ -38,8 +39,7 @@ namespace CrcMrc
         }
 
         [DllImport("user32.dll")]
-        static extern IntPtr GetForegroundWindow();
-        
+        static extern IntPtr GetForegroundWindow();        
 
 
         ArrayList ProcessDataList = new ArrayList();
@@ -47,6 +47,7 @@ namespace CrcMrc
         ListViewItem IdleProcessItem;
         dsProcess.ProcessDataTable pdt;
         common comm;
+        
 
 
         public Form2api()
@@ -220,7 +221,7 @@ namespace CrcMrc
         {
             IntPtr[] apRet = (new IntPtr[256]);
             int iCount = 0;
-            In1tPtr pLast = IntPtr.Zero;
+            IntPtr pLast = IntPtr.Zero;
             do
             {
                 pLast = FindWindowEx(IntPtr.Zero, pLast, null, null);
