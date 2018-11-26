@@ -159,7 +159,7 @@ namespace CrcMrc
                 IntPtr[] prozori = GetProcessWindows((int)TempProcess.ID);
                 for (int j = 0; j < prozori.Length; j++)
                 {                    
-                    sProzori += prozori[j].ToInt32().ToString() + "@";
+                    sProzori += "@" + prozori[j].ToInt32().ToString() + "@";
                 }
                 row.hWindID = sProzori;
                 row.currWindID = hwnd.ToString();
@@ -220,7 +220,7 @@ namespace CrcMrc
         {
             IntPtr[] apRet = (new IntPtr[256]);
             int iCount = 0;
-            IntPtr pLast = IntPtr.Zero;
+            In1tPtr pLast = IntPtr.Zero;
             do
             {
                 pLast = FindWindowEx(IntPtr.Zero, pLast, null, null);

@@ -44,7 +44,7 @@
             this.panel1.Controls.Add(this.ProcessView);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(712, 355);
+            this.panel1.Size = new System.Drawing.Size(712, 625);
             this.panel1.TabIndex = 0;
             // 
             // ProcessView
@@ -57,7 +57,7 @@
             this.ProcessView.FullRowSelect = true;
             this.ProcessView.Location = new System.Drawing.Point(0, 0);
             this.ProcessView.Name = "ProcessView";
-            this.ProcessView.Size = new System.Drawing.Size(712, 355);
+            this.ProcessView.Size = new System.Drawing.Size(712, 625);
             this.ProcessView.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.ProcessView.TabIndex = 1;
             this.ProcessView.UseCompatibleStateImageBehavior = false;
@@ -83,7 +83,7 @@
             // UsageTimer
             // 
             this.UsageTimer.Enabled = true;
-            this.UsageTimer.Interval = 1000;
+            this.UsageTimer.Interval = 10000;
             this.UsageTimer.Tick += new System.EventHandler(this.UsageTimer_Tick);
             // 
             // btnWriteXml
