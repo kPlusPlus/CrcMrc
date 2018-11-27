@@ -157,17 +157,25 @@ namespace CrcMrc
                 row.ProcTime = dt;
                 row.ProcID = (Int32) TempProcess.ID;                              
 
-                Int32 hwnd = 0;
-                //hwnd = (Int32) GetActiveWindow();
-                hwnd = GetForegroundWindow().ToInt32();
+                //Int32 hwnd = 0;                
+                //hwnd = GetForegroundWindow().ToInt32();
                 string sProzori = String.Empty;
                 IntPtr[] prozori = GetProcessWindows((int)TempProcess.ID);
+                Int32[] lprozori = new Int32[prozori.Length];
                 for (int j = 0; j < prozori.Length; j++)
                 {                    
                     sProzori += "@" + prozori[j].ToInt32().ToString() + "@";
+                    lprozori[j] = prozori[j].ToInt32();
                 }
+
+                Int32[] commonElements = comm.iHwnd.Intersect(lprozori).ToArray();
+                if (commonElements.Length > 0)
+                {
+                    row.counter++;
+                }
+
                 row.hWindID = sProzori;
-                row.currWindID = hwnd.ToString();
+                //row.currWindID = hwnd.ToString();
 
                 pdt.AddProcessRow(row);
                 
