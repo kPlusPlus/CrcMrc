@@ -87,7 +87,7 @@
             // UsageTimer
             // 
             this.UsageTimer.Enabled = true;
-            this.UsageTimer.Interval = 10000;
+            this.UsageTimer.Interval = global::CrcMrc.Properties.Settings.Default.TickTime;
             this.UsageTimer.Tick += new System.EventHandler(this.UsageTimer_Tick);
             // 
             // btnWriteXml
@@ -120,7 +120,7 @@
             // KeyTime
             // 
             this.KeyTime.Enabled = true;
-            this.KeyTime.Interval = 500;
+            this.KeyTime.Interval = global::CrcMrc.Properties.Settings.Default.TickKeyboardTime;
             this.KeyTime.Tick += new System.EventHandler(this.KeyTime_Tick);
             // 
             // Form2api

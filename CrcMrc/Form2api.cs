@@ -62,8 +62,8 @@ namespace CrcMrc
 
         private void InitVal()
         {
-            pdt = new dsProcess.ProcessDataTable();
-            
+            pdt = new dsProcess.ProcessDataTable();            
+
         }
 
         private void SaveXml()

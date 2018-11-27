@@ -67,5 +67,23 @@ namespace CrcMrc.Properties {
                 return ((string)(this["FileName"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int TickKeyboardTime {
+            get {
+                return ((int)(this["TickKeyboardTime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int CounterKey {
+            get {
+                return ((int)(this["CounterKey"]));
+            }
+        }
     }
 }
