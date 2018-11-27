@@ -25,7 +25,7 @@ namespace CrcMrc.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
         public int TickTime {
             get {
                 return ((int)(this["TickTime"]));
@@ -70,7 +70,7 @@ namespace CrcMrc.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
         public int TickKeyboardTime {
             get {
                 return ((int)(this["TickKeyboardTime"]));

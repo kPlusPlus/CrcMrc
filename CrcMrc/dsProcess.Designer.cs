@@ -299,6 +299,8 @@ namespace CrcMrc {
             
             private global::System.Data.DataColumn columncounter;
             
+            private global::System.Data.DataColumn columnCompUser;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ProcessDataTable() {
@@ -414,6 +416,14 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CompUserColumn {
+                get {
+                    return this.columnCompUser;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -449,7 +459,7 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProcessRow AddProcessRow(string ProcesName, System.DateTime ProcTime, string CompName, string IP, string CPUUse, int ProcID, string hWindID, string currWindID, short counter) {
+            public ProcessRow AddProcessRow(string ProcesName, System.DateTime ProcTime, string CompName, string IP, string CPUUse, int ProcID, string hWindID, string currWindID, short counter, string CompUser) {
                 ProcessRow rowProcessRow = ((ProcessRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -461,7 +471,8 @@ namespace CrcMrc {
                         ProcID,
                         hWindID,
                         currWindID,
-                        counter};
+                        counter,
+                        CompUser};
                 rowProcessRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProcessRow);
                 return rowProcessRow;
@@ -494,6 +505,7 @@ namespace CrcMrc {
                 this.columnhWindID = base.Columns["hWindID"];
                 this.columncurrWindID = base.Columns["currWindID"];
                 this.columncounter = base.Columns["counter"];
+                this.columnCompUser = base.Columns["CompUser"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -519,6 +531,8 @@ namespace CrcMrc {
                 base.Columns.Add(this.columncurrWindID);
                 this.columncounter = new global::System.Data.DataColumn("counter", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncounter);
+                this.columnCompUser = new global::System.Data.DataColumn("CompUser", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCompUser);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
                 this.columnID.AutoIncrement = true;
@@ -826,6 +840,22 @@ namespace CrcMrc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CompUser {
+                get {
+                    if (this.IsCompUserNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableProcess.CompUserColumn]));
+                    }
+                }
+                set {
+                    this[this.tableProcess.CompUserColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tableProcess.IDColumn);
             }
@@ -942,6 +972,18 @@ namespace CrcMrc {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetcounterNull() {
                 this[this.tableProcess.counterColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCompUserNull() {
+                return this.IsNull(this.tableProcess.CompUserColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCompUserNull() {
+                this[this.tableProcess.CompUserColumn] = global::System.Convert.DBNull;
             }
         }
         

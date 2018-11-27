@@ -151,11 +151,12 @@ namespace CrcMrc
                 dsProcess.ProcessRow row;
                 row = pdt.NewProcessRow();
                 row.CompName = GetCompname();
+                row.CompUser = GetCompUser();
                 row.IP = GetIPAddress();
                 row.ProcesName = TempProcess.Name;
                 row.CPUUse = TempProcess.CpuUsage;
                 row.ProcTime = dt;
-                row.ProcID = (Int32) TempProcess.ID;                              
+                row.ProcID = (Int32) TempProcess.ID;
 
                 //Int32 hwnd = 0;                
                 //hwnd = GetForegroundWindow().ToInt32();
@@ -266,6 +267,11 @@ namespace CrcMrc
         private string GetCompname()
         {
             return Environment.MachineName + "|" + Dns.GetHostName();
+        }
+
+        private string GetCompUser()
+        {
+            return Environment.UserName + "|" + Environment.UserDomainName;
         }
                 
         public string GetIPAddress()
