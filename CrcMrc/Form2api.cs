@@ -171,13 +171,21 @@ namespace CrcMrc
                 Int32[] commonElements = comm.iHwnd.Intersect(lprozori).ToArray();
                 if (commonElements.Length > 0)
                 {
-                    row.counter++;
+                    row.counter = (short) commonElements.Length;
                 }
 
                 row.hWindID = sProzori;
                 //row.currWindID = hwnd.ToString();
 
-                pdt.AddProcessRow(row);
+                if (row.counter > 0)
+                {
+                    pdt.AddProcessRow(row);                    
+                }
+                else
+                {
+                    //pdt.RemoveProcessRow(row);
+                    row = null;
+                }
                 
 
                 if (IDList.Contains(TempProcess.ID))
@@ -192,6 +200,8 @@ namespace CrcMrc
             IdleProcessItem.SubItems[2].Text = (100 - Total) + "%";
 
             ProcessView.ResumeLayout();
+
+            comm.ResetCounter();
         }
         
 
@@ -213,7 +223,9 @@ namespace CrcMrc
 
         private void UsageTimer_Tick(object sender, EventArgs e)
         {
-            GetUsage();            
+            KeyTime.Stop();
+            GetUsage();
+            KeyTime.Start();
         }
 
         private void Test()
