@@ -36,7 +36,11 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UsageTimer = new System.Windows.Forms.Timer(this.components);
             this.btnWriteXml = new System.Windows.Forms.Button();
+            this.panelTextControl = new System.Windows.Forms.Panel();
+            this.txtControl = new System.Windows.Forms.TextBox();
+            this.KeyTime = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
+            this.panelTextControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -44,7 +48,7 @@
             this.panel1.Controls.Add(this.ProcessView);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(712, 625);
+            this.panel1.Size = new System.Drawing.Size(713, 465);
             this.panel1.TabIndex = 0;
             // 
             // ProcessView
@@ -57,7 +61,7 @@
             this.ProcessView.FullRowSelect = true;
             this.ProcessView.Location = new System.Drawing.Point(0, 0);
             this.ProcessView.Name = "ProcessView";
-            this.ProcessView.Size = new System.Drawing.Size(712, 625);
+            this.ProcessView.Size = new System.Drawing.Size(713, 465);
             this.ProcessView.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.ProcessView.TabIndex = 1;
             this.ProcessView.UseCompatibleStateImageBehavior = false;
@@ -96,16 +100,42 @@
             this.btnWriteXml.UseVisualStyleBackColor = true;
             this.btnWriteXml.Click += new System.EventHandler(this.btnWriteXml_Click);
             // 
+            // panelTextControl
+            // 
+            this.panelTextControl.Controls.Add(this.txtControl);
+            this.panelTextControl.Location = new System.Drawing.Point(12, 483);
+            this.panelTextControl.Name = "panelTextControl";
+            this.panelTextControl.Size = new System.Drawing.Size(713, 154);
+            this.panelTextControl.TabIndex = 2;
+            // 
+            // txtControl
+            // 
+            this.txtControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtControl.Location = new System.Drawing.Point(0, 0);
+            this.txtControl.Multiline = true;
+            this.txtControl.Name = "txtControl";
+            this.txtControl.Size = new System.Drawing.Size(713, 154);
+            this.txtControl.TabIndex = 0;
+            // 
+            // KeyTime
+            // 
+            this.KeyTime.Enabled = true;
+            this.KeyTime.Interval = 500;
+            this.KeyTime.Tick += new System.EventHandler(this.KeyTime_Tick);
+            // 
             // Form2api
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 649);
+            this.Controls.Add(this.panelTextControl);
             this.Controls.Add(this.btnWriteXml);
             this.Controls.Add(this.panel1);
             this.Name = "Form2api";
             this.Text = "Form2api";
             this.panel1.ResumeLayout(false);
+            this.panelTextControl.ResumeLayout(false);
+            this.panelTextControl.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -119,5 +149,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Timer UsageTimer;
         private System.Windows.Forms.Button btnWriteXml;
+        private System.Windows.Forms.Panel panelTextControl;
+        private System.Windows.Forms.TextBox txtControl;
+        public System.Windows.Forms.Timer KeyTime;
     }
 }

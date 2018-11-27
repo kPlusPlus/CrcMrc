@@ -14,5 +14,8 @@
     <Setting Name="ComputerLocation" Type="System.String" Scope="Application">
       <Value Profile="(Default)">none</Value>
     </Setting>
+    <Setting Name="FileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">n:\KeyLog.txt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
