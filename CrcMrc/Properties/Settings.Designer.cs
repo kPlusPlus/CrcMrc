@@ -61,7 +61,7 @@ namespace CrcMrc.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("n:\\KeyLog.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("KeyLog.txt")]
         public string FileName {
             get {
                 return ((string)(this["FileName"]));

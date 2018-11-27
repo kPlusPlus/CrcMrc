@@ -34,7 +34,7 @@ namespace CrcMrc
             iCount = 0;
             //String path = @"n:\KeyLog.txt";
             String path = @"KeyLog.txt";
-            //path = Properties.Settings.Default.FileName;
+            path = Properties.Settings.Default.FileName;
             if (!File.Exists(path))
             {
                 using (StreamWriter sw = File.CreateText(path))

@@ -180,12 +180,14 @@ namespace CrcMrc
 
                 if (row.counter > 0)
                 {
-                    pdt.AddProcessRow(row);                    
+                    pdt.AddProcessRow(row);
+                    pdt.AcceptChanges();
                 }
                 else
                 {
                     //pdt.RemoveProcessRow(row);
                     row = null;
+                    pdt.RejectChanges();
                 }
                 
 

@@ -15,7 +15,7 @@
       <Value Profile="(Default)">none</Value>
     </Setting>
     <Setting Name="FileName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">n:\KeyLog.txt</Value>
+      <Value Profile="(Default)">KeyLog.txt</Value>
     </Setting>
     <Setting Name="TickKeyboardTime" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">200</Value>
