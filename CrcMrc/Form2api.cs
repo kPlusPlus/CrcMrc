@@ -179,16 +179,14 @@ namespace CrcMrc
                 //row.currWindID = hwnd.ToString();
 
                 if (row.counter > 0)
-                {                    
+                {
                     pdt.AddProcessRow(row);
-                    row.AcceptChanges();
                     pdt.AcceptChanges();
                 }
                 else
                 {
                     //pdt.RemoveProcessRow(row);
-                    //row = null;   
-                    row.RejectChanges();
+                    row = null;
                     pdt.RejectChanges();
                 }
                 
