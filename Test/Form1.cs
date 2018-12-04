@@ -8,15 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MySql.Data.MySqlClient;
+
+
+
 namespace Test
 {
     public partial class Form1 : Form
     {
+        private DBConnect dbConnect;
+
         public Form1()
         {
             InitializeComponent();
             Test();
+            dbConnect = new DBConnect();
+
+            MessageBox.Show(dbConnect.connection.State.ToString());
         }
+
+
+
 
         public void Test()
         {
@@ -29,6 +41,11 @@ namespace Test
             MessageBox.Show(commonElements.Length.ToString());
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dbConnect.Select("process");
         }
     }
 }
