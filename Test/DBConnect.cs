@@ -140,7 +140,7 @@ namespace Test
         }
 
         //Select statement
-        public void  Select(string sTableName)
+        public DataTable  Select(string sTableName)
         {
 
             string query = "SELECT * FROM " + sTableName;
@@ -163,11 +163,11 @@ namespace Test
                 this.CloseConnection();
 
                 //return list to be displayed
-                //return null;
+                return dt;
             }
             else
             {
-                //return null;
+                return null;
             }
         }
 

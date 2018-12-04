@@ -26,9 +26,7 @@ namespace Test
 
             MessageBox.Show(dbConnect.connection.State.ToString());
         }
-
-
-
+        
 
         public void Test()
         {
