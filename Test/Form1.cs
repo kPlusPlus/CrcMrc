@@ -46,9 +46,8 @@ namespace Test
             //dbConnect.InsertProcess("DrEngel", 2212, DateTime.Now, "kreso", "kresimir", "192.168.1.101");
 
             DateTime dt;
-            dt = DateTime.TryParse("5.12.2018 10:00:09");
-
-            MessageBox.Show(dbConnect.CheckProcess("DrEngel", 2212, dt, "kreso", "kresimir", "192.168.1.101").ToString());
+            if (DateTime.TryParse("5.12.2018 10:00:09",out dt))
+                MessageBox.Show(dbConnect.CheckProcess("DrEngel", 2212, dt, "kreso", "kresimir", "192.168.1.101").ToString());
         }
     }
 }
