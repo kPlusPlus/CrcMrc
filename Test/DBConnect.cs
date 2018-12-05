@@ -103,6 +103,46 @@ namespace Test
             }
         }
 
+        public void InsertProcess(string ProcName, Int32 ProcID, DateTime ProcTime, string CompName, string CompUser, string IP)
+        {
+            string formatForMySql = ProcTime.ToString("yyyyMMddHHmmss");
+
+            string query = @"INSERT INTO process (
+                                                    `ProcName`,
+                                                    `ProcID`,
+                                                    `ProcTime`,
+                                                    `CompName`,
+                                                    `CompUser`,
+                                                    `IP`)
+                                                    VALUES
+                                                    (
+                                                    '" + ProcName + @"',
+                                                    " + ProcID + @",
+                                                    " + formatForMySql + @",
+                                                    '" + CompName + @"',
+                                                    '" + CompUser + @"',
+                                                    '"+ IP + @"');";
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                this.CloseConnection();
+            }
+        }
+
+        public Boolean CheckProcess(string ProcName, Int32 ProcID, DateTime ProcTime, string CompName, string CompUser, string IP)
+        {
+            Boolean retVal = false;
+            string formatForMySql = ProcTime.ToString("yyyyMMddHHmmss");
+            string query = " process WHERE ProcName ='" + ProcName + "' and ProcID = " + ProcID + " and ProcTime = " + formatForMySql + "";
+            DataTable dt = this.Select(query);
+
+            if (dt.Rows.Count > 0)
+                retVal = true;
+
+            return retVal;
+        }
+
         //Update statement
         public void Update()
         {
@@ -140,7 +180,7 @@ namespace Test
         }
 
         //Select statement
-        public DataTable  Select(string sTableName)
+        public DataTable Select(string sTableName)
         {
 
             string query = "SELECT * FROM " + sTableName;
@@ -172,9 +212,9 @@ namespace Test
         }
 
         //Count statement
-        public int Count()
+        public int Count(string sTableName)
         {
-            string query = "SELECT Count(*) FROM tableinfo";
+            string query = "SELECT Count(*) FROM " + sTableName;
             int Count = -1;
 
             //Open Connection
@@ -235,7 +275,7 @@ namespace Test
             }
             catch (IOException ex)
             {
-                MessageBox.Show("Error , unable to backup!");
+                MessageBox.Show("Error , unable to backup! " + ex.Message);
             }
         }
 
@@ -268,7 +308,7 @@ namespace Test
             }
             catch (IOException ex)
             {
-                MessageBox.Show("Error , unable to Restore!");
+                MessageBox.Show("Error , unable to Restore! " + ex.Message);
             }
         }
     }

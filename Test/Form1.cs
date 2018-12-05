@@ -24,7 +24,7 @@ namespace Test
             Test();
             dbConnect = new DBConnect();
 
-            MessageBox.Show(dbConnect.connection.State.ToString());
+            //MessageBox.Show(dbConnect.connection.State.ToString());
         }
         
 
@@ -36,14 +36,19 @@ namespace Test
             bool hasCommonElements = a.Intersect(b).Count() > 0;
             Int32[] commonElements = a.Intersect(b).ToArray();
 
-            MessageBox.Show(commonElements.Length.ToString());
-
+            //MessageBox.Show(commonElements.Length.ToString());
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dbConnect.Select("process");
+            //dbConnect.Select("process");
+            //dbConnect.InsertProcess("DrEngel", 2212, DateTime.Now, "kreso", "kresimir", "192.168.1.101");
+
+            DateTime dt;
+            dt = DateTime.TryParse("5.12.2018 10:00:09");
+
+            MessageBox.Show(dbConnect.CheckProcess("DrEngel", 2212, dt, "kreso", "kresimir", "192.168.1.101").ToString());
         }
     }
 }
