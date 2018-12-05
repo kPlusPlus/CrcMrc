@@ -1,10 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="CrcMrc.DBConnect">
-    <Position X="0.5" Y="0.5" Width="2.25" />
+  <Class Name="CrcMrc.Form2api" Collapsed="true">
+    <Position X="1" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgQAAEAAAgAAEQBAAAADABQAAQEAAAAAAAAAQgAAEAI=</HashCode>
-      <FileName>DBConnect.cs</FileName>
+      <HashCode>AEIEAAQAQqBAAEgACQCUABCKI6AAACBAIAEagQAAEY4=</HashCode>
+      <FileName>Form2api.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CrcMrc.ProcessCPU" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAACAACAQAAICAAACAAAAAAAABAEgAAAAEAAAA=</HashCode>
+      <FileName>ProcessCpu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CrcMrc.ProcessData" Collapsed="true">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAgAAAAAAAgAAAAAAAIAwAhAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>ProcessCpu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CrcMrc.dsProcess" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwgAAAJABgAAQAAAAAgCQBgBAAAAAAEABBA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
