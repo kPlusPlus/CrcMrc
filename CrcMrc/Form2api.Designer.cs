@@ -39,6 +39,7 @@
             this.panelTextControl = new System.Windows.Forms.Panel();
             this.txtControl = new System.Windows.Forms.TextBox();
             this.KeyTime = new System.Windows.Forms.Timer(this.components);
+            this.TimerDB = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panelTextControl.SuspendLayout();
             this.SuspendLayout();
@@ -123,6 +124,12 @@
             this.KeyTime.Interval = global::CrcMrc.Properties.Settings.Default.TickKeyboardTime;
             this.KeyTime.Tick += new System.EventHandler(this.KeyTime_Tick);
             // 
+            // TimerDB
+            // 
+            this.TimerDB.Enabled = true;
+            this.TimerDB.Interval = global::CrcMrc.Properties.Settings.Default.dbTime;
+            this.TimerDB.Tick += new System.EventHandler(this.TimerDB_Tick);
+            // 
             // Form2api
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,5 +159,6 @@
         private System.Windows.Forms.Panel panelTextControl;
         private System.Windows.Forms.TextBox txtControl;
         public System.Windows.Forms.Timer KeyTime;
+        private System.Windows.Forms.Timer TimerDB;
     }
 }
