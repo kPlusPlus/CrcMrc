@@ -25,15 +25,6 @@ namespace CrcMrc.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9000")]
-        public int TickTime {
-            get {
-                return ((int)(this["TickTime"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("none")]
         public string ComputerName {
             get {
@@ -79,7 +70,7 @@ namespace CrcMrc.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
         public int CounterKey {
             get {
                 return ((int)(this["CounterKey"]));
@@ -88,7 +79,7 @@ namespace CrcMrc.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
+        [global::System.Configuration.DefaultSettingValueAttribute("159.69.113.252")]
         public string dbServer {
             get {
                 return ((string)(this["dbServer"]));
@@ -97,7 +88,7 @@ namespace CrcMrc.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("test")]
+        [global::System.Configuration.DefaultSettingValueAttribute("kapluspl_crc")]
         public string dbName {
             get {
                 return ((string)(this["dbName"]));
@@ -106,7 +97,7 @@ namespace CrcMrc.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("root")]
+        [global::System.Configuration.DefaultSettingValueAttribute("maniac")]
         public string dbUser {
             get {
                 return ((string)(this["dbUser"]));
@@ -115,7 +106,7 @@ namespace CrcMrc.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("kreso1004")]
+        [global::System.Configuration.DefaultSettingValueAttribute("F3VA55TpNfsA")]
         public string dbPsw {
             get {
                 return ((string)(this["dbPsw"]));
@@ -128,6 +119,15 @@ namespace CrcMrc.Properties {
         public int dbTime {
             get {
                 return ((int)(this["dbTime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9000")]
+        public int TickTime {
+            get {
+                return ((int)(this["TickTime"]));
             }
         }
     }

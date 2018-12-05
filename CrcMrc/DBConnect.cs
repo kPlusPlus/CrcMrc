@@ -30,10 +30,18 @@ namespace CrcMrc
         //Initialize values
         private void Initialize()
         {
+            /*
             server = "localhost";
             database = "test";
             uid = "root";
             password = "kreso1004";
+            */
+
+            server = CrcMrc.Properties.Settings.Default.dbServer;
+            database = CrcMrc.Properties.Settings.Default.dbName;
+            uid = CrcMrc.Properties.Settings.Default.dbUser;
+            password = CrcMrc.Properties.Settings.Default.dbPsw;
+            
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 

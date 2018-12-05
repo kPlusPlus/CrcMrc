@@ -316,11 +316,10 @@ namespace CrcMrc
                 row = (dsProcess.ProcessRow) pdt.Rows[i];
                 if (dbConnect.CheckProcess(row.ProcesName,row.ProcID,row.ProcTime,row.CompName,row.CompUser,row.IP) == false)
                 {
-                    dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP);
-                    pdt.Rows[i].Delete();
+                    dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP);                    
+                    pdt.Rows.RemoveAt(i);
                     pdt.AcceptChanges();
                 }
-
             }
             
         }
