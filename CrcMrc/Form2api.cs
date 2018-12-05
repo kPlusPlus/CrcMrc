@@ -206,6 +206,8 @@ namespace CrcMrc
             ProcessView.ResumeLayout();
 
             comm.ResetCounter();
+
+            SaveXml();
         }
         
 
