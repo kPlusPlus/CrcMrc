@@ -1,74 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="CrcMrc.common" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Comment CommentText="Process">
+    <Position X="3.75" Y="8" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Common functions&#xD;&#xA;* KeyLogger">
+    <Position X="3.646" Y="0.5" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Process STRUCT">
+    <Position X="9.042" Y="0.958" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="CrcMrc.Form2api">
+    <Position X="0.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
-      <FileName>common.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CrcMrc.dsProcess" Collapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAwgAAAJABgAAQAAAAAgCQBgBAAAAAAEABBA=</HashCode>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CrcMrc.Form2api" Collapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AEAEAAQAACBAAEgAAACQAACKI6AAACBAIAEKAQAAAY4=</HashCode>
+      <HashCode>AEIEgAQIQqBhAFwACQCUABDqI6AAgCBAoAUagwAAUY4=</HashCode>
       <FileName>Form2api.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CrcMrc.ProcessCPU" Collapsed="true">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+  <Class Name="CrcMrc.common">
+    <Position X="5.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAgAAAAAAAAAQAAAAAAAAgBAAAAQAAEAgAAAAAI=</HashCode>
+      <FileName>common.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CrcMrc.ProcessCPU">
+    <Position X="3.25" Y="9" Width="5.75" />
     <TypeIdentifier>
       <HashCode>AQAAAAAACAACAQAAICAAACAAAAAAAABAEgAAAAEAAAA=</HashCode>
       <FileName>ProcessCpu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CrcMrc.ProcessData">
-    <Position X="6.75" Y="1.5" Width="1.5" />
+    <Position X="9.25" Y="9" Width="5.25" />
     <TypeIdentifier>
       <HashCode>BAAAgAAAAAAAgAAAAAAAIAwAhAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>ProcessCpu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CrcMrc.Program" Collapsed="true">
-    <Position X="4" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CrcMrc.Properties.Resources" Collapsed="true">
-    <Position X="0.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CrcMrc.Properties.Settings">
-    <Position X="11.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAABAAAAAAAAAAIAAAgAABQAAAAAAAAQAAAAA=</HashCode>
-    </TypeIdentifier>
-  </Class>
-  <Struct Name="CrcMrc.SYSTEMTIME" Collapsed="true">
-    <Position X="4" Y="3.75" Width="1.5" />
+  <Struct Name="CrcMrc.SYSTEMTIME">
+    <Position X="9" Y="5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAJACAAAAAAAAAAAIAAAAAACIEAAAEAAAAAAA=</HashCode>
       <FileName>DateTypes.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="CrcMrc.ProcessEntry32" Collapsed="true">
-    <Position X="0.5" Y="3.75" Width="1.5" />
+  <Struct Name="CrcMrc.ProcessEntry32">
+    <Position X="9" Y="2" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAARAAAAAAIwAAAAAAQABAGAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DateTypes.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="CrcMrc.ProcessTimes" Collapsed="true">
-    <Position X="2.25" Y="3.75" Width="1.5" />
+  <Struct Name="CrcMrc.ProcessTimes">
+    <Position X="12.75" Y="3.75" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAIAAAAABAQAAAAAAABAAAAQAAAACAAgAIAAAg=</HashCode>
       <FileName>DateTypes.cs</FileName>

@@ -62,7 +62,7 @@ namespace CrcMrc
             InitVal();
             LoadXml();
             SaveToDB();
-
+            ShowCountData();
         }        
 
         private void InitVal()
@@ -189,10 +189,12 @@ namespace CrcMrc
                 if (commonElements.Length > 0)
                 {
                     row.counter = (short) commonElements.Length;
+                    row.currWindID = commonElements[0].ToString();
                 }
 
                 row.hWindID = sProzori;
                 //row.currWindID = hwnd.ToString();
+                
 
                 if (row.counter > 0)
                 {
@@ -223,6 +225,8 @@ namespace CrcMrc
             comm.ResetCounter();
 
             SaveXml();
+
+            ShowCountData();
         }
         
 
@@ -391,6 +395,13 @@ namespace CrcMrc
                 TimerDB.Enabled = false;
             else
                 TimerDB.Enabled = true;
+        }
+
+        private void ShowCountData()
+        {
+            lblProcess.Text = ProcessDataList.Count.ToString();
+            lblDataSet.Text = pdt.Rows.Count.ToString();
+            lblKeyLog.Text = comm.iHwnd.Length.ToString();
         }
     }
 }

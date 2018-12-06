@@ -34,20 +34,26 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.UsageTimer = new System.Windows.Forms.Timer(this.components);
             this.btnWriteXml = new System.Windows.Forms.Button();
             this.panelTextControl = new System.Windows.Forms.Panel();
             this.txtControl = new System.Windows.Forms.TextBox();
-            this.KeyTime = new System.Windows.Forms.Timer(this.components);
-            this.TimerDB = new System.Windows.Forms.Timer(this.components);
             this.btnUsageTimer = new System.Windows.Forms.Button();
             this.btnKeyTime = new System.Windows.Forms.Button();
             this.btnTimerDB = new System.Windows.Forms.Button();
             this.lvLog = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblProcess = new System.Windows.Forms.Label();
+            this.lblDataSet = new System.Windows.Forms.Label();
+            this.lblKeyLog = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelCounters = new System.Windows.Forms.Panel();
+            this.UsageTimer = new System.Windows.Forms.Timer(this.components);
+            this.KeyTime = new System.Windows.Forms.Timer(this.components);
+            this.TimerDB = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panelTextControl.SuspendLayout();
+            this.panelCounters.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -60,11 +66,13 @@
             // 
             // ProcessView
             // 
+            this.ProcessView.BackColor = System.Drawing.Color.Gray;
             this.ProcessView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
             this.ProcessView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProcessView.ForeColor = System.Drawing.Color.LemonChiffon;
             this.ProcessView.FullRowSelect = true;
             this.ProcessView.Location = new System.Drawing.Point(0, 0);
             this.ProcessView.Name = "ProcessView";
@@ -91,15 +99,9 @@
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader3.Width = 104;
             // 
-            // UsageTimer
-            // 
-            this.UsageTimer.Enabled = true;
-            this.UsageTimer.Interval = global::CrcMrc.Properties.Settings.Default.TickTime;
-            this.UsageTimer.Tick += new System.EventHandler(this.UsageTimer_Tick);
-            // 
             // btnWriteXml
             // 
-            this.btnWriteXml.Location = new System.Drawing.Point(731, 13);
+            this.btnWriteXml.Location = new System.Drawing.Point(4, 12);
             this.btnWriteXml.Name = "btnWriteXml";
             this.btnWriteXml.Size = new System.Drawing.Size(169, 30);
             this.btnWriteXml.TabIndex = 1;
@@ -118,7 +120,9 @@
             // txtControl
             // 
             this.txtControl.AcceptsTab = true;
+            this.txtControl.BackColor = System.Drawing.Color.Black;
             this.txtControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtControl.ForeColor = System.Drawing.Color.Yellow;
             this.txtControl.Location = new System.Drawing.Point(0, 0);
             this.txtControl.Multiline = true;
             this.txtControl.Name = "txtControl";
@@ -126,21 +130,9 @@
             this.txtControl.Size = new System.Drawing.Size(713, 49);
             this.txtControl.TabIndex = 0;
             // 
-            // KeyTime
-            // 
-            this.KeyTime.Enabled = true;
-            this.KeyTime.Interval = global::CrcMrc.Properties.Settings.Default.TickKeyboardTime;
-            this.KeyTime.Tick += new System.EventHandler(this.KeyTime_Tick);
-            // 
-            // TimerDB
-            // 
-            this.TimerDB.Enabled = true;
-            this.TimerDB.Interval = global::CrcMrc.Properties.Settings.Default.dbTime;
-            this.TimerDB.Tick += new System.EventHandler(this.TimerDB_Tick);
-            // 
             // btnUsageTimer
             // 
-            this.btnUsageTimer.Location = new System.Drawing.Point(731, 481);
+            this.btnUsageTimer.Location = new System.Drawing.Point(4, 611);
             this.btnUsageTimer.Name = "btnUsageTimer";
             this.btnUsageTimer.Size = new System.Drawing.Size(107, 23);
             this.btnUsageTimer.TabIndex = 3;
@@ -150,7 +142,7 @@
             // 
             // btnKeyTime
             // 
-            this.btnKeyTime.Location = new System.Drawing.Point(731, 510);
+            this.btnKeyTime.Location = new System.Drawing.Point(4, 640);
             this.btnKeyTime.Name = "btnKeyTime";
             this.btnKeyTime.Size = new System.Drawing.Size(107, 23);
             this.btnKeyTime.TabIndex = 4;
@@ -160,7 +152,7 @@
             // 
             // btnTimerDB
             // 
-            this.btnTimerDB.Location = new System.Drawing.Point(731, 539);
+            this.btnTimerDB.Location = new System.Drawing.Point(3, 669);
             this.btnTimerDB.Name = "btnTimerDB";
             this.btnTimerDB.Size = new System.Drawing.Size(107, 23);
             this.btnTimerDB.TabIndex = 5;
@@ -170,9 +162,11 @@
             // 
             // lvLog
             // 
+            this.lvLog.BackColor = System.Drawing.Color.Gray;
             this.lvLog.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
             this.columnHeader5});
+            this.lvLog.ForeColor = System.Drawing.Color.Yellow;
             this.lvLog.Location = new System.Drawing.Point(12, 481);
             this.lvLog.Name = "lvLog";
             this.lvLog.Size = new System.Drawing.Size(713, 223);
@@ -188,18 +182,90 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Desc";
+            this.columnHeader5.Width = 463;
+            // 
+            // lblProcess
+            // 
+            this.lblProcess.AutoSize = true;
+            this.lblProcess.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProcess.Location = new System.Drawing.Point(1, 153);
+            this.lblProcess.Name = "lblProcess";
+            this.lblProcess.Size = new System.Drawing.Size(61, 16);
+            this.lblProcess.TabIndex = 7;
+            this.lblProcess.Text = "Procesi";
+            // 
+            // lblDataSet
+            // 
+            this.lblDataSet.AutoSize = true;
+            this.lblDataSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataSet.Location = new System.Drawing.Point(93, 153);
+            this.lblDataSet.Name = "lblDataSet";
+            this.lblDataSet.Size = new System.Drawing.Size(64, 16);
+            this.lblDataSet.TabIndex = 8;
+            this.lblDataSet.Text = "DataSet";
+            // 
+            // lblKeyLog
+            // 
+            this.lblKeyLog.AutoSize = true;
+            this.lblKeyLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKeyLog.Location = new System.Drawing.Point(182, 153);
+            this.lblKeyLog.Name = "lblKeyLog";
+            this.lblKeyLog.Size = new System.Drawing.Size(56, 16);
+            this.lblKeyLog.TabIndex = 9;
+            this.lblKeyLog.Text = "Keylog";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1, 140);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(228, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Process            DataSet          KeyLog";
+            // 
+            // panelCounters
+            // 
+            this.panelCounters.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelCounters.Controls.Add(this.label1);
+            this.panelCounters.Controls.Add(this.lblProcess);
+            this.panelCounters.Controls.Add(this.btnTimerDB);
+            this.panelCounters.Controls.Add(this.btnWriteXml);
+            this.panelCounters.Controls.Add(this.lblKeyLog);
+            this.panelCounters.Controls.Add(this.btnKeyTime);
+            this.panelCounters.Controls.Add(this.lblDataSet);
+            this.panelCounters.Controls.Add(this.btnUsageTimer);
+            this.panelCounters.Location = new System.Drawing.Point(731, 12);
+            this.panelCounters.Name = "panelCounters";
+            this.panelCounters.Size = new System.Drawing.Size(257, 739);
+            this.panelCounters.TabIndex = 11;
+            // 
+            // UsageTimer
+            // 
+            this.UsageTimer.Enabled = true;
+            this.UsageTimer.Interval = global::CrcMrc.Properties.Settings.Default.TickTime;
+            this.UsageTimer.Tick += new System.EventHandler(this.UsageTimer_Tick);
+            // 
+            // KeyTime
+            // 
+            this.KeyTime.Enabled = true;
+            this.KeyTime.Interval = global::CrcMrc.Properties.Settings.Default.TickKeyboardTime;
+            this.KeyTime.Tick += new System.EventHandler(this.KeyTime_Tick);
+            // 
+            // TimerDB
+            // 
+            this.TimerDB.Enabled = true;
+            this.TimerDB.Interval = global::CrcMrc.Properties.Settings.Default.dbTime;
+            this.TimerDB.Tick += new System.EventHandler(this.TimerDB_Tick);
             // 
             // Form2api
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(993, 763);
+            this.Controls.Add(this.panelCounters);
             this.Controls.Add(this.lvLog);
-            this.Controls.Add(this.btnTimerDB);
-            this.Controls.Add(this.btnKeyTime);
-            this.Controls.Add(this.btnUsageTimer);
             this.Controls.Add(this.panelTextControl);
-            this.Controls.Add(this.btnWriteXml);
             this.Controls.Add(this.panel1);
             this.Name = "Form2api";
             this.Text = "Form2api";
@@ -207,6 +273,8 @@
             this.panel1.ResumeLayout(false);
             this.panelTextControl.ResumeLayout(false);
             this.panelTextControl.PerformLayout();
+            this.panelCounters.ResumeLayout(false);
+            this.panelCounters.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -230,5 +298,10 @@
         private System.Windows.Forms.ListView lvLog;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.Label lblProcess;
+        private System.Windows.Forms.Label lblDataSet;
+        private System.Windows.Forms.Label lblKeyLog;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelCounters;
     }
 }

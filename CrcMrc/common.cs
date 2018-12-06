@@ -77,6 +77,7 @@ namespace CrcMrc
         public void ResetCounter()
         {
             Array.Clear(iHwnd, 0, iHwnd.Length);
+            iHwnd = new Int32[0];
         }
 
 
