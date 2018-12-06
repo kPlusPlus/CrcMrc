@@ -25,6 +25,15 @@ namespace CrcMrc.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9000")]
+        public int TickTime {
+            get {
+                return ((int)(this["TickTime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("none")]
         public string ComputerName {
             get {
@@ -124,10 +133,10 @@ namespace CrcMrc.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9000")]
-        public int TickTime {
+        [global::System.Configuration.DefaultSettingValueAttribute("temp.xml")]
+        public string FileDB {
             get {
-                return ((int)(this["TickTime"]));
+                return ((string)(this["FileDB"]));
             }
         }
     }

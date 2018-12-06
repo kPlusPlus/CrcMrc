@@ -54,6 +54,7 @@ namespace CrcMrc
         {
             try
             {
+                if (connection.State == ConnectionState.Open) return true;
                 connection.Open();
                 return true;
             }
@@ -141,6 +142,11 @@ namespace CrcMrc
         public Boolean CheckProcess(string ProcName, Int32 ProcID, DateTime ProcTime, string CompName, string CompUser, string IP)
         {
             Boolean retVal = false;
+
+            if (this.OpenConnection() != true)
+                return retVal;
+
+            
             string formatForMySql = ProcTime.ToString("yyyyMMddHHmmss");
             string query = " process WHERE ProcName ='" + ProcName + "' and ProcID = " + ProcID + " and ProcTime = " + formatForMySql + "";
             DataTable dt = this.Select(query);

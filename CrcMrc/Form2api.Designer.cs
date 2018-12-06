@@ -40,6 +40,7 @@
             this.txtControl = new System.Windows.Forms.TextBox();
             this.KeyTime = new System.Windows.Forms.Timer(this.components);
             this.TimerDB = new System.Windows.Forms.Timer(this.components);
+            this.btnUsageTimer = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelTextControl.SuspendLayout();
             this.SuspendLayout();
@@ -111,10 +112,12 @@
             // 
             // txtControl
             // 
+            this.txtControl.AcceptsTab = true;
             this.txtControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtControl.Location = new System.Drawing.Point(0, 0);
             this.txtControl.Multiline = true;
             this.txtControl.Name = "txtControl";
+            this.txtControl.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtControl.Size = new System.Drawing.Size(713, 154);
             this.txtControl.TabIndex = 0;
             // 
@@ -130,16 +133,27 @@
             this.TimerDB.Interval = global::CrcMrc.Properties.Settings.Default.dbTime;
             this.TimerDB.Tick += new System.EventHandler(this.TimerDB_Tick);
             // 
+            // btnUsageTimer
+            // 
+            this.btnUsageTimer.Location = new System.Drawing.Point(731, 481);
+            this.btnUsageTimer.Name = "btnUsageTimer";
+            this.btnUsageTimer.Size = new System.Drawing.Size(107, 23);
+            this.btnUsageTimer.TabIndex = 3;
+            this.btnUsageTimer.Text = "btnUsageTimer";
+            this.btnUsageTimer.UseVisualStyleBackColor = true;
+            // 
             // Form2api
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 649);
+            this.Controls.Add(this.btnUsageTimer);
             this.Controls.Add(this.panelTextControl);
             this.Controls.Add(this.btnWriteXml);
             this.Controls.Add(this.panel1);
             this.Name = "Form2api";
             this.Text = "Form2api";
+            this.Leave += new System.EventHandler(this.Form2api_Leave);
             this.panel1.ResumeLayout(false);
             this.panelTextControl.ResumeLayout(false);
             this.panelTextControl.PerformLayout();
@@ -157,8 +171,9 @@
         private System.Windows.Forms.Timer UsageTimer;
         private System.Windows.Forms.Button btnWriteXml;
         private System.Windows.Forms.Panel panelTextControl;
-        private System.Windows.Forms.TextBox txtControl;
         public System.Windows.Forms.Timer KeyTime;
         private System.Windows.Forms.Timer TimerDB;
+        public System.Windows.Forms.TextBox txtControl;
+        private System.Windows.Forms.Button btnUsageTimer;
     }
 }
