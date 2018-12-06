@@ -41,6 +41,11 @@
             this.KeyTime = new System.Windows.Forms.Timer(this.components);
             this.TimerDB = new System.Windows.Forms.Timer(this.components);
             this.btnUsageTimer = new System.Windows.Forms.Button();
+            this.btnKeyTime = new System.Windows.Forms.Button();
+            this.btnTimerDB = new System.Windows.Forms.Button();
+            this.lvLog = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.panelTextControl.SuspendLayout();
             this.SuspendLayout();
@@ -105,9 +110,9 @@
             // panelTextControl
             // 
             this.panelTextControl.Controls.Add(this.txtControl);
-            this.panelTextControl.Location = new System.Drawing.Point(12, 483);
+            this.panelTextControl.Location = new System.Drawing.Point(12, 702);
             this.panelTextControl.Name = "panelTextControl";
-            this.panelTextControl.Size = new System.Drawing.Size(713, 154);
+            this.panelTextControl.Size = new System.Drawing.Size(713, 49);
             this.panelTextControl.TabIndex = 2;
             // 
             // txtControl
@@ -118,7 +123,7 @@
             this.txtControl.Multiline = true;
             this.txtControl.Name = "txtControl";
             this.txtControl.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtControl.Size = new System.Drawing.Size(713, 154);
+            this.txtControl.Size = new System.Drawing.Size(713, 49);
             this.txtControl.TabIndex = 0;
             // 
             // KeyTime
@@ -139,14 +144,59 @@
             this.btnUsageTimer.Name = "btnUsageTimer";
             this.btnUsageTimer.Size = new System.Drawing.Size(107, 23);
             this.btnUsageTimer.TabIndex = 3;
-            this.btnUsageTimer.Text = "btnUsageTimer";
+            this.btnUsageTimer.Text = "UsageTimer";
             this.btnUsageTimer.UseVisualStyleBackColor = true;
+            this.btnUsageTimer.Click += new System.EventHandler(this.btnUsageTimer_Click);
+            // 
+            // btnKeyTime
+            // 
+            this.btnKeyTime.Location = new System.Drawing.Point(731, 510);
+            this.btnKeyTime.Name = "btnKeyTime";
+            this.btnKeyTime.Size = new System.Drawing.Size(107, 23);
+            this.btnKeyTime.TabIndex = 4;
+            this.btnKeyTime.Text = "KeyTime";
+            this.btnKeyTime.UseVisualStyleBackColor = true;
+            this.btnKeyTime.Click += new System.EventHandler(this.btnKeyTime_Click);
+            // 
+            // btnTimerDB
+            // 
+            this.btnTimerDB.Location = new System.Drawing.Point(731, 539);
+            this.btnTimerDB.Name = "btnTimerDB";
+            this.btnTimerDB.Size = new System.Drawing.Size(107, 23);
+            this.btnTimerDB.TabIndex = 5;
+            this.btnTimerDB.Text = "TimerDB";
+            this.btnTimerDB.UseVisualStyleBackColor = true;
+            this.btnTimerDB.Click += new System.EventHandler(this.btnTimerDB_Click);
+            // 
+            // lvLog
+            // 
+            this.lvLog.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5});
+            this.lvLog.Location = new System.Drawing.Point(12, 481);
+            this.lvLog.Name = "lvLog";
+            this.lvLog.Size = new System.Drawing.Size(713, 223);
+            this.lvLog.TabIndex = 6;
+            this.lvLog.UseCompatibleStateImageBehavior = false;
+            this.lvLog.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Time";
+            this.columnHeader4.Width = 230;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Desc";
             // 
             // Form2api
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 649);
+            this.ClientSize = new System.Drawing.Size(993, 763);
+            this.Controls.Add(this.lvLog);
+            this.Controls.Add(this.btnTimerDB);
+            this.Controls.Add(this.btnKeyTime);
             this.Controls.Add(this.btnUsageTimer);
             this.Controls.Add(this.panelTextControl);
             this.Controls.Add(this.btnWriteXml);
@@ -175,5 +225,10 @@
         private System.Windows.Forms.Timer TimerDB;
         public System.Windows.Forms.TextBox txtControl;
         private System.Windows.Forms.Button btnUsageTimer;
+        private System.Windows.Forms.Button btnKeyTime;
+        private System.Windows.Forms.Button btnTimerDB;
+        private System.Windows.Forms.ListView lvLog;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }

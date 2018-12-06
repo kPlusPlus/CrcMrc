@@ -355,12 +355,42 @@ namespace CrcMrc
 
         private void LogTo(string mess)
         {
-            int selpoint = txtControl.SelectionStart;
+            /*
+            int selpoint = txtControl.SelectionStart;                        
             txtControl.SuspendLayout();
             txtControl.Text += DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " * " + mess + Environment.NewLine;
             txtControl.SelectionStart = selpoint;
             txtControl.ResumeLayout();
+            */
+            string datum = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
+            string[] row = { datum, mess };
+            var listViewItem = new ListViewItem(row);
+            lvLog.Items.Add(listViewItem);
+
         }
 
+        private void btnUsageTimer_Click(object sender, EventArgs e)
+        {
+            if (UsageTimer.Enabled == true)
+                UsageTimer.Enabled = false;
+            else
+                UsageTimer.Enabled = true;                
+        }
+
+        private void btnKeyTime_Click(object sender, EventArgs e)
+        {
+            if (KeyTime.Enabled == true)
+                KeyTime.Enabled = false;
+            else
+                KeyTime.Enabled = true;
+        }
+
+        private void btnTimerDB_Click(object sender, EventArgs e)
+        {
+            if (TimerDB.Enabled == true)
+                TimerDB.Enabled = false;
+            else
+                TimerDB.Enabled = true;
+        }
     }
 }
