@@ -1,6 +1,6 @@
 ﻿namespace CrcService
 {
-    partial class Service1
+    partial class ServiceCrc
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,13 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.UsageTimer = new System.Windows.Forms.Timer(this.components);
+            this.KeyTime = new System.Windows.Forms.Timer(this.components);
+            this.TimerDB = new System.Windows.Forms.Timer(this.components);
             // 
-            // Service1
+            // ServiceCrc
             // 
             this.ServiceName = "ServiceCrc";
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer UsageTimer;
+        private System.Windows.Forms.Timer KeyTime;
+        private System.Windows.Forms.Timer TimerDB;
     }
 }

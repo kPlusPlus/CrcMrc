@@ -59,6 +59,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,12 +69,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProjectInstaller.cs">
-      <SubType>Component</SubType>
+    <Compile Include="common.cs" />
+    <Compile Include="DateTypes.cs" />
+    <Compile Include="DBConnect.cs" />
+    <Compile Include="dsProcess1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsProcess.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ProjectInstaller.Designer.cs">
-      <DependentUpon>ProjectInstaller.cs</DependentUpon>
-    </Compile>
+    <Compile Include="ProcessCpu.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -90,6 +94,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="dsProcess.xsc">
+      <DependentUpon>dsProcess.xsd</DependentUpon>
+    </None>
+    <None Include="dsProcess.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsProcess1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsProcess.xss">
+      <DependentUpon>dsProcess.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -97,9 +112,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ProjectInstaller.resx">
-      <DependentUpon>ProjectInstaller.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Service1.resx">
       <DependentUpon>Service1.cs</DependentUpon>
     </EmbeddedResource>
