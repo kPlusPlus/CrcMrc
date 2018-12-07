@@ -98,8 +98,7 @@ namespace CrcMrc
         {
             string formatForMySql = ProcTime.ToString("yyyyMMddHHmmss");
 
-            string query = @"INSERT INTO process (
-                                                    `ProcName`,
+            string query = @"INSERT INTO process (  `ProcName`,
                                                     `ProcID`,
                                                     `ProcTime`,
                                                     `CompName`,
@@ -210,7 +209,7 @@ namespace CrcMrc
         //Count statement
         public int Count(string sTableName)
         {
-            string query = "SELECT Count(*) FROM " + sTableName;
+            string query = "SELECT Count(ID) FROM " + sTableName;
             int Count = -1;
 
             //Open Connection

@@ -9,8 +9,17 @@
   <Comment CommentText="Process STRUCT">
     <Position X="9.042" Y="0.958" Height="0.75" Width="1.7" />
   </Comment>
+  <Comment CommentText="UsageTime1&#xD;&#xA;review all new process ">
+    <Position X="3.967" Y="12.86" Height="1.494" Width="3.59" />
+  </Comment>
+  <Comment CommentText="KeyTime&#xD;&#xA;clock for Keylogger">
+    <Position X="8.015" Y="12.848" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="TimerDB&#xD;&#xA;clock for transfer data to Central DB">
+    <Position X="10.414" Y="12.857" Height="0.75" Width="1.7" />
+  </Comment>
   <Class Name="CrcMrc.Form2api">
-    <Position X="0.5" Y="0.5" Width="2.25" />
+    <Position X="0.5" Y="0.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AEIEgAQIQqBhAFwACQCUABDqI6AAgCBAoAUagwAAUY4=</HashCode>
       <FileName>Form2api.cs</FileName>
@@ -24,14 +33,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="CrcMrc.ProcessCPU">
-    <Position X="3.25" Y="9" Width="5.75" />
+    <Position X="3.75" Y="9" Width="5.75" />
     <TypeIdentifier>
       <HashCode>AQAAAAAACAACAQAAICAAACAAAAAAAABAEgAAAAEAAAA=</HashCode>
       <FileName>ProcessCpu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CrcMrc.ProcessData">
-    <Position X="9.25" Y="9" Width="5.25" />
+    <Position X="9.75" Y="9" Width="5.25" />
     <TypeIdentifier>
       <HashCode>BAAAgAAAAAAAgAAAAAAAIAwAhAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>ProcessCpu.cs</FileName>

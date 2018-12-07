@@ -1,0 +1,5 @@
+﻿
+--- mouse over / mouse move nije evidentiran u keyloggeru
+--- intersect ne daju točno koliko je bila vrijednost countera
+
+--- brisanje redaka radi više nego sumnjivo

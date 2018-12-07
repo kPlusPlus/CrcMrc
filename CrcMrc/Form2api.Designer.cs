@@ -51,6 +51,10 @@
             this.UsageTimer = new System.Windows.Forms.Timer(this.components);
             this.KeyTime = new System.Windows.Forms.Timer(this.components);
             this.TimerDB = new System.Windows.Forms.Timer(this.components);
+            this.chkScrollActivity = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblDBState = new System.Windows.Forms.Label();
+            this.lblDBCount = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelTextControl.SuspendLayout();
             this.panelCounters.SuspendLayout();
@@ -227,6 +231,10 @@
             // panelCounters
             // 
             this.panelCounters.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelCounters.Controls.Add(this.lblDBCount);
+            this.panelCounters.Controls.Add(this.lblDBState);
+            this.panelCounters.Controls.Add(this.label2);
+            this.panelCounters.Controls.Add(this.chkScrollActivity);
             this.panelCounters.Controls.Add(this.label1);
             this.panelCounters.Controls.Add(this.lblProcess);
             this.panelCounters.Controls.Add(this.btnTimerDB);
@@ -258,6 +266,48 @@
             this.TimerDB.Interval = global::CrcMrc.Properties.Settings.Default.dbTime;
             this.TimerDB.Tick += new System.EventHandler(this.TimerDB_Tick);
             // 
+            // chkScrollActivity
+            // 
+            this.chkScrollActivity.AutoSize = true;
+            this.chkScrollActivity.Checked = true;
+            this.chkScrollActivity.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkScrollActivity.Location = new System.Drawing.Point(4, 469);
+            this.chkScrollActivity.Name = "chkScrollActivity";
+            this.chkScrollActivity.Size = new System.Drawing.Size(86, 17);
+            this.chkScrollActivity.TabIndex = 11;
+            this.chkScrollActivity.Text = "ScrollActivity";
+            this.chkScrollActivity.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 203);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(151, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "DB State          DB count";
+            // 
+            // lblDBState
+            // 
+            this.lblDBState.AutoSize = true;
+            this.lblDBState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDBState.Location = new System.Drawing.Point(3, 216);
+            this.lblDBState.Name = "lblDBState";
+            this.lblDBState.Size = new System.Drawing.Size(44, 16);
+            this.lblDBState.TabIndex = 13;
+            this.lblDBState.Text = "State";
+            // 
+            // lblDBCount
+            // 
+            this.lblDBCount.AutoSize = true;
+            this.lblDBCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDBCount.Location = new System.Drawing.Point(93, 216);
+            this.lblDBCount.Name = "lblDBCount";
+            this.lblDBCount.Size = new System.Drawing.Size(47, 16);
+            this.lblDBCount.TabIndex = 14;
+            this.lblDBCount.Text = "Count";
+            // 
             // Form2api
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,7 +318,7 @@
             this.Controls.Add(this.panelTextControl);
             this.Controls.Add(this.panel1);
             this.Name = "Form2api";
-            this.Text = "Form2api";
+            this.Text = "Crc2api";
             this.Leave += new System.EventHandler(this.Form2api_Leave);
             this.panel1.ResumeLayout(false);
             this.panelTextControl.ResumeLayout(false);
@@ -303,5 +353,9 @@
         private System.Windows.Forms.Label lblKeyLog;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelCounters;
+        private System.Windows.Forms.CheckBox chkScrollActivity;
+        private System.Windows.Forms.Label lblDBCount;
+        private System.Windows.Forms.Label lblDBState;
+        private System.Windows.Forms.Label label2;
     }
 }

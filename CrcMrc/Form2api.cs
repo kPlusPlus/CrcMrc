@@ -52,6 +52,7 @@ namespace CrcMrc
         dsProcess.ProcessDataTable pdt;
         common comm;
         DBConnect dbConnect;
+        int bScrollActivity = 0;
 
 
         public Form2api()
@@ -192,14 +193,13 @@ namespace CrcMrc
                     row.currWindID = commonElements[0].ToString();
                 }
 
-                row.hWindID = sProzori;
-                //row.currWindID = hwnd.ToString();                
+                row.hWindID = sProzori;                
 
                 if (row.counter > 0)
                 {
                     pdt.AddProcessRow(row);
                     pdt.AcceptChanges();
-                    LogTo("ADD " + row.ProcID + " " + row.ProcTime,true);
+                    LogTo("ADD  " + row.ProcID + "  " + row.ProcTime,true);
                 }
                 else
                 {
@@ -375,6 +375,7 @@ namespace CrcMrc
             string datum = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
             string[] row = { datum, mess };
             var listViewItem = new ListViewItem(row);
+            lvLog.SuspendLayout();
             lvLog.Items.Add(listViewItem);
             //lvLog.EnsureVisible(lvLog.Items.Count - 1);
 
@@ -383,16 +384,23 @@ namespace CrcMrc
                 string path = CrcMrc.Properties.Settings.Default.FileLOG;
                 using (StreamWriter sw = File.AppendText(path))
                 {
-                    sw.WriteLine(datum.PadRight(15) + mess);
+                    sw.WriteLine(datum.PadRight(22) + mess);
                 }
             }
 
-            if (scrolon == true)
+            if (chkScrollActivity.Checked)
             {
-                lvLog.EnsureVisible(lvLog.Items.Count - 1);
+                bScrollActivity++;
             }
-            
 
+            //if (scrolon == true)
+            if(bScrollActivity > 8 || scrolon == true)
+            {
+                //lvLog.SuspendLayout();
+                lvLog.EnsureVisible(lvLog.Items.Count -1);
+                bScrollActivity = 0;
+                lvLog.ResumeLayout();
+            }
         }
 
         private void btnUsageTimer_Click(object sender, EventArgs e)
@@ -424,6 +432,9 @@ namespace CrcMrc
             lblProcess.Text = ProcessDataList.Count.ToString();
             lblDataSet.Text = pdt.Rows.Count.ToString();
             lblKeyLog.Text = comm.iHwnd.Length.ToString();
+
+            lblDBState.Text = dbConnect.connection.State.ToString();
+            lblDBCount.Text = dbConnect.Count("process").ToString();
         }
     }
 }
