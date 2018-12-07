@@ -193,13 +193,13 @@ namespace CrcMrc
                 }
 
                 row.hWindID = sProzori;
-                //row.currWindID = hwnd.ToString();
-                
+                //row.currWindID = hwnd.ToString();                
 
                 if (row.counter > 0)
                 {
                     pdt.AddProcessRow(row);
                     pdt.AcceptChanges();
+                    LogTo("ADD " + row.ProcID + " " + row.ProcTime,true);
                 }
                 else
                 {
@@ -333,7 +333,7 @@ namespace CrcMrc
 
         private void TimerDB_Tick(object sender, EventArgs e)
         {
-            LogTo("Timer3 DB START");            
+            LogTo("Timer3 DB START",true,true);            
             SaveToDB();           
             LogTo("Timer3 DB STOP");
 
@@ -350,19 +350,12 @@ namespace CrcMrc
                 if (dbConnect.CheckProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP) == false)
                 {
                     dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP);
-                    LogTo("DELETE " + row.ProcID + " " + row.ProcTime);
+                    LogTo("DELETE  " + row.ProcID + "  " + row.ProcTime,true);
                     row.Delete();
                     pdt.Rows.RemoveAt(i);
-                    pdt.AcceptChanges();
+                    pdt.AcceptChanges();                    
                 }                
                 
-                /*
-                // TEST
-                dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP);
-                row.Delete();
-                //pdt.Rows.RemoveAt(i);
-                //pdt.AcceptChanges();
-                */
             }
         }
 
@@ -371,19 +364,34 @@ namespace CrcMrc
             SaveXml();
         }
 
-        private void LogTo(string mess)
+        /// <summary>
+        /// Logon control
+        /// </summary>
+        /// <param name="mess">Description</param>
+        /// <param name="logon">Write to log</param>
+        /// <param name="scrolon">Scrol on this action</param>
+        private void LogTo(string mess, Boolean logon = false, Boolean scrolon = false )
         { 
             string datum = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
             string[] row = { datum, mess };
             var listViewItem = new ListViewItem(row);
             lvLog.Items.Add(listViewItem);
+            //lvLog.EnsureVisible(lvLog.Items.Count - 1);
 
-            string path = CrcMrc.Properties.Settings.Default.FileLOG;
-            using (StreamWriter sw = File.AppendText(path))
+            if (logon == true)
             {
-                sw.WriteLine(datum.PadRight(15) + mess);
+                string path = CrcMrc.Properties.Settings.Default.FileLOG;
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    sw.WriteLine(datum.PadRight(15) + mess);
+                }
             }
 
+            if (scrolon == true)
+            {
+                lvLog.EnsureVisible(lvLog.Items.Count - 1);
+            }
+            
 
         }
 

