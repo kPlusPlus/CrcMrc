@@ -139,5 +139,14 @@ namespace CrcMrc.Properties {
                 return ((string)(this["FileDB"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("control.txt")]
+        public string FileLOG {
+            get {
+                return ((string)(this["FileLOG"]));
+            }
+        }
     }
 }

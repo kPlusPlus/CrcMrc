@@ -204,6 +204,7 @@ namespace CrcMrc
                 else
                 {
                     //pdt.RemoveProcessRow(row);
+                    row.Delete();
                     row = null;
                     pdt.RejectChanges();
                 }
@@ -327,6 +328,7 @@ namespace CrcMrc
         {
             LogTo("Timer2 KeyLog");
             RunKeyLogger();
+            ShowCountData();
         }
 
         private void TimerDB_Tick(object sender, EventArgs e)
@@ -339,16 +341,28 @@ namespace CrcMrc
 
         private void SaveToDB()
         {
+            //pdt.DefaultView.Sort = "[ID] ASC";
             for (int i = 0; i < pdt.Rows.Count; i++)
             {
                 dsProcess.ProcessRow row;
                 row = (dsProcess.ProcessRow)pdt.Rows[i];
+                
                 if (dbConnect.CheckProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP) == false)
                 {
                     dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP);
+                    LogTo("DELETE " + row.ProcID + " " + row.ProcTime);
+                    row.Delete();
                     pdt.Rows.RemoveAt(i);
                     pdt.AcceptChanges();
-                }
+                }                
+                
+                /*
+                // TEST
+                dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP);
+                row.Delete();
+                //pdt.Rows.RemoveAt(i);
+                //pdt.AcceptChanges();
+                */
             }
         }
 
@@ -358,18 +372,18 @@ namespace CrcMrc
         }
 
         private void LogTo(string mess)
-        {
-            /*
-            int selpoint = txtControl.SelectionStart;                        
-            txtControl.SuspendLayout();
-            txtControl.Text += DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " * " + mess + Environment.NewLine;
-            txtControl.SelectionStart = selpoint;
-            txtControl.ResumeLayout();
-            */
+        { 
             string datum = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
             string[] row = { datum, mess };
             var listViewItem = new ListViewItem(row);
             lvLog.Items.Add(listViewItem);
+
+            string path = CrcMrc.Properties.Settings.Default.FileLOG;
+            using (StreamWriter sw = File.AppendText(path))
+            {
+                sw.WriteLine(datum.PadRight(15) + mess);
+            }
+
 
         }
 
