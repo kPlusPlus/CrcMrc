@@ -105,13 +105,12 @@ namespace CrcMrc
                                                     `CompUser`,
                                                     `IP`)
                                                     VALUES
-                                                    (
-                                                    '" + ProcName + @"',
-                                                    " + ProcID + @",
-                                                    " + formatForMySql + @",
-                                                    '" + CompName + @"',
-                                                    '" + CompUser + @"',
-                                                    '"+ IP + @"');";
+                                                    ('" + ProcName + "',"
+                                                    + ProcID + ","
+                                                    + formatForMySql + ","
+                                                    + "'" + CompName + "',"
+                                                    + "'" + CompUser + "',"
+                                                    + "'"+ IP + "');";
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);

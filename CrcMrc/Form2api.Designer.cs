@@ -107,7 +107,7 @@
             // 
             this.btnWriteXml.Location = new System.Drawing.Point(4, 12);
             this.btnWriteXml.Name = "btnWriteXml";
-            this.btnWriteXml.Size = new System.Drawing.Size(169, 30);
+            this.btnWriteXml.Size = new System.Drawing.Size(107, 30);
             this.btnWriteXml.TabIndex = 1;
             this.btnWriteXml.Text = "Spremi";
             this.btnWriteXml.UseVisualStyleBackColor = true;
@@ -245,7 +245,7 @@
             this.panelCounters.Controls.Add(this.btnUsageTimer);
             this.panelCounters.Location = new System.Drawing.Point(731, 12);
             this.panelCounters.Name = "panelCounters";
-            this.panelCounters.Size = new System.Drawing.Size(257, 739);
+            this.panelCounters.Size = new System.Drawing.Size(264, 739);
             this.panelCounters.TabIndex = 11;
             // 
             // UsageTimer
@@ -312,7 +312,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 763);
+            this.ClientSize = new System.Drawing.Size(999, 763);
             this.Controls.Add(this.panelCounters);
             this.Controls.Add(this.lvLog);
             this.Controls.Add(this.panelTextControl);
