@@ -48,13 +48,13 @@
             this.lblKeyLog = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelCounters = new System.Windows.Forms.Panel();
+            this.lblDBCount = new System.Windows.Forms.Label();
+            this.lblDBState = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.chkScrollActivity = new System.Windows.Forms.CheckBox();
             this.UsageTimer = new System.Windows.Forms.Timer(this.components);
             this.KeyTime = new System.Windows.Forms.Timer(this.components);
             this.TimerDB = new System.Windows.Forms.Timer(this.components);
-            this.chkScrollActivity = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblDBState = new System.Windows.Forms.Label();
-            this.lblDBCount = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelTextControl.SuspendLayout();
             this.panelCounters.SuspendLayout();
@@ -71,6 +71,7 @@
             // ProcessView
             // 
             this.ProcessView.BackColor = System.Drawing.Color.Gray;
+            this.ProcessView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ProcessView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -167,11 +168,13 @@
             // lvLog
             // 
             this.lvLog.BackColor = System.Drawing.Color.Gray;
+            this.lvLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvLog.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
             this.columnHeader5});
             this.lvLog.ForeColor = System.Drawing.Color.Yellow;
             this.lvLog.Location = new System.Drawing.Point(12, 481);
+            this.lvLog.MultiSelect = false;
             this.lvLog.Name = "lvLog";
             this.lvLog.Size = new System.Drawing.Size(713, 223);
             this.lvLog.TabIndex = 6;
@@ -248,6 +251,48 @@
             this.panelCounters.Size = new System.Drawing.Size(264, 739);
             this.panelCounters.TabIndex = 11;
             // 
+            // lblDBCount
+            // 
+            this.lblDBCount.AutoSize = true;
+            this.lblDBCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDBCount.Location = new System.Drawing.Point(93, 216);
+            this.lblDBCount.Name = "lblDBCount";
+            this.lblDBCount.Size = new System.Drawing.Size(47, 16);
+            this.lblDBCount.TabIndex = 14;
+            this.lblDBCount.Text = "Count";
+            // 
+            // lblDBState
+            // 
+            this.lblDBState.AutoSize = true;
+            this.lblDBState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDBState.Location = new System.Drawing.Point(3, 216);
+            this.lblDBState.Name = "lblDBState";
+            this.lblDBState.Size = new System.Drawing.Size(44, 16);
+            this.lblDBState.TabIndex = 13;
+            this.lblDBState.Text = "State";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 203);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(151, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "DB State          DB count";
+            // 
+            // chkScrollActivity
+            // 
+            this.chkScrollActivity.AutoSize = true;
+            this.chkScrollActivity.Checked = true;
+            this.chkScrollActivity.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkScrollActivity.Location = new System.Drawing.Point(4, 469);
+            this.chkScrollActivity.Name = "chkScrollActivity";
+            this.chkScrollActivity.Size = new System.Drawing.Size(86, 17);
+            this.chkScrollActivity.TabIndex = 11;
+            this.chkScrollActivity.Text = "ScrollActivity";
+            this.chkScrollActivity.UseVisualStyleBackColor = true;
+            // 
             // UsageTimer
             // 
             this.UsageTimer.Enabled = true;
@@ -265,48 +310,6 @@
             this.TimerDB.Enabled = true;
             this.TimerDB.Interval = global::CrcMrc.Properties.Settings.Default.dbTime;
             this.TimerDB.Tick += new System.EventHandler(this.TimerDB_Tick);
-            // 
-            // chkScrollActivity
-            // 
-            this.chkScrollActivity.AutoSize = true;
-            this.chkScrollActivity.Checked = true;
-            this.chkScrollActivity.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkScrollActivity.Location = new System.Drawing.Point(4, 469);
-            this.chkScrollActivity.Name = "chkScrollActivity";
-            this.chkScrollActivity.Size = new System.Drawing.Size(86, 17);
-            this.chkScrollActivity.TabIndex = 11;
-            this.chkScrollActivity.Text = "ScrollActivity";
-            this.chkScrollActivity.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 203);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "DB State          DB count";
-            // 
-            // lblDBState
-            // 
-            this.lblDBState.AutoSize = true;
-            this.lblDBState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDBState.Location = new System.Drawing.Point(3, 216);
-            this.lblDBState.Name = "lblDBState";
-            this.lblDBState.Size = new System.Drawing.Size(44, 16);
-            this.lblDBState.TabIndex = 13;
-            this.lblDBState.Text = "State";
-            // 
-            // lblDBCount
-            // 
-            this.lblDBCount.AutoSize = true;
-            this.lblDBCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDBCount.Location = new System.Drawing.Point(93, 216);
-            this.lblDBCount.Name = "lblDBCount";
-            this.lblDBCount.Size = new System.Drawing.Size(47, 16);
-            this.lblDBCount.TabIndex = 14;
-            this.lblDBCount.Text = "Count";
             // 
             // Form2api
             // 

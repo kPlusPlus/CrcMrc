@@ -35,14 +35,17 @@
     <Setting Name="dbPsw" Type="System.String" Scope="Application">
       <Value Profile="(Default)">F3VA55TpNfsA</Value>
     </Setting>
-    <Setting Name="dbTime" Type="System.Int32" Scope="Application">
+    <Setting Name="dbTime" Description="clock for DB transaction" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">60000</Value>
     </Setting>
-    <Setting Name="FileDB" Type="System.String" Scope="Application">
+    <Setting Name="FileDB" Description="Important OFFline File" Type="System.String" Scope="Application">
       <Value Profile="(Default)">temp.xml</Value>
     </Setting>
-    <Setting Name="FileLOG" Type="System.String" Scope="Application">
+    <Setting Name="FileLOG" Description="take to file command log" Type="System.String" Scope="Application">
       <Value Profile="(Default)">control.txt</Value>
+    </Setting>
+    <Setting Name="CPUUseSwitch" Description="use or not cpu use measure" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

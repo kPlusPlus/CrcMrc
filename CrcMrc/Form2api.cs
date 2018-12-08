@@ -141,12 +141,15 @@ namespace CrcMrc
                             ProcessTimes.UserTime.Ticks,
                             ProcessTimes.KernelTime.Ticks));
 
-                        AddProcess((ProcessData) ProcessDataList[Index]);
+                        AddProcess((ProcessData)ProcessDataList[Index]);
                     }
                     else
-                        Total += CurrentProcessData.UpdateCpuUsage(
+                    {
+                        //TEST inline condition
+                        Total += (CrcMrc.Properties.Settings.Default.CPUUseSwitch ? CurrentProcessData.UpdateCpuUsage(
                                     ProcessTimes.UserTime.Ticks,
-                                    ProcessTimes.KernelTime.Ticks);
+                                    ProcessTimes.KernelTime.Ticks) : 0);
+                    }
                 }
                 finally
                 {
@@ -167,7 +170,7 @@ namespace CrcMrc
                 ProcessData TempProcess = (ProcessData)ProcessDataList[Index];
                 dsProcess.ProcessRow row;
                 row = pdt.NewProcessRow();
-                row.CompName = GetCompname();
+                row.CompName = GetCompName();
                 row.CompUser = GetCompUser();
                 row.IP = GetIPAddress();
                 row.ProcesName = TempProcess.Name;
@@ -291,8 +294,9 @@ namespace CrcMrc
             return apRet;
         }
 
-        private string GetCompname()
+        private string GetCompName()
         {
+            //CrcMrc.Properties.Settings.Default.ComputerName. = Environment.MachineName + "|" + Dns.GetHostName();
             return Environment.MachineName + "|" + Dns.GetHostName();
         }
 
@@ -334,7 +338,8 @@ namespace CrcMrc
         private void TimerDB_Tick(object sender, EventArgs e)
         {
             LogTo("Timer3 DB START",true,true);            
-            SaveToDB();           
+            SaveToDB();
+            SaveToDB();
             LogTo("Timer3 DB STOP");
 
         }
@@ -353,9 +358,15 @@ namespace CrcMrc
                     LogTo("DELETE  " + row.ProcID + "  " + row.ProcTime,true);
                     row.Delete();
                     pdt.Rows.RemoveAt(i);
-                    pdt.AcceptChanges();                    
-                }                
-                
+                    pdt.AcceptChanges();
+                }
+                else if (dbConnect.CheckProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP) == true)
+                {
+                    LogTo("DELETE***  " + row.ProcID + "  " + row.ProcTime, true);
+                    row.Delete();
+                    pdt.Rows.RemoveAt(i);
+                    pdt.AcceptChanges();
+                }
             }
         }
 
@@ -398,9 +409,9 @@ namespace CrcMrc
             {
                 //lvLog.SuspendLayout();
                 lvLog.EnsureVisible(lvLog.Items.Count -1);
-                bScrollActivity = 0;
-                lvLog.ResumeLayout();
+                bScrollActivity = 0;                
             }
+            lvLog.ResumeLayout();
         }
 
         private void btnUsageTimer_Click(object sender, EventArgs e)

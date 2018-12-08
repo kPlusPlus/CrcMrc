@@ -122,7 +122,11 @@ namespace CrcMrc.Properties {
             }
         }
         
+        /// <summary>
+        /// clock for DB transaction
+        /// </summary>
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("clock for DB transaction")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("60000")]
         public int dbTime {
@@ -131,7 +135,11 @@ namespace CrcMrc.Properties {
             }
         }
         
+        /// <summary>
+        /// Important OFFline File
+        /// </summary>
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("Important OFFline File")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("temp.xml")]
         public string FileDB {
@@ -140,12 +148,29 @@ namespace CrcMrc.Properties {
             }
         }
         
+        /// <summary>
+        /// take to file command log
+        /// </summary>
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("take to file command log")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("control.txt")]
         public string FileLOG {
             get {
                 return ((string)(this["FileLOG"]));
+            }
+        }
+        
+        /// <summary>
+        /// use or not cpu use measure
+        /// </summary>
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("use or not cpu use measure")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CPUUseSwitch {
+            get {
+                return ((bool)(this["CPUUseSwitch"]));
             }
         }
     }
