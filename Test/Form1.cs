@@ -31,7 +31,7 @@ namespace Test
         public void Test()
         {
             Int32[] a = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
-            Int32[] b = new int[] { 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            Int32[] b = new int[] { 7, 8, 9, 10, 11, 12, 13, 14, 15, 7 };
 
             bool hasCommonElements = a.Intersect(b).Count() > 0;
             Int32[] commonElements = a.Intersect(b).ToArray();
@@ -48,6 +48,11 @@ namespace Test
             DateTime dt;
             if (DateTime.TryParse("5.12.2018 10:00:09",out dt))
                 MessageBox.Show(dbConnect.CheckProcess("DrEngel", 2212, dt, "kreso", "kresimir", "192.168.1.101").ToString());
+        }
+
+        private void Form1_Leave(object sender, EventArgs e)
+        {
+            
         }
     }
 }

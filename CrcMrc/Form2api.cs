@@ -190,9 +190,10 @@ namespace CrcMrc
                 }
 
                 Int32[] commonElements = comm.iHwnd.Intersect(lprozori).ToArray();
+                Int32 commonElementsCounter = lprozori.Intersect(comm.iHwnd).Count(); // comm.iHwnd.Intersect(lprozori).Count();
                 if (commonElements.Length > 0)
-                {
-                    row.counter = (short) commonElements.Length;
+                {                    
+                    row.counter = (short) commonElementsCounter; // (short) commonElements.Length;
                     row.currWindID = commonElements[0].ToString();
                 }
 
@@ -347,6 +348,10 @@ namespace CrcMrc
         private void SaveToDB()
         {
             //pdt.DefaultView.Sort = "[ID] ASC";
+
+            if (dbConnect.OpenConnection() == false)
+                return;
+
             for (int i = 0; i < pdt.Rows.Count; i++)
             {
                 dsProcess.ProcessRow row;
@@ -446,6 +451,11 @@ namespace CrcMrc
 
             lblDBState.Text = dbConnect.connection.State.ToString();
             lblDBCount.Text = dbConnect.Count("process").ToString();
+        }
+
+        private void lvLog_Leave(object sender, EventArgs e)
+        {
+            SaveXml();
         }
     }
 }

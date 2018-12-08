@@ -180,6 +180,7 @@
             this.lvLog.TabIndex = 6;
             this.lvLog.UseCompatibleStateImageBehavior = false;
             this.lvLog.View = System.Windows.Forms.View.Details;
+            this.lvLog.Leave += new System.EventHandler(this.lvLog_Leave);
             // 
             // columnHeader4
             // 
