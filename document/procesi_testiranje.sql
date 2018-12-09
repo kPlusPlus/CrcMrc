@@ -1,3 +1,5 @@
+use kapluspl_crc;
+
 select * from process where ProcName = 'TESLA';
 
 select * from process;

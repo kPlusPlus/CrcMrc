@@ -21,12 +21,13 @@ namespace Test
         public Form1()
         {
             InitializeComponent();
-            Test();
+            //Test();
+            TestIntersect();
             dbConnect = new DBConnect();
 
             //MessageBox.Show(dbConnect.connection.State.ToString());
         }
-        
+
 
         public void Test()
         {
@@ -39,6 +40,18 @@ namespace Test
             //MessageBox.Show(commonElements.Length.ToString());
 
         }
+
+        public void TestIntersect()
+        {
+            Int32[] iHwnd = new Int32[] { 199576, 199576, 199576, 199576, 199576, 199576, 199576, 199576, 199576, 199576 };
+            Int32[] lprozori = new Int32[] { 330488, 134094, 199576, 723984, 199726, 590452, 199580, 134052 };
+
+            Int32[] commonElements = iHwnd.Intersect(lprozori).ToArray();
+            Int32[] commonExept = iHwnd.Except(lprozori).ToArray();
+        }
+    
+
+    
 
         private void button1_Click(object sender, EventArgs e)
         {

@@ -16,7 +16,7 @@ using System.IO;
 
 namespace CrcMrc
 {
-        
+       
 
     public partial class Form2api : Form
     {
@@ -177,9 +177,7 @@ namespace CrcMrc
                 row.CPUUse = TempProcess.CpuUsage;
                 row.ProcTime = dt;
                 row.ProcID = (Int32) TempProcess.ID;
-
-                //Int32 hwnd = 0;                
-                //hwnd = GetForegroundWindow().ToInt32();
+                                
                 string sProzori = String.Empty;
                 IntPtr[] prozori = GetProcessWindows((int)TempProcess.ID);
                 Int32[] lprozori = new Int32[prozori.Length];
@@ -190,14 +188,14 @@ namespace CrcMrc
                 }
 
                 Int32[] commonElements = comm.iHwnd.Intersect(lprozori).ToArray();
-                Int32 commonElementsCounter = lprozori.Intersect(comm.iHwnd).Count(); // comm.iHwnd.Intersect(lprozori).Count();
+                Int32 commonElementsCounter = comm.iHwnd.Count() - comm.iHwnd.Except(lprozori).Count() ; 
                 if (commonElements.Length > 0)
                 {                    
-                    row.counter = (short) commonElementsCounter; // (short) commonElements.Length;
+                    row.counter = (short) commonElementsCounter; 
                     row.currWindID = commonElements[0].ToString();
                 }
 
-                row.hWindID = sProzori;                
+                row.hWindID = sProzori;
 
                 if (row.counter > 0)
                 {
