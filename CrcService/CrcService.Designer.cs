@@ -33,6 +33,10 @@
             this.KeyTime = new System.Windows.Forms.Timer(this.components);
             this.TimerDB = new System.Windows.Forms.Timer(this.components);
             // 
+            // UsageTimer
+            // 
+            this.UsageTimer.Tick += new System.EventHandler(this.UsageTimer_Tick);
+            // 
             // ServiceCrc
             // 
             this.ServiceName = "ServiceCrc";

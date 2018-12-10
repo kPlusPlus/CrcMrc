@@ -12,7 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 
 namespace CrcMrc
 {
@@ -172,7 +173,7 @@ namespace CrcMrc
                 row = pdt.NewProcessRow();
                 row.CompName = GetCompName();
                 row.CompUser = GetCompUser();
-                row.IP = GetIPAddress();
+                row.IP = GetLocalIpAddress();
                 row.ProcesName = TempProcess.Name;
                 row.CPUUse = TempProcess.CpuUsage;
                 row.ProcTime = dt;
@@ -309,7 +310,8 @@ namespace CrcMrc
             IPHostEntry Host = default(IPHostEntry);
             string Hostname = null;
             string sIPAddress = null;
-            Hostname = System.Environment.MachineName;
+            //Hostname = System.Environment.MachineName;
+            Hostname = Dns.GetHostName();
             Host = Dns.GetHostEntry(Hostname);
             foreach (IPAddress IP in Host.AddressList)
             {
@@ -317,9 +319,58 @@ namespace CrcMrc
                 {
                     //IPAddress = Convert.ToString(IP);
                     sIPAddress = Convert.ToString(IP);
+                    return sIPAddress;
                 }
             }
             return sIPAddress;
+        }
+
+        public string GetLocalIpAddress()
+        {
+            UnicastIPAddressInformation mostSuitableIp = null;
+
+            var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+
+            foreach (var network in networkInterfaces)
+            {
+                if (network.OperationalStatus != OperationalStatus.Up)
+                    continue;
+
+                var properties = network.GetIPProperties();
+
+                if (properties.GatewayAddresses.Count == 0)
+                    continue;
+
+                foreach (var address in properties.UnicastAddresses)
+                {
+                    if (address.Address.AddressFamily != AddressFamily.InterNetwork)
+                        continue;
+
+                    if (IPAddress.IsLoopback(address.Address))
+                        continue;
+
+                    if (!address.IsDnsEligible)
+                    {
+                        if (mostSuitableIp == null)
+                            mostSuitableIp = address;
+                        continue;
+                    }
+
+                    // The best IP is the IP got from DHCP server
+                    if (address.PrefixOrigin != PrefixOrigin.Dhcp)
+                    {
+                        if (mostSuitableIp == null || !mostSuitableIp.IsDnsEligible)
+                            mostSuitableIp = address;
+                        continue;
+                    }
+
+                    return address.Address.ToString();
+                }
+            }
+
+            return mostSuitableIp != null
+                ? mostSuitableIp.Address.ToString()
+                : "";
         }
 
         private void btnWriteXml_Click(object sender, EventArgs e)

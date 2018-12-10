@@ -50,7 +50,7 @@ namespace CrcService
 
 
         //open connection to database
-        private bool OpenConnection()
+        public bool OpenConnection()
         {
             try
             {

@@ -149,12 +149,16 @@ namespace CrcService.Properties {
             }
         }
         
+        /// <summary>
+        /// use or not cpu use measure
+        /// </summary>
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("use or not cpu use measure")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("test123")]
-        public string test {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CPUUseSwitch {
             get {
-                return ((string)(this["test"]));
+                return ((bool)(this["CPUUseSwitch"]));
             }
         }
     }

@@ -176,7 +176,7 @@
             this.lvLog.Location = new System.Drawing.Point(12, 481);
             this.lvLog.MultiSelect = false;
             this.lvLog.Name = "lvLog";
-            this.lvLog.Size = new System.Drawing.Size(713, 223);
+            this.lvLog.Size = new System.Drawing.Size(713, 215);
             this.lvLog.TabIndex = 6;
             this.lvLog.UseCompatibleStateImageBehavior = false;
             this.lvLog.View = System.Windows.Forms.View.Details;
