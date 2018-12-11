@@ -37,6 +37,14 @@
             // 
             this.UsageTimer.Tick += new System.EventHandler(this.UsageTimer_Tick);
             // 
+            // KeyTime
+            // 
+            this.KeyTime.Tick += new System.EventHandler(this.KeyTime_Tick);
+            // 
+            // TimerDB
+            // 
+            this.TimerDB.Tick += new System.EventHandler(this.TimerDB_Tick);
+            // 
             // ServiceCrc
             // 
             this.ServiceName = "ServiceCrc";

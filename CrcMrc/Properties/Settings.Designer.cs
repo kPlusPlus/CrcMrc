@@ -173,5 +173,31 @@ namespace CrcMrc.Properties {
                 return ((bool)(this["CPUUseSwitch"]));
             }
         }
+        
+        /// <summary>
+        /// Log file for keylogger evidence
+        /// </summary>
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("Log file for keylogger evidence")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Log_KeyLogger {
+            get {
+                return ((bool)(this["Log_KeyLogger"]));
+            }
+        }
+        
+        /// <summary>
+        /// Log file for command evidence
+        /// </summary>
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("Log file for command evidence")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Log_Command {
+            get {
+                return ((bool)(this["Log_Command"]));
+            }
+        }
     }
 }

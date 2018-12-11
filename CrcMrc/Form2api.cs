@@ -54,6 +54,9 @@ namespace CrcMrc
         common comm;
         DBConnect dbConnect;
         int bScrollActivity = 0;
+        string localIPAddress = string.Empty;
+        string compName = string.Empty;
+        string compUser = string.Empty;
 
 
         public Form2api()
@@ -63,8 +66,9 @@ namespace CrcMrc
             dbConnect = new DBConnect();
             InitVal();
             LoadXml();
+            RefreshParameter();
             SaveToDB();
-            ShowCountData();
+            ShowCountData();            
         }        
 
         private void InitVal()
@@ -171,9 +175,9 @@ namespace CrcMrc
                 ProcessData TempProcess = (ProcessData)ProcessDataList[Index];
                 dsProcess.ProcessRow row;
                 row = pdt.NewProcessRow();
-                row.CompName = GetCompName();
-                row.CompUser = GetCompUser();
-                row.IP = GetLocalIpAddress();
+                row.CompName = compName; //GetCompName();
+                row.CompUser = compUser; //GetCompUser();
+                row.IP = localIPAddress; //GetIPAddress(); // GetLocalIpAddress();
                 row.ProcesName = TempProcess.Name;
                 row.CPUUse = TempProcess.CpuUsage;
                 row.ProcTime = dt;
@@ -390,8 +394,16 @@ namespace CrcMrc
             LogTo("Timer3 DB START",true,true);            
             SaveToDB();
             SaveToDB();
+            RefreshParameter();
             LogTo("Timer3 DB STOP");
 
+        }
+
+        private void RefreshParameter()
+        {
+            localIPAddress = GetLocalIpAddress();
+            compName = GetCompName();
+            compUser = GetCompUser();
         }
 
         private void SaveToDB()
@@ -411,15 +423,21 @@ namespace CrcMrc
                     dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP);
                     LogTo("DELETE  " + row.ProcID + "  " + row.ProcTime,true);
                     row.Delete();
-                    pdt.Rows.RemoveAt(i);
-                    pdt.AcceptChanges();
+                    if (pdt.Rows.Count > 0)
+                    {
+                        pdt.Rows.RemoveAt(i);
+                        pdt.AcceptChanges();
+                    }
                 }
                 else if (dbConnect.CheckProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP) == true)
                 {
                     LogTo("DELETE***  " + row.ProcID + "  " + row.ProcTime, true);
                     row.Delete();
-                    pdt.Rows.RemoveAt(i);
-                    pdt.AcceptChanges();
+                    if (pdt.Rows.Count > 0)
+                    {
+                        pdt.Rows.RemoveAt(i);
+                        pdt.AcceptChanges();
+                    }
                 }
             }
         }
@@ -444,12 +462,15 @@ namespace CrcMrc
             lvLog.Items.Add(listViewItem);
             //lvLog.EnsureVisible(lvLog.Items.Count - 1);
 
-            if (logon == true)
+            if (CrcMrc.Properties.Settings.Default.Log_Command)
             {
-                string path = CrcMrc.Properties.Settings.Default.FileLOG;
-                using (StreamWriter sw = File.AppendText(path))
+                if (logon == true)
                 {
-                    sw.WriteLine(datum.PadRight(22) + mess);
+                    string path = CrcMrc.Properties.Settings.Default.FileLOG;
+                    using (StreamWriter sw = File.AppendText(path))
+                    {
+                        sw.WriteLine(datum.PadRight(22) + mess);
+                    }
                 }
             }
 

