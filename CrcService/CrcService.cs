@@ -62,6 +62,7 @@ namespace CrcService
 
         protected override void OnStart(string[] args)
         {
+            pdt = new dsProcess.ProcessDataTable();
             UsageTimer.Interval = CrcService.Properties.Settings.Default.TickTime;
             KeyTime.Interval = CrcService.Properties.Settings.Default.TickKeyboardTime;
             TimerDB.Interval = CrcService.Properties.Settings.Default.dbTime;
@@ -319,14 +320,13 @@ namespace CrcService
                     Index++;
                 else
                 {
-                    ProcessView.Items.Remove(TempProcess.ProcessItem);
+                    //ProcessView.Items.Remove(TempProcess.ProcessItem);
                     ProcessDataList.RemoveAt(Index);
                 }
             }
 
-            IdleProcessItem.SubItems[2].Text = (100 - Total) + "%";
-
-            ProcessView.ResumeLayout();
+            //IdleProcessItem.SubItems[2].Text = (100 - Total) + "%";
+            //ProcessView.ResumeLayout();
 
             comm.ResetCounter();
 
