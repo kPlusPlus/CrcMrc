@@ -15,21 +15,20 @@ namespace CrcService
         static void Main()
         {
 
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
-            {
-                new ServiceCrc()
-            };
-            ServiceBase.Run(ServicesToRun);
+            ServiceBase service = new ServiceCrc();
+            ServiceBase.Run(service);
+
 
 /*
             ServiceBase[] ServicesToRun;
+
             ServicesToRun = new ServiceBase[]
             {
-                new ServiceCrc()
+                            new ServiceCrc()
             };
             ServiceBase.Run(ServicesToRun);
 */
+
 
         }
     }

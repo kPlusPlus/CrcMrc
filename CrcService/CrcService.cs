@@ -62,6 +62,11 @@ namespace CrcService
 
         protected override void OnStart(string[] args)
         {
+            StreamWriter sw;
+            sw = File.AppendText("sashidhar.txt");
+            sw.WriteLine(DateTime.Now + " STARTAMMMMMMMM ");
+            sw.Close();
+
             pdt = new dsProcess.ProcessDataTable();
             UsageTimer.Interval = CrcService.Properties.Settings.Default.TickTime;
             KeyTime.Interval = CrcService.Properties.Settings.Default.TickKeyboardTime;
@@ -85,6 +90,10 @@ namespace CrcService
 
         protected override void OnStop()
         {
+            StreamWriter sw;
+            sw = File.AppendText("sashidhar.txt");
+            sw.WriteLine(DateTime.Now + " STOP STOP STOP");
+            sw.Close();
         }
 
         private void LoadXml()
