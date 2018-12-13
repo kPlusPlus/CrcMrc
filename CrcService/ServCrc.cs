@@ -14,6 +14,7 @@ namespace CrcService
     partial class ServCrc : ServiceBase
     {
         private static Timer aTimer;
+        
 
         public ServCrc()
         {
@@ -23,11 +24,14 @@ namespace CrcService
         protected override void OnStart(string[] args)
         {            
             this.eventLog1.WriteEntry("[+] Kiklop start");
+
             aTimer = new System.Timers.Timer();
             aTimer.Interval = 6000;
             aTimer.Elapsed += OnTimedEvent;
             aTimer.Enabled = true;
             aTimer.Start();
+
+
 
         }
 

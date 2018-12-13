@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace CrcService
 {
@@ -54,6 +55,9 @@ namespace CrcService
         ArrayList ProcessDataList = new ArrayList();
         ArrayList IDList = new ArrayList();
 
+        private static Timer SysUsageTimer;
+        private static Timer SysKeyTime;
+        private static Timer SysTimerDB;
 
         public ServiceCrc()
         {
@@ -68,17 +72,37 @@ namespace CrcService
             sw.Close();
 
             pdt = new dsProcess.ProcessDataTable();
-            UsageTimer.Interval = CrcService.Properties.Settings.Default.TickTime;
-            KeyTime.Interval = CrcService.Properties.Settings.Default.TickKeyboardTime;
-            TimerDB.Interval = CrcService.Properties.Settings.Default.dbTime;
 
-            UsageTimer.Enabled = true;
-            KeyTime.Enabled = true;
-            TimerDB.Enabled = true;
+            SysUsageTimer = new Timer();
+            SysUsageTimer.Interval = CrcService.Properties.Settings.Default.TickTime;
+            SysUsageTimer.Elapsed += UsageTimer_Tick;
+            SysUsageTimer.Enabled = true;
+            SysUsageTimer.Start();
 
-            UsageTimer.Start();
+            SysKeyTime = new Timer();
+            SysKeyTime.Interval = CrcService.Properties.Settings.Default.TickKeyboardTime;
+            SysKeyTime.Elapsed += KeyTime_Tick;
+            SysKeyTime.Enabled = true;
+            SysKeyTime.Stop();
+
+            SysTimerDB = new Timer();
+            SysTimerDB.Interval = CrcService.Properties.Settings.Default.dbTime;
+            SysTimerDB.Elapsed += TimerDB_Tick;
+            SysTimerDB.Enabled = true;
+            SysTimerDB.Start();
+
+
+            //UsageTimer.Interval = CrcService.Properties.Settings.Default.TickTime;
+            //KeyTime.Interval = CrcService.Properties.Settings.Default.TickKeyboardTime;
+            //TimerDB.Interval = CrcService.Properties.Settings.Default.dbTime;
+
+            //UsageTimer.Enabled = true;
+            //KeyTime.Enabled = true;
+            //TimerDB.Enabled = true;
+
+            //UsageTimer.Start();
             //KeyTime.Start();
-            TimerDB.Start();
+            //TimerDB.Start();
 
             comm = new common();
             BConnect = new DBConnect();            
@@ -194,10 +218,10 @@ namespace CrcService
 
         private void UsageTimer_Tick(object sender, EventArgs e)
         {
-            LogTo("Timer1 START");
-            KeyTime.Stop();
+            LogTo("Timer1 START");            
+            SysKeyTime.Stop();
             GetUsage();
-            KeyTime.Start();
+            SysKeyTime.Start();
             LogTo("Timer1 STOP");
         }
 
