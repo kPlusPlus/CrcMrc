@@ -86,6 +86,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common.cs" />
+    <Compile Include="crcMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="crcMain.Designer.cs">
+      <DependentUpon>crcMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="DateTypes.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="dsProcess1.Designer.cs">
@@ -151,6 +157,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="crcMain.resx">
+      <DependentUpon>crcMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrcService.resx">
       <DependentUpon>CrcService.cs</DependentUpon>
     </EmbeddedResource>
