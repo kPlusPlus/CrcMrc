@@ -48,6 +48,7 @@
             this.lblKeyLog = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelCounters = new System.Windows.Forms.Panel();
+            this.btnHide = new System.Windows.Forms.Button();
             this.lblDBCount = new System.Windows.Forms.Label();
             this.lblDBState = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,6 +56,7 @@
             this.UsageTimer = new System.Windows.Forms.Timer(this.components);
             this.KeyTime = new System.Windows.Forms.Timer(this.components);
             this.TimerDB = new System.Windows.Forms.Timer(this.components);
+            this.btnProces = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelTextControl.SuspendLayout();
             this.panelCounters.SuspendLayout();
@@ -235,6 +237,8 @@
             // panelCounters
             // 
             this.panelCounters.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelCounters.Controls.Add(this.btnProces);
+            this.panelCounters.Controls.Add(this.btnHide);
             this.panelCounters.Controls.Add(this.lblDBCount);
             this.panelCounters.Controls.Add(this.lblDBState);
             this.panelCounters.Controls.Add(this.label2);
@@ -251,6 +255,18 @@
             this.panelCounters.Name = "panelCounters";
             this.panelCounters.Size = new System.Drawing.Size(264, 739);
             this.panelCounters.TabIndex = 11;
+            // 
+            // btnHide
+            // 
+            this.btnHide.BackColor = System.Drawing.Color.Tomato;
+            this.btnHide.Location = new System.Drawing.Point(220, 203);
+            this.btnHide.Margin = new System.Windows.Forms.Padding(0);
+            this.btnHide.Name = "btnHide";
+            this.btnHide.Size = new System.Drawing.Size(44, 536);
+            this.btnHide.TabIndex = 15;
+            this.btnHide.Text = "Sakrij";
+            this.btnHide.UseVisualStyleBackColor = false;
+            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
             // 
             // lblDBCount
             // 
@@ -312,6 +328,18 @@
             this.TimerDB.Interval = global::CrcMrc.Properties.Settings.Default.dbTime;
             this.TimerDB.Tick += new System.EventHandler(this.TimerDB_Tick);
             // 
+            // btnProces
+            // 
+            this.btnProces.BackColor = System.Drawing.Color.Tomato;
+            this.btnProces.Location = new System.Drawing.Point(176, 203);
+            this.btnProces.Margin = new System.Windows.Forms.Padding(0);
+            this.btnProces.Name = "btnProces";
+            this.btnProces.Size = new System.Drawing.Size(44, 536);
+            this.btnProces.TabIndex = 16;
+            this.btnProces.Text = "Proc.";
+            this.btnProces.UseVisualStyleBackColor = false;
+            this.btnProces.Click += new System.EventHandler(this.btnProces_Click);
+            // 
             // Form2api
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,5 +392,7 @@
         private System.Windows.Forms.Label lblDBCount;
         private System.Windows.Forms.Label lblDBState;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnHide;
+        private System.Windows.Forms.Button btnProces;
     }
 }

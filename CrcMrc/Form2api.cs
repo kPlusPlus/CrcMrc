@@ -527,5 +527,58 @@ namespace CrcMrc
         {
             SaveXml();
         }
+
+        private void btnHide_Click(object sender, EventArgs e)
+        {
+            LogTo("Autohide");
+            this.Hide();
+        }
+
+        uint pID = 0;
+
+        private void btnProces_Click(object sender, EventArgs e)
+        {
+            // you must find process active
+            // if is not active then go to active
+
+            /*
+            string AppName = "Notepad2.exe";
+            pID = 0;
+
+            foreach(ProcessData pd in ProcessDataList)
+            {                
+                if(pd.Name.Contains(AppName))
+                {                    
+                    pID = pd.ID;
+                }
+            }
+            */
+
+            if (bProcess() == false)
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = "Notepad2.exe";
+                //startInfo.Arguments = file;
+                Process.Start(startInfo);
+            }
+                
+
+        }
+
+        private bool bProcess(string AppName = "Notepad2.exe")
+        {
+            pID = 0;
+            foreach (ProcessData pd in ProcessDataList)
+            {
+                if (pd.Name.Contains(AppName))
+                {
+                    pID = pd.ID;                    
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        
     }
 }

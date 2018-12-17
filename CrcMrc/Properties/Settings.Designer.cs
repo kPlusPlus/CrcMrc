@@ -199,5 +199,14 @@ namespace CrcMrc.Properties {
                 return ((bool)(this["Log_Command"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoHide {
+            get {
+                return ((bool)(this["AutoHide"]));
+            }
+        }
     }
 }
