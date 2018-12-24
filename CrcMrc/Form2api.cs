@@ -540,20 +540,6 @@ namespace CrcMrc
         {
             // you must find process active
             // if is not active then go to active
-
-            /*
-            string AppName = "Notepad2.exe";
-            pID = 0;
-
-            foreach(ProcessData pd in ProcessDataList)
-            {                
-                if(pd.Name.Contains(AppName))
-                {                    
-                    pID = pd.ID;
-                }
-            }
-            */
-
             if (bProcess() == false)
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -568,6 +554,7 @@ namespace CrcMrc
         private bool bProcess(string AppName = "Notepad2.exe")
         {
             pID = 0;
+            /*
             foreach (ProcessData pd in ProcessDataList)
             {
                 if (pd.Name.Contains(AppName))
@@ -577,6 +564,22 @@ namespace CrcMrc
                 }
             }
             return false;
+            */
+
+            Process[] proc;
+
+            proc = Process.GetProcesses();
+            foreach(Process pprc in proc)
+            {
+                if( pprc.ProcessName.Contains(AppName) )
+                {
+                    pID = (uint) pprc.Id;
+                    return true;
+                }
+            }
+
+            return false;
+
         }
 
         
