@@ -58,6 +58,8 @@ namespace CrcMrc
         string compName = string.Empty;
         string compUser = string.Empty;
 
+        uint pID = 0;
+
 
         public Form2api()
         {
@@ -533,8 +535,7 @@ namespace CrcMrc
             LogTo("Autohide");
             this.Hide();
         }
-
-        uint pID = 0;
+        
 
         private void btnProces_Click(object sender, EventArgs e)
         {
@@ -551,20 +552,9 @@ namespace CrcMrc
 
         }
 
-        private bool bProcess(string AppName = "Notepad2.exe")
+        private bool bProcess(string AppName = "notepad.exe")
         {
             pID = 0;
-            /*
-            foreach (ProcessData pd in ProcessDataList)
-            {
-                if (pd.Name.Contains(AppName))
-                {
-                    pID = pd.ID;                    
-                    return true;
-                }
-            }
-            return false;
-            */
 
             Process[] proc;
 
