@@ -14,7 +14,6 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
-//using System.Windows.Forms;
 
 namespace CrcService
 {
@@ -58,20 +57,15 @@ namespace CrcService
 
         private static Timer SysUsageTimer;
         private static Timer SysKeyTime;
-        private static Timer SysTimerDB;        
-        
+        private static Timer SysTimerDB;
 
         public ServiceCrc()
         {
             InitializeComponent();
-            
         }
 
         protected override void OnStart(string[] args)
         {
-            //fMain = new crcMain();
-            //fMain.Show();
-
             StreamWriter sw;
             sw = File.AppendText("sashidhar.txt");
             sw.WriteLine(DateTime.Now + " STARTAMMMMMMMM ");
