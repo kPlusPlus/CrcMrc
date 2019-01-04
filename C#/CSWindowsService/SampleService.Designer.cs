@@ -1,6 +1,6 @@
-﻿namespace CrcService
+﻿namespace CSWindowsService
 {
-    partial class Service1
+    partial class SampleService
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,13 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.eventLog1 = new System.Diagnostics.EventLog();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             // 
-            // Service1
+            // eventLog1
             // 
-            this.ServiceName = "ServiceCrc";
+            this.eventLog1.Log = "Application";
+            this.eventLog1.Source = "CSWindowsService";
+            // 
+            // SampleService
+            // 
+            this.ServiceName = "CSWindowsService";
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
 
         }
 
         #endregion
+
+        private System.Diagnostics.EventLog eventLog1;
     }
 }

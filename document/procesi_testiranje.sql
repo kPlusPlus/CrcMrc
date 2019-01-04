@@ -1,6 +1,8 @@
+use kapluspl_crc;
+
 select * from process where ProcName = 'TESLA';
 
-select * from process;
+select * from process order by ID desc;
 
 truncate table process;
 
