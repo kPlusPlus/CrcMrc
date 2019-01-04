@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 using MySql.Data.Common;
 using System.Data;
 
-namespace CrcMrc
+namespace CrcService
 {
     class DBConnect
     {
@@ -37,10 +37,10 @@ namespace CrcMrc
             password = "kreso1004";
             */
 
-            server = CrcMrc.Properties.Settings.Default.dbServer;
-            database = CrcMrc.Properties.Settings.Default.dbName;
-            uid = CrcMrc.Properties.Settings.Default.dbUser;
-            password = CrcMrc.Properties.Settings.Default.dbPsw;
+            server = CrcService.Properties.Settings.Default.dbServer;
+            database = CrcService.Properties.Settings.Default.dbName;
+            uid = CrcService.Properties.Settings.Default.dbUser;
+            password = CrcService.Properties.Settings.Default.dbPsw;
             
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";

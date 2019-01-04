@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsProcess" targetNamespace="http://tempuri.org/dsProcess.xsd" xmlns:mstns="http://tempuri.org/dsProcess.xsd" xmlns="http://tempuri.org/dsProcess.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsProcess" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsProcess" msprop:Generator_UserDSName="dsProcess">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Process" msprop:Generator_TableClassName="ProcessDataTable" msprop:Generator_TableVarName="tableProcess" msprop:Generator_TablePropName="Process" msprop:Generator_RowDeletingName="ProcessRowDeleting" msprop:Generator_RowChangingName="ProcessRowChanging" msprop:Generator_RowEvHandlerName="ProcessRowChangeEventHandler" msprop:Generator_RowDeletedName="ProcessRowDeleted" msprop:Generator_UserTableName="Process" msprop:Generator_RowChangedName="ProcessRowChanged" msprop:Generator_RowEvArgName="ProcessRowChangeEvent" msprop:Generator_RowClassName="ProcessRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="ProcesName" msprop:Generator_ColumnVarNameInTable="columnProcesName" msprop:Generator_ColumnPropNameInRow="ProcesName" msprop:Generator_ColumnPropNameInTable="ProcesNameColumn" msprop:Generator_UserColumnName="ProcesName" type="xs:string" minOccurs="0" />
+              <xs:element name="ProcTime" msprop:Generator_ColumnVarNameInTable="columnProcTime" msprop:Generator_ColumnPropNameInRow="ProcTime" msprop:Generator_ColumnPropNameInTable="ProcTimeColumn" msprop:Generator_UserColumnName="ProcTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CompName" msprop:Generator_ColumnVarNameInTable="columnCompName" msprop:Generator_ColumnPropNameInRow="CompName" msprop:Generator_ColumnPropNameInTable="CompNameColumn" msprop:Generator_UserColumnName="CompName" type="xs:string" minOccurs="0" />
+              <xs:element name="IP" msprop:Generator_ColumnVarNameInTable="columnIP" msprop:Generator_ColumnPropNameInRow="IP" msprop:Generator_ColumnPropNameInTable="IPColumn" msprop:Generator_UserColumnName="IP" type="xs:string" minOccurs="0" />
+              <xs:element name="CPUUse" msprop:Generator_ColumnVarNameInTable="columnCPUUse" msprop:Generator_ColumnPropNameInRow="CPUUse" msprop:Generator_ColumnPropNameInTable="CPUUseColumn" msprop:Generator_UserColumnName="CPUUse" type="xs:string" minOccurs="0" />
+              <xs:element name="ProcID" msprop:Generator_ColumnVarNameInTable="columnProcID" msprop:Generator_ColumnPropNameInRow="ProcID" msprop:Generator_ColumnPropNameInTable="ProcIDColumn" msprop:Generator_UserColumnName="ProcID" type="xs:int" minOccurs="0" />
+              <xs:element name="hWindID" msprop:Generator_ColumnVarNameInTable="columnhWindID" msprop:Generator_ColumnPropNameInRow="hWindID" msprop:Generator_ColumnPropNameInTable="hWindIDColumn" msprop:Generator_UserColumnName="hWindID" type="xs:string" minOccurs="0" />
+              <xs:element name="currWindID" msprop:Generator_ColumnVarNameInTable="columncurrWindID" msprop:Generator_ColumnPropNameInRow="currWindID" msprop:Generator_ColumnPropNameInTable="currWindIDColumn" msprop:Generator_UserColumnName="currWindID" type="xs:string" minOccurs="0" />
+              <xs:element name="counter" msprop:Generator_ColumnVarNameInTable="columncounter" msprop:Generator_ColumnPropNameInRow="counter" msprop:Generator_ColumnPropNameInTable="counterColumn" msprop:Generator_UserColumnName="counter" type="xs:short" default="0" minOccurs="0" />
+              <xs:element name="CompUser" msprop:Generator_ColumnVarNameInTable="columnCompUser" msprop:Generator_ColumnPropNameInRow="CompUser" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInTable="CompUserColumn" msprop:Generator_UserColumnName="CompUser" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:Process" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -2,4 +2,9 @@
 --- mouse over / mouse move nije evidentiran u keyloggeru
 --- intersect ne daju točno koliko je bila vrijednost countera
 
---- brisanje redaka radi više nego sumnjivo
++++ brisanje redaka radi više nego sumnjivo
+	+++ stavio da dva puta prijeđe po tome, a one koje ima u bazi već da pobriše
+	+++ offline mode je isto brisao iako nije bilo prijenosa
+
++++ stavio sam parametar ako se želi dobiti CPUuse ako ne onda niti ne ide u kalkulaciju i ne troši vrijeme
+	već samo vrati 0

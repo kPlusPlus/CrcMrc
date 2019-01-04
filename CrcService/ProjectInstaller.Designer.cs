@@ -33,12 +33,16 @@
             // 
             // serviceProcessInstaller1
             // 
+            this.serviceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
             this.serviceProcessInstaller1.Password = null;
             this.serviceProcessInstaller1.Username = null;
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.ServiceName = "Service1";
+            this.serviceInstaller1.DelayedAutoStart = true;
+            this.serviceInstaller1.Description = "ServiceCrc Manager";
+            this.serviceInstaller1.ServiceName = "ServiceCrc";
+            this.serviceInstaller1.Committed += new System.Configuration.Install.InstallEventHandler(this.serviceInstaller1_Committed);
             // 
             // ProjectInstaller
             // 
@@ -49,8 +53,7 @@
         }
 
         #endregion
-
-        private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
         private System.ServiceProcess.ServiceInstaller serviceInstaller1;
+        protected System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
     }
 }

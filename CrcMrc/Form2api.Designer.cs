@@ -48,13 +48,15 @@
             this.lblKeyLog = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelCounters = new System.Windows.Forms.Panel();
+            this.btnHide = new System.Windows.Forms.Button();
+            this.lblDBCount = new System.Windows.Forms.Label();
+            this.lblDBState = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.chkScrollActivity = new System.Windows.Forms.CheckBox();
             this.UsageTimer = new System.Windows.Forms.Timer(this.components);
             this.KeyTime = new System.Windows.Forms.Timer(this.components);
             this.TimerDB = new System.Windows.Forms.Timer(this.components);
-            this.chkScrollActivity = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblDBState = new System.Windows.Forms.Label();
-            this.lblDBCount = new System.Windows.Forms.Label();
+            this.btnProces = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelTextControl.SuspendLayout();
             this.panelCounters.SuspendLayout();
@@ -71,6 +73,7 @@
             // ProcessView
             // 
             this.ProcessView.BackColor = System.Drawing.Color.Gray;
+            this.ProcessView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ProcessView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -107,7 +110,7 @@
             // 
             this.btnWriteXml.Location = new System.Drawing.Point(4, 12);
             this.btnWriteXml.Name = "btnWriteXml";
-            this.btnWriteXml.Size = new System.Drawing.Size(169, 30);
+            this.btnWriteXml.Size = new System.Drawing.Size(107, 30);
             this.btnWriteXml.TabIndex = 1;
             this.btnWriteXml.Text = "Spremi";
             this.btnWriteXml.UseVisualStyleBackColor = true;
@@ -167,16 +170,19 @@
             // lvLog
             // 
             this.lvLog.BackColor = System.Drawing.Color.Gray;
+            this.lvLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvLog.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
             this.columnHeader5});
             this.lvLog.ForeColor = System.Drawing.Color.Yellow;
             this.lvLog.Location = new System.Drawing.Point(12, 481);
+            this.lvLog.MultiSelect = false;
             this.lvLog.Name = "lvLog";
-            this.lvLog.Size = new System.Drawing.Size(713, 223);
+            this.lvLog.Size = new System.Drawing.Size(713, 215);
             this.lvLog.TabIndex = 6;
             this.lvLog.UseCompatibleStateImageBehavior = false;
             this.lvLog.View = System.Windows.Forms.View.Details;
+            this.lvLog.Leave += new System.EventHandler(this.lvLog_Leave);
             // 
             // columnHeader4
             // 
@@ -231,6 +237,8 @@
             // panelCounters
             // 
             this.panelCounters.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelCounters.Controls.Add(this.btnProces);
+            this.panelCounters.Controls.Add(this.btnHide);
             this.panelCounters.Controls.Add(this.lblDBCount);
             this.panelCounters.Controls.Add(this.lblDBState);
             this.panelCounters.Controls.Add(this.label2);
@@ -245,8 +253,62 @@
             this.panelCounters.Controls.Add(this.btnUsageTimer);
             this.panelCounters.Location = new System.Drawing.Point(731, 12);
             this.panelCounters.Name = "panelCounters";
-            this.panelCounters.Size = new System.Drawing.Size(257, 739);
+            this.panelCounters.Size = new System.Drawing.Size(264, 739);
             this.panelCounters.TabIndex = 11;
+            // 
+            // btnHide
+            // 
+            this.btnHide.BackColor = System.Drawing.Color.Tomato;
+            this.btnHide.Location = new System.Drawing.Point(220, 203);
+            this.btnHide.Margin = new System.Windows.Forms.Padding(0);
+            this.btnHide.Name = "btnHide";
+            this.btnHide.Size = new System.Drawing.Size(44, 536);
+            this.btnHide.TabIndex = 15;
+            this.btnHide.Text = "Sakrij";
+            this.btnHide.UseVisualStyleBackColor = false;
+            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
+            // 
+            // lblDBCount
+            // 
+            this.lblDBCount.AutoSize = true;
+            this.lblDBCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDBCount.Location = new System.Drawing.Point(93, 216);
+            this.lblDBCount.Name = "lblDBCount";
+            this.lblDBCount.Size = new System.Drawing.Size(47, 16);
+            this.lblDBCount.TabIndex = 14;
+            this.lblDBCount.Text = "Count";
+            // 
+            // lblDBState
+            // 
+            this.lblDBState.AutoSize = true;
+            this.lblDBState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDBState.Location = new System.Drawing.Point(3, 216);
+            this.lblDBState.Name = "lblDBState";
+            this.lblDBState.Size = new System.Drawing.Size(44, 16);
+            this.lblDBState.TabIndex = 13;
+            this.lblDBState.Text = "State";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 203);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(151, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "DB State          DB count";
+            // 
+            // chkScrollActivity
+            // 
+            this.chkScrollActivity.AutoSize = true;
+            this.chkScrollActivity.Checked = true;
+            this.chkScrollActivity.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkScrollActivity.Location = new System.Drawing.Point(4, 469);
+            this.chkScrollActivity.Name = "chkScrollActivity";
+            this.chkScrollActivity.Size = new System.Drawing.Size(86, 17);
+            this.chkScrollActivity.TabIndex = 11;
+            this.chkScrollActivity.Text = "ScrollActivity";
+            this.chkScrollActivity.UseVisualStyleBackColor = true;
             // 
             // UsageTimer
             // 
@@ -266,53 +328,23 @@
             this.TimerDB.Interval = global::CrcMrc.Properties.Settings.Default.dbTime;
             this.TimerDB.Tick += new System.EventHandler(this.TimerDB_Tick);
             // 
-            // chkScrollActivity
+            // btnProces
             // 
-            this.chkScrollActivity.AutoSize = true;
-            this.chkScrollActivity.Checked = true;
-            this.chkScrollActivity.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkScrollActivity.Location = new System.Drawing.Point(4, 469);
-            this.chkScrollActivity.Name = "chkScrollActivity";
-            this.chkScrollActivity.Size = new System.Drawing.Size(86, 17);
-            this.chkScrollActivity.TabIndex = 11;
-            this.chkScrollActivity.Text = "ScrollActivity";
-            this.chkScrollActivity.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 203);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "DB State          DB count";
-            // 
-            // lblDBState
-            // 
-            this.lblDBState.AutoSize = true;
-            this.lblDBState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDBState.Location = new System.Drawing.Point(3, 216);
-            this.lblDBState.Name = "lblDBState";
-            this.lblDBState.Size = new System.Drawing.Size(44, 16);
-            this.lblDBState.TabIndex = 13;
-            this.lblDBState.Text = "State";
-            // 
-            // lblDBCount
-            // 
-            this.lblDBCount.AutoSize = true;
-            this.lblDBCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDBCount.Location = new System.Drawing.Point(93, 216);
-            this.lblDBCount.Name = "lblDBCount";
-            this.lblDBCount.Size = new System.Drawing.Size(47, 16);
-            this.lblDBCount.TabIndex = 14;
-            this.lblDBCount.Text = "Count";
+            this.btnProces.BackColor = System.Drawing.Color.Tomato;
+            this.btnProces.Location = new System.Drawing.Point(176, 203);
+            this.btnProces.Margin = new System.Windows.Forms.Padding(0);
+            this.btnProces.Name = "btnProces";
+            this.btnProces.Size = new System.Drawing.Size(44, 536);
+            this.btnProces.TabIndex = 16;
+            this.btnProces.Text = "Proc.";
+            this.btnProces.UseVisualStyleBackColor = false;
+            this.btnProces.Click += new System.EventHandler(this.btnProces_Click);
             // 
             // Form2api
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 763);
+            this.ClientSize = new System.Drawing.Size(999, 763);
             this.Controls.Add(this.panelCounters);
             this.Controls.Add(this.lvLog);
             this.Controls.Add(this.panelTextControl);
@@ -357,5 +389,7 @@
         private System.Windows.Forms.Label lblDBCount;
         private System.Windows.Forms.Label lblDBState;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnHide;
+        private System.Windows.Forms.Button btnProces;
     }
 }
