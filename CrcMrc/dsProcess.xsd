@@ -25,7 +25,8 @@
               <xs:element name="hWindID" msprop:Generator_ColumnVarNameInTable="columnhWindID" msprop:Generator_ColumnPropNameInRow="hWindID" msprop:Generator_ColumnPropNameInTable="hWindIDColumn" msprop:Generator_UserColumnName="hWindID" type="xs:string" minOccurs="0" />
               <xs:element name="currWindID" msprop:Generator_ColumnVarNameInTable="columncurrWindID" msprop:Generator_ColumnPropNameInRow="currWindID" msprop:Generator_ColumnPropNameInTable="currWindIDColumn" msprop:Generator_UserColumnName="currWindID" type="xs:string" minOccurs="0" />
               <xs:element name="counter" msprop:Generator_ColumnVarNameInTable="columncounter" msprop:Generator_ColumnPropNameInRow="counter" msprop:Generator_ColumnPropNameInTable="counterColumn" msprop:Generator_UserColumnName="counter" type="xs:short" default="0" minOccurs="0" />
-              <xs:element name="CompUser" msprop:Generator_ColumnVarNameInTable="columnCompUser" msprop:Generator_ColumnPropNameInRow="CompUser" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInTable="CompUserColumn" msprop:Generator_UserColumnName="CompUser" type="xs:string" minOccurs="0" />
+              <xs:element name="CompUser" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="CompUser" msprop:Generator_ColumnVarNameInTable="columnCompUser" msprop:Generator_ColumnPropNameInTable="CompUserColumn" msprop:Generator_UserColumnName="CompUser" type="xs:string" minOccurs="0" />
+              <xs:element name="Title" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

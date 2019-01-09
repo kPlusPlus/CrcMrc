@@ -236,13 +236,21 @@ namespace CrcService
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.UseShellExecute = false;
                 startInfo.WindowStyle = ProcessWindowStyle.Maximized;
-                startInfo.FileName = "notepad.exe";
+                startInfo.FileName = "notepad.exe";                
                 //startInfo.Arguments = file;
                 //Process.Start(startInfo);
 
                 Process p = null;
-                p = Process.Start(startInfo);
-                p.WaitForExit();
+
+                try
+                {
+                    p = Process.Start(startInfo);                    
+                    p.WaitForExit();
+                }
+                catch(Exception ex)
+                {
+                    LogTo("Error " + ex.Message, true);
+                }
             }
             LogTo("Timer1 STOP",true);
         }

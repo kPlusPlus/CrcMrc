@@ -141,7 +141,7 @@ namespace CrcMrc
                     IDList.Add(ProcessInfo.ID);
 
                     if (CurrentProcessData == PROCESS_DATA_NOT_FOUND)
-                    {
+                    {                        
                         Index = ProcessDataList.Add(new ProcessData(
                             ProcessInfo.ID,
                             ProcessInfo.ExeFilename,
@@ -184,6 +184,7 @@ namespace CrcMrc
                 row.CPUUse = TempProcess.CpuUsage;
                 row.ProcTime = dt;
                 row.ProcID = (Int32) TempProcess.ID;
+                row.Title = GetTitleWindow((Int32) TempProcess.ID); //TEST TEST TEST                
                                 
                 string sProzori = String.Empty;
                 IntPtr[] prozori = GetProcessWindows((int)TempProcess.ID);
@@ -298,6 +299,22 @@ namespace CrcMrc
             } while (pLast != IntPtr.Zero);
             System.Array.Resize(ref apRet, iCount);
             return apRet;
+        }
+
+        private string GetTitleWindow(int process)
+        {
+            string retVal = string.Empty;
+            try
+            {
+                Process proc = Process.GetProcessById(process);
+                retVal = proc.MainWindowTitle;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error proc 6 " + ex.Message);
+                return retVal;
+            }
+            return retVal;
         }
 
         private string GetCompName()
@@ -422,7 +439,7 @@ namespace CrcMrc
                 
                 if (dbConnect.CheckProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP) == false)
                 {
-                    dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP);
+                    dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP,row.Title);
                     LogTo("DELETE  " + row.ProcID + "  " + row.ProcTime,true);
                     row.Delete();
                     if (pdt.Rows.Count > 0)

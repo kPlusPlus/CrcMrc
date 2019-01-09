@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 
 
@@ -26,8 +27,8 @@ namespace Test
             InitializeComponent();
             //Test();
             //TestIntersect();
-            dbConnect = new DBConnect();
-            MessageBox.Show(GetLocalIpAddress());
+            //dbConnect = new DBConnect();
+            //MessageBox.Show(GetLocalIpAddress());
 
             //MessageBox.Show(dbConnect.connection.State.ToString());
         }
@@ -61,10 +62,11 @@ namespace Test
         {
             //dbConnect.Select("process");
             //dbConnect.InsertProcess("DrEngel", 2212, DateTime.Now, "kreso", "kresimir", "192.168.1.101");
-
+            /*
             DateTime dt;
             if (DateTime.TryParse("5.12.2018 10:00:09",out dt))
                 MessageBox.Show(dbConnect.CheckProcess("DrEngel", 2212, dt, "kreso", "kresimir", "192.168.1.101").ToString());
+                */
         }
 
         private void Form1_Leave(object sender, EventArgs e)
@@ -142,5 +144,16 @@ namespace Test
                 : "";
         }
 
+        private void btnGetProcc_Click(object sender, EventArgs e)
+        {
+            Process[] processes = Process.GetProcesses();
+            // Display count.
+            Console.WriteLine("Count: {0}", processes.Length);
+            // Loop over processes.
+            foreach (Process process in processes)
+            {
+                Console.WriteLine(process.Id + " " + process.StartInfo.Verb + " " + process.MainWindowTitle );
+            }
+        }
     }
 }

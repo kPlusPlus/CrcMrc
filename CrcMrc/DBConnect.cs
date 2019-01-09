@@ -94,7 +94,7 @@ namespace CrcMrc
         }
 
 
-        public void InsertProcess(string ProcName, Int32 ProcID, DateTime ProcTime, string CompName, string CompUser, string IP)
+        public void InsertProcess(string ProcName, Int32 ProcID, DateTime ProcTime, string CompName, string CompUser, string IP,string Title)
         {
             string formatForMySql = ProcTime.ToString("yyyyMMddHHmmss");
 
@@ -103,14 +103,16 @@ namespace CrcMrc
                                                     `ProcTime`,
                                                     `CompName`,
                                                     `CompUser`,
-                                                    `IP`)
+                                                    `IP`,
+                                                    `Title`)
                                                     VALUES
                                                     ('" + ProcName + "',"
                                                     + ProcID + ","
                                                     + formatForMySql + ","
                                                     + "'" + CompName + "',"
                                                     + "'" + CompUser + "',"
-                                                    + "'"+ IP + "');";
+                                                    + "'"+ IP + "',"
+                                                    + "'" + Title + "'" + ");";
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);

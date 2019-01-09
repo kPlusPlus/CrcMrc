@@ -56,6 +56,7 @@ namespace CrcMrc
     {
         public uint ID;
         public string Name;
+        public string Title;
         long OldUserTime;
         long OldKernelTime;
         DateTime OldUpdate;
