@@ -14,10 +14,11 @@ using System.Windows.Forms;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Text.RegularExpressions;
 
 namespace CrcMrc
 {
-       
+
 
     public partial class Form2api : Form
     {
@@ -28,7 +29,7 @@ namespace CrcMrc
         static extern IntPtr GetActiveWindow();
 
         [DllImport("user32")]
-        private static extern UInt32 GetWindowThreadProcessId(Int32 hWnd , out Int32 lpdwProcessId);
+        private static extern UInt32 GetWindowThreadProcessId(Int32 hWnd, out Int32 lpdwProcessId);
 
         [DllImport("user32.dll")]
         public static extern IntPtr FindWindowEx(IntPtr parentWindow, IntPtr previousChildWindow, string windowClass, string windowTitle);
@@ -70,8 +71,8 @@ namespace CrcMrc
             LoadXml();
             RefreshParameter();
             SaveToDB();
-            ShowCountData();            
-        }        
+            ShowCountData();
+        }
 
         private void InitVal()
         {
@@ -81,7 +82,7 @@ namespace CrcMrc
 
         private void SaveXml()
         {
-            pdt.WriteXml( CrcMrc.Properties.Settings.Default.FileDB );
+            pdt.WriteXml(CrcMrc.Properties.Settings.Default.FileDB);
             LogTo("SaveXML");
         }
 
@@ -97,8 +98,8 @@ namespace CrcMrc
 
         private void GetUsage()
         {
-            
-            ProcessEntry32 ProcessInfo = new ProcessEntry32();            
+
+            ProcessEntry32 ProcessInfo = new ProcessEntry32();
             ProcessTimes ProcessTimes = new ProcessTimes();
             IntPtr ProcessList, ProcessHandle = ProcessCPU.PROCESS_HANDLE_ERROR;
             ProcessData CurrentProcessData;
@@ -123,7 +124,7 @@ namespace CrcMrc
                 {
                     // we need a process handle to pass it to GetProcessTimes function
                     // the OpenProcess function will provide us the handle by the id
-                    ProcessHandle = ProcessCPU.OpenProcess(ProcessCPU.PROCESS_ALL_ACCESS, false, ProcessInfo.ID);                    
+                    ProcessHandle = ProcessCPU.OpenProcess(ProcessCPU.PROCESS_ALL_ACCESS, false, ProcessInfo.ID);
 
                     // here's what we are looking for, this gets the kernel and user time
                     ProcessCPU.GetProcessTimes(
@@ -141,7 +142,7 @@ namespace CrcMrc
                     IDList.Add(ProcessInfo.ID);
 
                     if (CurrentProcessData == PROCESS_DATA_NOT_FOUND)
-                    {                        
+                    {
                         Index = ProcessDataList.Add(new ProcessData(
                             ProcessInfo.ID,
                             ProcessInfo.ExeFilename,
@@ -183,23 +184,23 @@ namespace CrcMrc
                 row.ProcesName = TempProcess.Name;
                 row.CPUUse = TempProcess.CpuUsage;
                 row.ProcTime = dt;
-                row.ProcID = (Int32) TempProcess.ID;
-                row.Title = GetTitleWindow((Int32) TempProcess.ID); //TEST TEST TEST                
-                                
+                row.ProcID = (Int32)TempProcess.ID;
+                row.Title = GetTitleWindow((Int32)TempProcess.ID); //TEST TEST TEST                
+
                 string sProzori = String.Empty;
                 IntPtr[] prozori = GetProcessWindows((int)TempProcess.ID);
                 Int32[] lprozori = new Int32[prozori.Length];
                 for (int j = 0; j < prozori.Length; j++)
-                {                    
+                {
                     sProzori += "@" + prozori[j].ToInt32().ToString() + "@";
                     lprozori[j] = prozori[j].ToInt32();
                 }
 
                 Int32[] commonElements = comm.iHwnd.Intersect(lprozori).ToArray();
-                Int32 commonElementsCounter = comm.iHwnd.Count() - comm.iHwnd.Except(lprozori).Count() ; 
+                Int32 commonElementsCounter = comm.iHwnd.Count() - comm.iHwnd.Except(lprozori).Count();
                 if (commonElements.Length > 0)
-                {                    
-                    row.counter = (short) commonElementsCounter; 
+                {
+                    row.counter = (short)commonElementsCounter;
                     row.currWindID = commonElements[0].ToString();
                 }
 
@@ -209,7 +210,7 @@ namespace CrcMrc
                 {
                     pdt.AddProcessRow(row);
                     pdt.AcceptChanges();
-                    LogTo("ADD  " + row.ProcID + "  " + row.ProcTime,true);
+                    LogTo("ADD  " + row.ProcID + "  " + row.ProcTime, true);
                 }
                 else
                 {
@@ -218,7 +219,7 @@ namespace CrcMrc
                     row = null;
                     pdt.RejectChanges();
                 }
-                
+
 
                 if (IDList.Contains(TempProcess.ID))
                     Index++;
@@ -239,7 +240,7 @@ namespace CrcMrc
 
             ShowCountData();
         }
-        
+
 
         private ProcessData ProcessExists(uint ID)
         {
@@ -308,6 +309,7 @@ namespace CrcMrc
             {
                 Process proc = Process.GetProcessById(process);
                 retVal = proc.MainWindowTitle;
+                retVal = GetFilter(retVal);
             }
             catch (Exception ex)
             {
@@ -327,7 +329,7 @@ namespace CrcMrc
         {
             return Environment.UserName + "|" + Environment.UserDomainName;
         }
-                
+
         public string GetIPAddress()
         {
             IPHostEntry Host = default(IPHostEntry);
@@ -410,7 +412,7 @@ namespace CrcMrc
 
         private void TimerDB_Tick(object sender, EventArgs e)
         {
-            LogTo("Timer3 DB START",true,true);            
+            LogTo("Timer3 DB START", true, true);
             SaveToDB();
             SaveToDB();
             RefreshParameter();
@@ -436,11 +438,11 @@ namespace CrcMrc
             {
                 dsProcess.ProcessRow row;
                 row = (dsProcess.ProcessRow)pdt.Rows[i];
-                
+
                 if (dbConnect.CheckProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP) == false)
                 {
-                    dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP,row.Title);
-                    LogTo("DELETE  " + row.ProcID + "  " + row.ProcTime,true);
+                    dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP, row.Title);
+                    LogTo("DELETE  " + row.ProcID + "  " + row.ProcTime, true);
                     row.Delete();
                     if (pdt.Rows.Count > 0)
                     {
@@ -472,8 +474,8 @@ namespace CrcMrc
         /// <param name="mess">Description</param>
         /// <param name="logon">Write to log</param>
         /// <param name="scrolon">Scrol on this action</param>
-        private void LogTo(string mess, Boolean logon = false, Boolean scrolon = false )
-        { 
+        private void LogTo(string mess, Boolean logon = false, Boolean scrolon = false)
+        {
             string datum = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
             string[] row = { datum, mess };
             var listViewItem = new ListViewItem(row);
@@ -499,11 +501,11 @@ namespace CrcMrc
             }
 
             //if (scrolon == true)
-            if(bScrollActivity > 8 || scrolon == true)
+            if (bScrollActivity > 8 || scrolon == true)
             {
                 //lvLog.SuspendLayout();
-                lvLog.EnsureVisible(lvLog.Items.Count -1);
-                bScrollActivity = 0;                
+                lvLog.EnsureVisible(lvLog.Items.Count - 1);
+                bScrollActivity = 0;
             }
             lvLog.ResumeLayout();
         }
@@ -513,7 +515,7 @@ namespace CrcMrc
             if (UsageTimer.Enabled == true)
                 UsageTimer.Enabled = false;
             else
-                UsageTimer.Enabled = true;                
+                UsageTimer.Enabled = true;
         }
 
         private void btnKeyTime_Click(object sender, EventArgs e)
@@ -552,7 +554,7 @@ namespace CrcMrc
             LogTo("Autohide");
             this.Hide();
         }
-        
+
 
         private void btnProces_Click(object sender, EventArgs e)
         {
@@ -565,7 +567,7 @@ namespace CrcMrc
                 //startInfo.Arguments = file;
                 Process.Start(startInfo);
             }
-                
+
 
         }
 
@@ -576,11 +578,11 @@ namespace CrcMrc
             Process[] proc;
 
             proc = Process.GetProcesses();
-            foreach(Process pprc in proc)
+            foreach (Process pprc in proc)
             {
-                if( pprc.ProcessName.Contains(AppName) )
+                if (pprc.ProcessName.Contains(AppName))
                 {
-                    pID = (uint) pprc.Id;
+                    pID = (uint)pprc.Id;
                     return true;
                 }
             }
@@ -589,6 +591,12 @@ namespace CrcMrc
 
         }
 
-        
+        private string GetFilter(string str)
+        {
+            str = Regex.Replace(str, @"\(.*\)", "", RegexOptions.Multiline | RegexOptions.ExplicitCapture);
+            return str;
+        }
+
+
     }
 }
