@@ -8,3 +8,10 @@
 
 +++ stavio sam parametar ako se želi dobiti CPUuse ako ne onda niti ne ide u kalkulaciju i ne troši vrijeme
 	već samo vrati 0
+
+
+
+--- u common funkciji promijeni
+ispod
+	hwnd = GetForegroundWindow().ToInt32();
+	da streama samo kada je flag upaljen
