@@ -1,0 +1,19 @@
+CrcMrc.exe Error: 0 : Fatal error encountered during data read.
+Exception thrown: 'MySql.Data.MySqlClient.MySqlException' in MySql.Data.dll
+
+error proc 6 Process with an Id of 3064 is not running.
+
+
+CrcMrc.exe Error: 0 : Unable to connect to any of the specified MySQL hosts.
+Exception thrown: 'MySql.Data.MySqlClient.MySqlException' in MySql.Data.dll
+
+CrcMrc.exe Error: 0 : Unable to connect to any of the specified MySQL hosts.
+Exception thrown: 'MySql.Data.MySqlClient.MySqlException' in MySql.Data.dll
+
+
+if (this.connection.State != ConnectionState.Open)
+
+
+mysql SKIP-NAME-RESOLVE
+
+rowcount 2008

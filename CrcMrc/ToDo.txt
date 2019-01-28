@@ -11,7 +11,24 @@
 
 
 
---- u common funkciji promijeni
++++ u common funkciji promijeni
 ispod
 	hwnd = GetForegroundWindow().ToInt32();
 	da streama samo kada je flag upaljen
+
+--- napravi da u istom timeru bilježi i kada se aplikacija gledala i kada se sa njom radilo
+	
+
+
+--- ako je diro aplikaciju / prozor u jednom ticku onda nije gledao
+	možeš to provjeriti prije nego uneseš gledanje
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+DEBUG2
+---------------------------------------------------------------------------------
+Exception thrown: 'MySql.Data.MySqlClient.MySqlException' in MySql.Data.dll

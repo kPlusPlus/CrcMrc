@@ -12,7 +12,7 @@
   <xs:element name="dsProcess" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsProcess" msprop:Generator_UserDSName="dsProcess">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Process" msprop:Generator_TableClassName="ProcessDataTable" msprop:Generator_TableVarName="tableProcess" msprop:Generator_TablePropName="Process" msprop:Generator_RowDeletingName="ProcessRowDeleting" msprop:Generator_RowChangingName="ProcessRowChanging" msprop:Generator_RowEvHandlerName="ProcessRowChangeEventHandler" msprop:Generator_RowDeletedName="ProcessRowDeleted" msprop:Generator_UserTableName="Process" msprop:Generator_RowChangedName="ProcessRowChanged" msprop:Generator_RowEvArgName="ProcessRowChangeEvent" msprop:Generator_RowClassName="ProcessRow">
+        <xs:element name="Process" msprop:Generator_TableClassName="ProcessDataTable" msprop:Generator_TableVarName="tableProcess" msprop:Generator_RowChangedName="ProcessRowChanged" msprop:Generator_TablePropName="Process" msprop:Generator_RowDeletingName="ProcessRowDeleting" msprop:Generator_RowChangingName="ProcessRowChanging" msprop:Generator_RowEvHandlerName="ProcessRowChangeEventHandler" msprop:Generator_RowDeletedName="ProcessRowDeleted" msprop:Generator_RowClassName="ProcessRow" msprop:Generator_UserTableName="Process" msprop:Generator_RowEvArgName="ProcessRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
@@ -27,6 +27,7 @@
               <xs:element name="counter" msprop:Generator_ColumnVarNameInTable="columncounter" msprop:Generator_ColumnPropNameInRow="counter" msprop:Generator_ColumnPropNameInTable="counterColumn" msprop:Generator_UserColumnName="counter" type="xs:short" default="0" minOccurs="0" />
               <xs:element name="CompUser" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="CompUser" msprop:Generator_ColumnVarNameInTable="columnCompUser" msprop:Generator_ColumnPropNameInTable="CompUserColumn" msprop:Generator_UserColumnName="CompUser" type="xs:string" minOccurs="0" />
               <xs:element name="Title" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" type="xs:string" minOccurs="0" />
+              <xs:element name="ViewOnly" msprop:Generator_ColumnVarNameInTable="columnViewOnly" msprop:Generator_ColumnPropNameInRow="ViewOnly" msprop:Generator_ColumnPropNameInTable="ViewOnlyColumn" msprop:Generator_UserColumnName="ViewOnly" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

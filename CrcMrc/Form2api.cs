@@ -206,6 +206,17 @@ namespace CrcMrc
 
                 row.hWindID = sProzori;
 
+                /* counter prozora za gledanje */
+                Int32[] commonElementsView = comm.iHwndView.Intersect(lprozori).ToArray();
+                Int32 commonElementsCounterView = comm.iHwndView.Count() - comm.iHwndView.Except(lprozori).Count();
+                if (commonElementsView.Length > 0)
+                {
+                    row.counter = (short)commonElementsCounterView;
+                    row.currWindID = commonElementsView[0].ToString();
+                    row.ViewOnly = true;
+                }
+
+
                 if (row.counter > 0)
                 {
                     pdt.AddProcessRow(row);
@@ -270,6 +281,7 @@ namespace CrcMrc
         private void RunKeyLogger()
         {
             comm.LogKeys();
+            comm.ViewOnly();
         }
 
 
@@ -413,6 +425,7 @@ namespace CrcMrc
         private void TimerDB_Tick(object sender, EventArgs e)
         {
             LogTo("Timer3 DB START", true, true);
+            // TEST TEST TEST
             SaveToDB();
             SaveToDB();
             RefreshParameter();
@@ -555,7 +568,7 @@ namespace CrcMrc
             this.Hide();
         }
 
-
+        
         private void btnProces_Click(object sender, EventArgs e)
         {
             // you must find process active

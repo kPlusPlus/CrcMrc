@@ -67,11 +67,13 @@ namespace CrcMrc
                 switch (ex.Number)
                 {
                     case 0:
-                        MessageBox.Show("Cannot connect to server.  Contact administrator");
+                        Console.WriteLine("Cannot connect to server.  Contact administrator");
                         break;
-
                     case 1045:
-                        MessageBox.Show("Invalid username/password, please try again");
+                        Console.WriteLine("Invalid username/password, please try again");
+                        break;
+                    case 1042:                        
+                        Console.WriteLine("[-] NO CONNECTION");
                         break;
                 }
                 return false;
@@ -81,6 +83,7 @@ namespace CrcMrc
         //Close connection
         private bool CloseConnection()
         {
+            if (connection.State != ConnectionState.Open) return false;
             try
             {
                 connection.Close();
@@ -88,15 +91,24 @@ namespace CrcMrc
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }
 
 
-        public void InsertProcess(string ProcName, Int32 ProcID, DateTime ProcTime, string CompName, string CompUser, string IP,string Title)
+        public void InsertProcess(string ProcName, Int32 ProcID, DateTime ProcTime, string CompName, string CompUser, string IP,string Title, Int32 iViewOnly = 0)
         {
             string formatForMySql = ProcTime.ToString("yyyyMMddHHmmss");
+            string sViewOnly = string.Empty;
+            if (iViewOnly == 0)
+            {
+                sViewOnly = "null";
+            }
+            else
+            {
+                sViewOnly = iViewOnly.ToString();
+            }
 
             string query = @"INSERT INTO process (  `ProcName`,
                                                     `ProcID`,
@@ -104,15 +116,21 @@ namespace CrcMrc
                                                     `CompName`,
                                                     `CompUser`,
                                                     `IP`,
-                                                    `Title`)
+                                                    `Title`,
+                                                    `ViewOnly`)
                                                     VALUES
-                                                    ('" + ProcName + "',"
+                                                    ('" + RetStringForMySql( ProcName ) + "',"
                                                     + ProcID + ","
                                                     + formatForMySql + ","
                                                     + "'" + CompName + "',"
                                                     + "'" + CompUser + "',"
                                                     + "'"+ IP + "',"
-                                                    + "'" + Title + "'" + ");";
+                                                    + "'" + RetStringForMySql( Title ) + "'," 
+                                                    + sViewOnly + ");";
+
+            if (this.connection.State != ConnectionState.Open)
+                return;
+
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -121,11 +139,22 @@ namespace CrcMrc
             }
         }
 
+        public string RetStringForMySql(string s)
+        {
+            s = s.Replace("'", "''");
+            return s;
+        }
+
         public Boolean CheckProcess(string ProcName, Int32 ProcID, DateTime ProcTime, string CompName, string CompUser, string IP)
         {
             Boolean retVal = false;
 
+            /*
             if (this.OpenConnection() != true)
+                return retVal;
+            */
+
+            if (this.connection.State != ConnectionState.Open)
                 return retVal;
 
             
