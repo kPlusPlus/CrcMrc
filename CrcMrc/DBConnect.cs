@@ -128,9 +128,6 @@ namespace CrcMrc
                                                     + "'" + RetStringForMySql( Title ) + "'," 
                                                     + sViewOnly + ");";
 
-            if (this.connection.State != ConnectionState.Open)
-                return;
-
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -154,7 +151,7 @@ namespace CrcMrc
                 return retVal;
             */
 
-            if (this.connection.State != ConnectionState.Open)
+            if (this.OpenConnection() == true)
                 return retVal;
 
             

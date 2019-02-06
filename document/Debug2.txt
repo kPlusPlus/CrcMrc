@@ -16,4 +16,4 @@ if (this.connection.State != ConnectionState.Open)
 
 mysql SKIP-NAME-RESOLVE
 
-rowcount 2008
+rowcount 2011
