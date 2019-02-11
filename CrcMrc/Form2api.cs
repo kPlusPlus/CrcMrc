@@ -209,7 +209,7 @@ namespace CrcMrc
                 /* counter prozora za gledanje */
                 Int32[] commonElementsView = comm.iHwndView.Intersect(lprozori).ToArray();
                 Int32 commonElementsCounterView = comm.iHwndView.Count() - comm.iHwndView.Except(lprozori).Count();
-                if (commonElementsView.Length > 0)
+                if (commonElementsView.Length > 0 && commonElements.Length == 0)
                 {
                     row.counter = (short)commonElementsCounterView;
                     row.currWindID = commonElementsView[0].ToString();
