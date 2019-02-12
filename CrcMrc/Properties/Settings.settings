@@ -17,8 +17,8 @@
     <Setting Name="FileName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">KeyLog.txt</Value>
     </Setting>
-    <Setting Name="TickKeyboardTime" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">400</Value>
+    <Setting Name="TickKeyboardTime" Description="def 400" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">800</Value>
     </Setting>
     <Setting Name="CounterKey" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">300</Value>

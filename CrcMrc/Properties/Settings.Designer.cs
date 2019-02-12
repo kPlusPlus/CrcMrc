@@ -68,9 +68,13 @@ namespace CrcMrc.Properties {
             }
         }
         
+        /// <summary>
+        /// def 400
+        /// </summary>
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("def 400")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        [global::System.Configuration.DefaultSettingValueAttribute("800")]
         public int TickKeyboardTime {
             get {
                 return ((int)(this["TickKeyboardTime"]));

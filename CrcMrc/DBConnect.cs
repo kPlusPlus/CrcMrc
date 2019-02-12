@@ -97,17 +97,17 @@ namespace CrcMrc
         }
 
 
-        public void InsertProcess(string ProcName, Int32 ProcID, DateTime ProcTime, string CompName, string CompUser, string IP,string Title, Int32 iViewOnly = 0)
+        public void InsertProcess(string ProcName, Int32 ProcID, DateTime ProcTime, string CompName, string CompUser, string IP,string Title, bool bViewOnly = false)
         {
             string formatForMySql = ProcTime.ToString("yyyyMMddHHmmss");
             string sViewOnly = string.Empty;
-            if (iViewOnly == 0)
+            if (bViewOnly == false)
             {
                 sViewOnly = "null";
             }
             else
             {
-                sViewOnly = iViewOnly.ToString();
+                sViewOnly = "1";
             }
 
             string query = @"INSERT INTO process (  `ProcName`,

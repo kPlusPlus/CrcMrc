@@ -566,6 +566,7 @@ namespace CrcMrc {
                 this.columnID.AutoIncrement = true;
                 this.columnID.Unique = true;
                 this.columncounter.DefaultValue = ((short)(0));
+                this.columnViewOnly.DefaultValue = ((bool)(false));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
